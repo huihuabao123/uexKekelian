@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NoTopic">
+    <ImageView
+        android:id="@+id/iv_img"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/kkl_img09"
+        android:scaleType="fitXY"/>
+    <RelativeLayout
+        android:id="@+id/rl_back"
+        android:layout_width="wrap_content"
+        android:layout_margin="10dp"
+        android:padding="10dp"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/kkl_icon_return"/>
+    </RelativeLayout>
+    <Button
+        android:id="@+id/bt_study_course"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/text_20_sp"
+        android:layout_marginTop="400dp"
+        android:layout_centerHorizontal="true"
+        android:text="学习课本"
+        android:textColor="@color/white"
+        android:padding="5dp"
+        android:background="@drawable/accept"/>
+</RelativeLayout>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (c) 2016.  The AppCan Open Source Project.
+  ~
+  ~  This program is free software: you can redistribute it and/or modify
+  ~  it under the terms of the GNU Lesser General Public License as published by
+  ~  the Free Software Foundation, either version 3 of the License, or
+  ~  (at your option) any later version.
+  ~
+  ~  This program is distributed in the hope that it will be useful,
+  ~  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~  GNU Lesser General Public License for more details.
+  ~
+  ~  You should have received a copy of the GNU Lesser General Public License
+  ~  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  ~
+  ~
+  -->
+
+<resources>
+    <!--uexDemo use-->
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="colorHoloYellow">#ff9400</color>
+    <color name="colorYellow_deep">#d3a310</color>
+    <color name="colorVP">#f1f6e2</color>
+    <color name="colorPink">#fedcdd</color>
+    <color name="colorBlue">#94dace</color>
+    <color name="color_red_deep">#ff4200</color>
+    <color name="color_red">#f77275</color>
+    <color name="color_green">#c4e4d6</color>
+    <color name="color_green_deep">#3ec4a6</color>
+    <color name="color_white">#FFFFFFFF</color>
+    <color name="color_black">#000000</color>
+    <color name="color_gray">#999999</color>
+    <color name="color_line">#f3fbf7</color>
+
+</resources>

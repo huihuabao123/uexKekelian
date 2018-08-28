@@ -1,0 +1,144 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+
+    <script type="text/javascript">
+
+
+
+        window.uexOnload = function(type){
+
+            if(type == 0){
+
+                //点击了解会员
+                uexKekelian.onFragmentVipClick=function(data){
+                    alert(data);
+                };
+            }
+        };
+
+        function openv(){
+            var param = {
+                time:3000
+            };
+            var result=uexKekelian.test(param);
+            alert(result);
+        }
+
+        function showInputDialog(){
+            var param = {
+                defaultValue:'这是默认值'
+            };
+            uexKekelian.test_showInputDialog(param,function (error, data) {
+                if (!error){
+                    alert(data);
+                }else{
+                    alert("用户取消了操作");
+                }
+            });
+        }
+
+        function addFragment(){
+            var params = {
+                left:100,
+                top:200,
+                width:400,
+                height:400,
+                isScrollWithWebView:true
+            };
+            uexKekelian.test_addFragment(params);
+        }
+
+        function addView(){
+            var params = {
+                left:0,
+                top:500,
+                width:400,
+                height:400,
+                isScrollWithWebView:true
+            };
+            uexKekelian.test_addView(params);
+        }
+        function startActivity() {
+            var params = {
+                domain:'huihuabao.gensee.com',
+                number:95760405,
+                nickName:'kk',
+                joinPwd:'222222',
+                className:'test one',
+                uid: 12345678998
+            };
+            uexKekelian.startActivity(params);
+
+
+        }
+
+        function opentActivity() {
+            var params = {
+                domain:'huihuabao.gensee.com',
+                number:95760405,
+                nickName:'kk',
+                joinPwd:'222222',
+                className:'test one',
+                uid: 12345678998
+            };
+            uexKekelian.opentActivity(params);
+
+
+        }
+        function launchActivity() {
+            var params = {
+                domain:'huihuabao.gensee.com',
+                number:95760405,
+                nickName:'kk',
+                joinPwd:'222222',
+                className:'test one',
+                uid: 12345678998
+            };
+            uexKekelian.launchActivity(params);
+
+
+        }
+    </script>
+</head>
+
+<body>
+<div class="tit">EuexKekelian对象</div>
+<div class="conbor">
+    <div class="consj">
+
+        <span>1.TabLayoutActivity</span>
+        <!--此接口将打开一个自定义的activity，并获取其操作后的返回值。-->
+        <input class="btn" type="button" value="startActivity"
+               onclick="startActivity()"><br>
+
+        <input class="btn" type="button" value="openActivity"
+               onclick="opentActivity()"><br>
+
+        <input class="btn" type="button" value="launchActivity"
+               onclick="launchActivity()"><br>
+
+        <span>2.test_vibrator接口</span>
+        <!--此接口将调用设备的震动，需输入震动时间，单位为毫秒-->
+        <input class="btn" type="button" value="test_vibrator"
+               onclick="openv();"><br>
+
+        <span>3.test_showInputDialog接口</span>
+        <!--此接口将打开一个自定义的输入框，并获取其操作后的返回值。-->
+        <input class="btn" type="button" value="test_showInputDialog"
+               onclick="showInputDialog();"><br>
+
+        <span>4.test_addFragment接口</span>
+        <!--此接口将打开一个自定义的FragmentView添加到当前屏幕上。-->
+        <input class="btn" type="button" value="test_addFragment" onclick="addFragment();"><br>
+
+
+    </div>
+</div>
+
+</body>
+</html>
