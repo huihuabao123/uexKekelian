@@ -21,7 +21,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
 import android.view.Window;
-import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
@@ -29,6 +28,8 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.kekelian.adapter.IntegralFragmentPagerAdapter;
 import com.kekelian.fragment.CourseItemFragment;
 import com.kekelian.fragment.UnitTestFragment;
@@ -36,7 +37,6 @@ import com.kekelian.transformer.CardTransformer;
 import com.kekelian.unit.NetworkUtils;
 import com.kekelian.unit.StatusBarUtil;
 
-import org.zywx.wbpalmstar.base.util.ConfigXmlUtil;
 import org.zywx.wbpalmstar.engine.universalex.EUExUtil;
 
 import java.util.ArrayList;
@@ -183,9 +183,8 @@ public class HealthPush extends FragmentActivity implements CourseItemFragment.o
     private void showPreload() {
         llContent.setVisibility(View.GONE);
         rlLoad.setVisibility(View.VISIBLE);
-        llNetWork.setVisibility(View.VISIBLE);
-        ivLoad.setVisibility(View.GONE);
-//        Glide.with(HealthPush.this).load(EUExUtil.getResDrawableID("loading")).asGif().centerCrop().diskCacheStrategy(DiskCacheStrategy.SOURCE).into(ivLoad);
+        llNetWork.setVisibility(View.GONE);
+        Glide.with(HealthPush.this).load(EUExUtil.getResDrawableID("loading")).asGif().centerCrop().diskCacheStrategy(DiskCacheStrategy.SOURCE).into(ivLoad);
     }
 
     /**

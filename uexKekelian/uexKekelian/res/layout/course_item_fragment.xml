@@ -17,15 +17,42 @@
         <TextView
             android:id="@+id/tv_block"
             android:layout_marginTop="30dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
             android:textColor="@color/color_red"
             android:textSize="@dimen/text_18_sp"
             android:layout_width="match_parent"
-            android:layout_height="40dp" />
+            android:layout_height="wrap_content" />
+        <LinearLayout
+            android:visibility="gone"
+            android:layout_marginTop="100dp"
+            android:id="@+id/ll_not_point"
+            android:layout_below="@+id/tv_block"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:gravity="center"
+               android:textColor="@color/color_text_gray"
+               android:textSize="@dimen/text_18_sp"
+               android:text="本课时没有新学的知识点"/>
+            <Button
+                android:id="@+id/bt_book_preview"
+                android:layout_marginTop="30dp"
+                android:layout_width="130dp"
+                android:layout_height="50dp"
+                android:textColor="@color/white"
+                android:text="课本预习"
+                android:textSize="@dimen/text_16_sp"
+                android:background="@drawable/view_shape_button_book_green"/>
+        </LinearLayout>
 
         <RelativeLayout
             android:layout_below="@+id/tv_block"
+            android:id="@+id/rl_content"
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">

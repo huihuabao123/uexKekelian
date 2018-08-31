@@ -28,6 +28,7 @@
     <color name="colorVP">#f1f6e2</color>
     <color name="colorPink">#fedcdd</color>
     <color name="colorBlue">#94dace</color>
+    <color name="colorBlueBook">#94dabe</color>
     <color name="color_red_deep">#ff4200</color>
     <color name="color_red">#f77275</color>
     <color name="color_green">#c4e4d6</color>
@@ -35,6 +36,7 @@
     <color name="color_white">#FFFFFFFF</color>
     <color name="color_black">#000000</color>
     <color name="color_gray">#999999</color>
+    <color name="color_text_gray">#333333</color>
     <color name="color_line">#f3fbf7</color>
 
 </resources>

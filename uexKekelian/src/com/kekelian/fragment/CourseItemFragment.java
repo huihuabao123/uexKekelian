@@ -9,8 +9,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,7 +37,11 @@ public class CourseItemFragment extends Fragment {
     protected boolean isCreated = false;
     private static final String TAG="HealthPush";
     private LinearLayout llCourseItemFragment;
+    private LinearLayout llNotPoint;
+    private RelativeLayout rlContent;
+    private Button btBookPreview;
     private TextView tvTitle;
+    private TextView tvBlock;
     private ImageView ivButcher;
     private ImageView ivShow;
     private LevelDialog popLevelStatus;
@@ -180,6 +186,7 @@ public class CourseItemFragment extends Fragment {
      */
     private void initViews(View view ) {
         llCourseItemFragment=(LinearLayout) view.findViewById(EUExUtil.getResIdID("ll_courese_item_fragment"));
+        tvBlock=(TextView) view.findViewById(EUExUtil.getResIdID("tv_block"));
         ivButcher=(ImageView) view.findViewById(EUExUtil.getResIdID("iv_butcher"));
         ivShow=(ImageView) view.findViewById(EUExUtil.getResIdID("iv_show"));
         popLevelStatus=new LevelDialog(getActivity());
@@ -192,6 +199,24 @@ public class CourseItemFragment extends Fragment {
         });
         tvTitle=(TextView) view.findViewById(EUExUtil.getResIdID("tv_title"));
         tvTitle.setText("第"+index+"课时");
+        llNotPoint=(LinearLayout) view.findViewById(EUExUtil.getResIdID("ll_not_point"));
+        rlContent=(RelativeLayout) view.findViewById(EUExUtil.getResIdID("rl_content"));
+        if(index==1){
+            tvBlock.setText("adasdasda,sdwcaniae,wmasdma,mdaewa.sd a");
+            llNotPoint.setVisibility(View.VISIBLE);
+            rlContent.setVisibility(View.GONE);
+        }else {
+            tvBlock.setText("中山大道撒ad搭搭撒撒amdaewoa.sda");
+            rlContent.setVisibility(View.VISIBLE);
+            llNotPoint.setVisibility(View.GONE);
+        }
+        btBookPreview=(Button) view.findViewById(EUExUtil.getResIdID("bt_book_preview"));
+        btBookPreview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onFragmentCallBack.onResultClick(3);
+            }
+        });
         ivButcher.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -41,7 +41,7 @@ public class NoTopic extends Activity {
         btStudyCourse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mUexBaseObj.callBackPluginJs(EUExKekelian.CALLBACK_ON_FRAGMENT_VIP_CLICK,""+1);
+                mUexBaseObj.callBackPluginJs(EUExKekelian.CALLBACK_ON_FRAGMENT_VIP_CLICK,""+4);
             }
         });
     }
