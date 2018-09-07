@@ -31,8 +31,15 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.kekelian.adapter.IntegralFragmentPagerAdapter;
+import com.kekelian.bean.InfoBean;
+import com.kekelian.bean.KKLLessionListBean;
+import com.kekelian.bean.UnitTestTabRecordBean;
+import com.kekelian.callBack.OnFragmentCallBack;
 import com.kekelian.fragment.CourseItemFragment;
 import com.kekelian.fragment.UnitTestFragment;
+import com.kekelian.net.Api;
+import com.kekelian.net.CallBack;
+import com.kekelian.net.HttpClient;
 import com.kekelian.transformer.CardTransformer;
 import com.kekelian.unit.NetworkUtils;
 import com.kekelian.unit.StatusBarUtil;
@@ -42,9 +49,11 @@ import org.zywx.wbpalmstar.engine.universalex.EUExUtil;
 import java.util.ArrayList;
 
 
-public class HealthPush extends FragmentActivity implements CourseItemFragment.onFragmentCallBack{
+public class HealthPush extends FragmentActivity implements OnFragmentCallBack {
     private static final String TAG="HealthPush";
     private EUExKekelian mUexBaseObj;
+    private InfoBean infoBean;
+    private boolean isVip=false;
     // View
     private HorizontalScrollView mColumnHorizontalScrollView;
     private LinearLayout mColumnContent;
@@ -64,11 +73,6 @@ public class HealthPush extends FragmentActivity implements CourseItemFragment.o
     private TextView tvTitle;
     private ImageView ivLoad;
 
-
-
-
-    /** tab分类 */
-    private ArrayList<String> tabList = new ArrayList<String>();
     /** fragment适配器 */
     private IntegralFragmentPagerAdapter mAdapetr;
     /** 当前选中的类别 */
@@ -79,7 +83,8 @@ public class HealthPush extends FragmentActivity implements CourseItemFragment.o
     private int mItemWidth = 0;
 
     //存放tabItem的文本 模拟数据源
-    private ArrayList<String> list = new ArrayList<String>();
+    private ArrayList<KKLLessionListBean.MessageBean.DataBean.LessonTabRecordBean> list = new ArrayList<>();
+    private UnitTestTabRecordBean recordBean;
     /** Fragment列表 */
     private ArrayList<Fragment> fragments;
 
@@ -98,46 +103,53 @@ public class HealthPush extends FragmentActivity implements CourseItemFragment.o
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
         mUexBaseObj =  getIntent().getParcelableExtra(EUExKekelian.BASE);
+        infoBean=getIntent().getParcelableExtra(EUExKekelian.INFO);
+        if("Y".equals(infoBean.getIsVip())){
+            isVip=true;
+        }
         context=this;
         Log.i(TAG,"HealthPush---->onCreate()");
         setContentView(EUExUtil.getResLayoutID("hpush_activity"));
         StatusBarUtil.setColor(HealthPush.this, Color.parseColor("#94dace"),0);
         initView();
+        getKekelianList();
 
     }
 
-    @Override
-    protected void onRestart() {
-        super.onRestart();
-        Log.i(TAG,"HealthPush---->onRestart()");
+    private void getKekelianList() {
+        showPreload();
+        String params="?menuId="+infoBean.getMenuId()+"&userId="+infoBean.getUserId();
+        HttpClient.get(this, Api.GET_KEKELIAN_LIST + params, new CallBack<KKLLessionListBean>() {
+            @Override
+            public void onSuccess(KKLLessionListBean result) {
+                if(result==null){
+                    return;
+                }
+                if(result.getMessage().isStatus()){
+                    ivLoad.setVisibility(View.GONE);
+                    rlLoad.setVisibility(View.VISIBLE);
+                  list.clear();
+                  list.addAll(result.getMessage().getData().getLessonTabRecord());
+                  //计算第一个小试牛刀未完成的下标
+                  for (int i=0;i<list.size();i++){
+                      if(list.get(i).getFinishProgress()==0){
+                          columnSelectIndex=i;
+                          break;
+                      }
+                  }
+                  Log.i(TAG,"tab的数量："+list.size());
+                  recordBean=result.getMessage().getData().getUnitTestTabRecord();
+                  setChangelView();
+                  showContent();
+                }
+            }
+
+
+
+        });
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        Log.i(TAG,"HealthPush---->onStart()");
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        Log.i(TAG,"HealthPush---->onResume()");
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        Log.i(TAG,"HealthPush---->onStop()");
-    }
-
-    @Override
-    protected void onDestroy() {
-        mUexBaseObj.closeTabActivity(EUExKekelian.ID_TAG);
-        super.onDestroy();
-        Log.i(TAG,"HealthPush---->onDestroy()");
-    }
 
     /** 初始化layout控件 */
     private void initView() {
@@ -145,10 +157,11 @@ public class HealthPush extends FragmentActivity implements CourseItemFragment.o
          rlBack.setOnClickListener(new OnClickListener() {
              @Override
              public void onClick(View v) {
-                mUexBaseObj.closeTabActivity(EUExKekelian.ID_TAG);
+                mUexBaseObj.closeKekelian(null);
              }
          });
         tvTitle=(TextView) findViewById(EUExUtil.getResIdID("title_name_text"));
+        tvTitle.setText(infoBean.getUnitTitle());
         llContent=(LinearLayout)findViewById(EUExUtil.getResIdID("ll_content"));
         rlLoad=(RelativeLayout)findViewById(EUExUtil.getResIdID("rl_load"));
         //初始化导航条
@@ -162,15 +175,14 @@ public class HealthPush extends FragmentActivity implements CourseItemFragment.o
         indicateParams = (LinearLayout.LayoutParams) indicateTV.getLayoutParams();
         if(NetworkUtils.getNetworkStatus(this)==-1){
             showErrorNet();
-//            showPreload();
-        }else {
-            showContent();
-
         }
 
 
     }
 
+    /**
+     * 显示网络异常界面
+     */
     private void showErrorNet() {
         llContent.setVisibility(View.GONE);
         rlLoad.setVisibility(View.GONE);
@@ -178,13 +190,13 @@ public class HealthPush extends FragmentActivity implements CourseItemFragment.o
     }
 
     /**
-     * 展示异常界面
+     * 展示加载中界面
      */
     private void showPreload() {
         llContent.setVisibility(View.GONE);
         rlLoad.setVisibility(View.VISIBLE);
         llNetWork.setVisibility(View.GONE);
-        Glide.with(HealthPush.this).load(EUExUtil.getResDrawableID("loading")).asGif().centerCrop().diskCacheStrategy(DiskCacheStrategy.SOURCE).into(ivLoad);
+        Glide.with(HealthPush.this).load(EUExUtil.getResDrawableID("loading")).asGif().into(ivLoad);
     }
 
     /**
@@ -194,20 +206,17 @@ public class HealthPush extends FragmentActivity implements CourseItemFragment.o
         llContent.setVisibility(View.VISIBLE);
         rlLoad.setVisibility(View.GONE);
         llNetWork.setVisibility(View.GONE);
-        setChangelView(list);
+
     }
 
 
     /**
      * 初始化动态加载
-     * @param lists
      */
-    private void setChangelView(ArrayList<String> lists) {
-        if (lists == null) {
+    private void setChangelView() {
+        if (list == null || list.size()==0) {
             //第一次进入APP,从网络获取数据
             return;
-        } else {
-            initColumnData(lists);
         }
         initTabColumn();
         initFragment();
@@ -216,34 +225,31 @@ public class HealthPush extends FragmentActivity implements CourseItemFragment.o
 
     }
 
-    /** 获取Column栏目 数据 */
-    private void initColumnData(ArrayList<String> lists) {
-        list.clear();
 
-        for (int i = 0; i <=4; i++) {
-            if(i==4){
-                list.add("单元测验");
-            }else {
-                list.add("第"+(i+1)+"课时");
-            }
-        }
-        tabList = list;
-    }
 
     /**
      * 初始化Column栏目项
      * */
     private void initTabColumn() {
         mScreenWidth = getWindowsWidth(this);
-        mItemWidth = mScreenWidth / 4;				// 一个Item宽度为屏幕的1/5
+        // 一个Item宽度为屏幕的1/list.size()
+        int count =list.size()+1;
+        if(count<4 && count>0){
+            mItemWidth = mScreenWidth / count;
+        }else {
+            mItemWidth = mScreenWidth / 4;
+        }
         mColumnContent.removeAllViews();
-        int count = tabList.size();
         for (int i = 0; i < count; i++) {
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(mItemWidth, LayoutParams.WRAP_CONTENT);
             TextView localTextView = new TextView(this);
             localTextView.setGravity(Gravity.CENTER);
             localTextView.setPadding(5,0,5,0);
-            localTextView.setText(tabList.get(i));
+            if(i==count-1){
+                localTextView.setText("单元测验");
+            }else {
+                localTextView.setText(list.get(i).getLessonName());
+            }
             localTextView.setTextSize(20);
             localTextView.setTextColor(Color.parseColor("#c4e4d6"));
             if (columnSelectIndex == i) {//设置第一个被选中,颜色变化
@@ -265,26 +271,26 @@ public class HealthPush extends FragmentActivity implements CourseItemFragment.o
      * */
     private void initFragment() {
         fragments = new ArrayList<Fragment>();
-        final int size = tabList.size();
-        for (int i = 0; i < size; i++) {
-            if(i==(size-1)){
-                fragments.add(UnitTestFragment.newInstance());
-            }else {
-               CourseItemFragment courseItemFragment= CourseItemFragment.newInstance(i+1);
-               courseItemFragment.setOnFragmentCallBack(this);
-                fragments.add(courseItemFragment);
-            }
+        for (int i = 0; i < list.size(); i++) {
+            CourseItemFragment courseItemFragment= CourseItemFragment.newInstance(list.get(i),isVip);
+            courseItemFragment.setOnFragmentCallBack(this);
+            fragments.add(courseItemFragment);
 
         }
+             //添加单元测验
+        UnitTestFragment unitTestFragment=UnitTestFragment.newInstance(infoBean.getUserId(),infoBean.getMenuId(),isVip);
+        unitTestFragment.setOnFragmentCallBack(this);
+        fragments.add(unitTestFragment);
+
         mViewPager.removeAllViews();
-        mViewPager.setOffscreenPageLimit(size);
+        mViewPager.setOffscreenPageLimit(list.size()+1);
         mViewPager.setPageMargin(dip2px(HealthPush.this,34));
         mViewPager.setPageTransformer(false, new CardTransformer());
         if(mAdapetr!=null)
             mAdapetr.clearFragment();
         mAdapetr = new IntegralFragmentPagerAdapter(getSupportFragmentManager(), fragments);
         mViewPager.setAdapter(mAdapetr);
-        mViewPager.setOffscreenPageLimit(size);
+        mViewPager.setOffscreenPageLimit(list.size());
         mViewPager.setOnPageChangeListener(new MyOnPageChangeListener());
         mViewPager.setCurrentItem(columnSelectIndex);
     }
@@ -307,20 +313,14 @@ public class HealthPush extends FragmentActivity implements CourseItemFragment.o
     public void onResultClick(int type) {
         if(type==4){
             addActivity(NoTopic.class,EUExKekelian.ID_TOPIC);
+        } else if(type==5){
+            mUexBaseObj.callBackPluginJs(EUExKekelian.CALLBACK_ON_FRAGMENT_DO_EXERCISE,""+5);
         }else {
             mUexBaseObj.callBackPluginJs(EUExKekelian.CALLBACK_ON_FRAGMENT_VIP_CLICK,""+type);
         }
 
     }
 
-    @Override
-    public boolean onKeyUp(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_BACK) {
-            mUexBaseObj.onActivityPause(HealthPush.context);
-            return true;
-        }
-        return super.onKeyUp(keyCode, event);
-    }
     /**
      * ViewPager切换监听方法
      */
@@ -501,6 +501,23 @@ public class HealthPush extends FragmentActivity implements CourseItemFragment.o
         });
     }
 
+
+
+
+    @Override
+    public boolean onKeyUp(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            return true;
+        }
+        return super.onKeyUp(keyCode, event);
+    }
+
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.i(TAG,"HealthPush---->onDestroy()");
+    }
 }
 
 

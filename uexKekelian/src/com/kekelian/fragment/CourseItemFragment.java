@@ -1,10 +1,10 @@
 package com.kekelian.fragment;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,29 +14,30 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.kekelian.EUExKekelian;
-import com.kekelian.NoTopic;
-import com.kekelian.ScoreReport;
-import com.kekelian.bean.GankResp;
+import com.kekelian.bean.KKLLessionListBean;
+import com.kekelian.bean.LessonContentBean;
 import com.kekelian.callBack.OnClickCallBack;
+import com.kekelian.callBack.OnFragmentCallBack;
 import com.kekelian.dialog.LevelDialog;
 import com.kekelian.dialog.VipDialog;
+import com.kekelian.net.Api;
 import com.kekelian.net.CallBack;
 import com.kekelian.net.HttpClient;
 
 import org.zywx.wbpalmstar.engine.universalex.EUExUtil;
+
+import java.util.List;
 
 /**
  * 单元测试的Fragment
  */
 public class CourseItemFragment extends Fragment {
 
-    private static String INDEX="INDEX";
-    protected boolean isCreated = false;
-    private static final String TAG="HealthPush";
-    private LinearLayout llCourseItemFragment;
+    private static String DATA="data";
+    public static final String IS_vIP="is_vip";
+    private boolean isVip=false;
+    private static final String TAG="CourseItemFragment";
     private LinearLayout llNotPoint;
     private RelativeLayout rlContent;
     private Button btBookPreview;
@@ -46,32 +47,26 @@ public class CourseItemFragment extends Fragment {
     private ImageView ivShow;
     private LevelDialog popLevelStatus;
     private VipDialog vipDialog;
-    private int index=-1;
-    private static final String GANK_URL = "http://gank.io/api/data/福利/5000/1";
+    private Boolean stuffStats=false;
+    protected boolean isCreated = false;
+    //小试牛刀的题目数
+    private int totalItemballadeCount=0;
+    //大显身手的题目数
+    private int totalItemstuffCount=0;
+    private KKLLessionListBean.MessageBean.DataBean.LessonTabRecordBean dataBean;
 
-    private onFragmentCallBack onFragmentCallBack;
+    private OnFragmentCallBack onFragmentCallBack;
 
-    public void setOnFragmentCallBack(CourseItemFragment.onFragmentCallBack onFragmentCallBack) {
+    public void setOnFragmentCallBack(OnFragmentCallBack onFragmentCallBack) {
         this.onFragmentCallBack = onFragmentCallBack;
     }
 
-    public interface onFragmentCallBack{
-        /**
-         * 1.是Vip中点击了解会员
-         * 2.是Vip中点击购买会员
-         * 3.点击课本预习
-         * 4.跳转没有题目的界面
-         * @param type
-         */
-        public void onResultClick(int type);
-    }
 
-
-    public static CourseItemFragment newInstance(int index) {
+    public static CourseItemFragment newInstance(KKLLessionListBean.MessageBean.DataBean.LessonTabRecordBean dataBean, Boolean isVip) {
         CourseItemFragment fragment = new CourseItemFragment();
         Bundle args = new Bundle();
-        args.putInt(INDEX, index);
-//        args.putString(ENROLL_PLAY_ID, enrollPlanId);
+        args.putParcelable(DATA, dataBean);
+        args.putBoolean(IS_vIP,isVip);
         fragment.setArguments(args);
         return fragment;
     }
@@ -81,9 +76,9 @@ public class CourseItemFragment extends Fragment {
         super.onAttach(context);
         Bundle bundle = getArguments();
         if (bundle != null) {
-            index = bundle.getInt(INDEX, -1);
+            dataBean = bundle.getParcelable(DATA);
+            isVip=bundle.getBoolean(IS_vIP,false);
         }
-        Log.i(TAG,"CourseItemFragment"+index+"---->onAttach()");
     }
 
     @Override
@@ -91,17 +86,17 @@ public class CourseItemFragment extends Fragment {
         super.onCreate(savedInstanceState);
         setRetainInstance(true);
         isCreated=true;
-        Log.i(TAG,"CourseItemFragment"+index+"---->onCreate()");
     }
+
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(EUExUtil.getResLayoutID("course_item_fragment"), container, false);
         initViews(view);
-        Log.i(TAG,"CourseItemFragment"+index+"---->onCreateView()");
         return view;
     }
+
 
     /**
      * 懒加载
@@ -114,128 +109,180 @@ public class CourseItemFragment extends Fragment {
             return;
         }
         if(isVisibleToUser){
-            getData();
+          loadData();
         }
     }
 
-    private void getData() {
-        HttpClient.get(this, GANK_URL, new CallBack<GankResp>() {
+
+    private void loadData() {
+        String params="?lessonRecordId="+dataBean.getLessonRecordId();
+        HttpClient.get(this, Api.GET_KEKELIAN_LESSON_CONTENT+params, new CallBack<LessonContentBean>() {
             @Override
-            public void onSuccess(GankResp result) {
+            public void onSuccess(LessonContentBean result) {
                 if(result==null){
                     return;
                 }
-                Log.i(TAG,"返回的json："+result.toString());
+                 if(result.getMessage().isStatus()){
+                    Log.i(TAG,"返回的json:"+result.toString());
+                     //显示blockName
+                     if(!TextUtils.isEmpty(result.getMessage().getData().getBlockName())){
+                         tvBlock.setText(result.getMessage().getData().getBlockName());
+                     }
+                     //显示是否有知识点
+                    if(result.getMessage().getData().isHasKP()){
+                        rlContent.setVisibility(View.VISIBLE);
+                        llNotPoint.setVisibility(View.GONE);
+                    }else {
+                        rlContent.setVisibility(View.GONE);
+                        llNotPoint.setVisibility(View.VISIBLE);
+                    }
+                    //显示小试牛刀和大显身手的状态
+//                     LessonContentBean.MessageBean.DataBean.QuizListBean balladeBean=result.getMessage().getData().getQuizList().get(0);
+//                     LessonContentBean.MessageBean.DataBean.QuizListBean stuffBean=result.getMessage().getData().getQuizList().get(1);
+                     List<LessonContentBean.MessageBean.DataBean.QuizListBean> quizList=result.getMessage().getData().getQuizList();
+                    for (int i=0;i<quizList.size();i++){
+                        LessonContentBean.MessageBean.DataBean.QuizListBean quizListBean;
+                        quizListBean=quizList.get(i);
+                         if(quizListBean.getDisplayOrder()==1){
+                             totalItemballadeCount=quizListBean.getTotalItemCount();
+                             //小试牛刀
+                             /**
+                              * 1.finishItemCount=0表示没做
+                              * 2.然后totalItemCount和
+                              * correctItemCount 判断得几颗星
+                              */
+                             if(quizListBean.getFinishItemCount()==0){
+                                 //没有闯关
+                                 ivButcher.setImageResource(EUExUtil.getResDrawableID("kkl_checkpoint01_00"));
+                                 return;
+                             }
+                             if(quizListBean.getFinishItemCount()> 0 &&quizListBean.getCorrectItemCount()==0){
+                                 //全错
+                                 ivButcher.setImageResource(EUExUtil.getResDrawableID("kkl_checkpoint01_01"));
+                             } else if (quizListBean.getTotalItemCount()>0 && quizListBean.getCorrectItemCount()==1 ){
+                                 //一颗星
+                                 stuffStats=true;
+                                 ivButcher.setImageResource(EUExUtil.getResDrawableID("kkl_checkpoint01_02"));
+                             }else if(quizListBean.getCorrectItemCount()>0 && quizListBean.getTotalItemCount()>0 && quizListBean.getCorrectItemCount()==quizListBean.getTotalItemCount()) {
+                                 //三颗星
+                                 stuffStats=true;
+                                 ivButcher.setImageResource(EUExUtil.getResDrawableID("kkl_checkpoint01_04"));
+                             }else {
+                                 //两颗星
+                                 stuffStats=true;
+                                 ivButcher.setImageResource(EUExUtil.getResDrawableID("kkl_checkpoint01_03"));
+                             }
+
+                         }else if(quizListBean.getDisplayOrder()==2 ){
+                             totalItemstuffCount=quizListBean.getTotalItemCount();
+                              //大显身手
+                             if(!stuffStats){
+                                 //没有权限开启闯关
+                                 ivShow.setImageResource(EUExUtil.getResDrawableID("kkl_checkpoint02_00"));
+                             }
+
+                             if(quizListBean.getFinishItemCount()==0 && quizListBean.getCorrectItemCount()==0){
+                                 //没有闯关
+                                 ivShow.setImageResource(EUExUtil.getResDrawableID("kkl_checkpoint02_01"));
+                                 return;
+                             }
+                             if(quizListBean.getTotalItemCount()>0 &&quizListBean.getCorrectItemCount()==0){
+                                 //全错
+                                 ivShow.setImageResource(EUExUtil.getResDrawableID("kkl_checkpoint02_02"));
+                             } else if (quizListBean.getTotalItemCount()>0 && quizListBean.getCorrectItemCount()==1 ){
+                                 //一颗星
+                                 ivShow.setImageResource(EUExUtil.getResDrawableID("kkl_checkpoint02_03"));
+                             }else if(quizListBean.getCorrectItemCount()>0 && quizListBean.getTotalItemCount()>0 && quizListBean.getCorrectItemCount()==quizListBean.getTotalItemCount()) {
+                                 //三颗星
+                                 ivShow.setImageResource(EUExUtil.getResDrawableID("kkl_checkpoint02_05"));
+                             }else {
+                                 //两颗星
+                                 ivShow.setImageResource(EUExUtil.getResDrawableID("kkl_checkpoint02_04"));
+                             }
+
+                         }
+                    }
+                 }
+
             }
 
-
         });
-    }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        Log.i(TAG,"CourseItemFragment"+index+"---->onActivityCreated()");
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        Log.i(TAG,"CourseItemFragment"+index+"---->onStart()");
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        Log.i(TAG,"CourseItemFragment"+index+"---->onResume()");
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        Log.i(TAG,"CourseItemFragment"+index+"---->onPause()");
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-        Log.i(TAG,"CourseItemFragment"+index+"---->onStop()");
-
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        Log.i(TAG,"CourseItemFragment"+index+"---->onDestroyView()");
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        Log.i(TAG,"CourseItemFragment"+index+"---->onDetach()");
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        Log.i(TAG,"CourseItemFragment"+index+"---->onDestroy()");
     }
 
     /**
      * 初始化控件
      */
     private void initViews(View view ) {
-        llCourseItemFragment=(LinearLayout) view.findViewById(EUExUtil.getResIdID("ll_courese_item_fragment"));
         tvBlock=(TextView) view.findViewById(EUExUtil.getResIdID("tv_block"));
         ivButcher=(ImageView) view.findViewById(EUExUtil.getResIdID("iv_butcher"));
         ivShow=(ImageView) view.findViewById(EUExUtil.getResIdID("iv_show"));
         popLevelStatus=new LevelDialog(getActivity());
         vipDialog=new VipDialog(getContext());
+        //大显身手
         ivShow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                popLevelStatus.pop();
+                if(!isVip){
+                    //会员点击事件
+                    vipDialog.pop(new OnClickCallBack() {
+                        @Override
+                        public void clickCallBack(int type) {
+                            onFragmentCallBack.onResultClick(type);
+                        }
+
+                    });
+                }else {
+                    if(!stuffStats){
+                        //没有解锁的提示
+                        popLevelStatus.pop();
+                        return;
+                    }
+                    if(totalItemstuffCount>0){
+                        //跳转做题界面
+                        onFragmentCallBack.onResultClick(5);
+                    }else {
+                        //跳转没有题目的界面
+                        onFragmentCallBack.onResultClick(4);
+                    }
+                }
             }
         });
         tvTitle=(TextView) view.findViewById(EUExUtil.getResIdID("tv_title"));
-        tvTitle.setText("第"+index+"课时");
+        tvTitle.setText(dataBean.getLessonName());
         llNotPoint=(LinearLayout) view.findViewById(EUExUtil.getResIdID("ll_not_point"));
         rlContent=(RelativeLayout) view.findViewById(EUExUtil.getResIdID("rl_content"));
-        if(index==1){
-            tvBlock.setText("adasdasda,sdwcaniae,wmasdma,mdaewa.sd a");
-            llNotPoint.setVisibility(View.VISIBLE);
-            rlContent.setVisibility(View.GONE);
-        }else {
-            tvBlock.setText("中山大道撒ad搭搭撒撒amdaewoa.sda");
-            rlContent.setVisibility(View.VISIBLE);
-            llNotPoint.setVisibility(View.GONE);
-        }
         btBookPreview=(Button) view.findViewById(EUExUtil.getResIdID("bt_book_preview"));
         btBookPreview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //跳转到课本预习界面
                 onFragmentCallBack.onResultClick(3);
             }
         });
+        //小试牛刀
         ivButcher.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-             if(index==1){
-                 startActivity(new Intent(getActivity(), ScoreReport.class));
-             } else if(index==2){
-                 onFragmentCallBack.onResultClick(3);
-             }else if(index==4){
-                 onFragmentCallBack.onResultClick(4);
-             } else {
-                 vipDialog.pop(new OnClickCallBack() {
-                     @Override
-                     public void clickCallBack(int type) {
-                         onFragmentCallBack.onResultClick(type);
-                     }
+                if(!isVip){
+                    //会员点击事件
+                    vipDialog.pop(new OnClickCallBack() {
+                        @Override
+                        public void clickCallBack(int type) {
+                            onFragmentCallBack.onResultClick(type);
+                        }
 
-                 });
-             }
+                    });
+                }else {
+                    if(totalItemballadeCount>0){
+                           //跳转做题界面
+                        onFragmentCallBack.onResultClick(5);
+                    }else {
+                        //跳转没有题目的界面
+                        onFragmentCallBack.onResultClick(5);
+                    }
 
+
+                }
             }
         });
     }

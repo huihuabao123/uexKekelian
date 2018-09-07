@@ -21,7 +21,6 @@ public class NoTopic extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(EUExUtil.getResLayoutID("activity_no_topic"));
         mUexBaseObj =  getIntent().getParcelableExtra(EUExKekelian.BASE);
         StatusBarUtil.setColor(NoTopic.this, Color.parseColor("#8ed8bb"),0);
@@ -33,8 +32,8 @@ public class NoTopic extends Activity {
         rlBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-              mUexBaseObj.removeActivity(HealthPush.context,HealthPush.mgr,HealthPush.mMapDecorView,EUExKekelian.ID_TOPIC,mUexBaseObj);
-              HealthPush.mMapDecorView=null;
+                mUexBaseObj.removeActivity(HealthPush.context,HealthPush.mgr,HealthPush.mMapDecorView,EUExKekelian.ID_TOPIC,mUexBaseObj);
+                HealthPush.mMapDecorView=null;
             }
         });
         btStudyCourse=(Button)findViewById(EUExUtil.getResIdID("bt_study_course"));

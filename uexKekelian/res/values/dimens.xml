@@ -23,6 +23,7 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="header_hight">50.0dip</dimen>
     <dimen name="text_40_sp">40sp</dimen>
+    <dimen name="text_50_sp">50sp</dimen>
     <dimen name="text_22_sp">22sp</dimen>
     <dimen name="text_20_sp">20sp</dimen>
     <dimen name="text_18_sp">18sp</dimen>

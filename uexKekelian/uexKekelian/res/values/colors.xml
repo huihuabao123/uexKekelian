@@ -38,5 +38,6 @@
     <color name="color_gray">#999999</color>
     <color name="color_text_gray">#333333</color>
     <color name="color_line">#f3fbf7</color>
+    <color name="score_bac">#daf7eb</color>
 
 </resources>

@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/ll_courese_item_fragment"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    android:layout_height="match_parent">
+
     <RelativeLayout
         android:layout_marginTop="25dp"
         android:layout_marginBottom="60dp"
@@ -92,5 +88,5 @@
             android:textStyle="bold"
             android:textColor="@color/color_white"
             android:textSize="16sp"/>
-    </FrameLayout>
-</LinearLayout>
+
+</FrameLayout>

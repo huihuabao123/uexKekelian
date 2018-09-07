@@ -6,26 +6,33 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.support.annotation.NonNull;
+import android.text.Html;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
-import android.view.WindowManager;
-import android.widget.AbsoluteLayout;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import com.kekelian.bean.InfoBean;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.zywx.wbpalmstar.engine.DataHelper;
 import org.zywx.wbpalmstar.engine.EBrowserView;
 import org.zywx.wbpalmstar.engine.universalex.EUExBase;
+
+import java.util.Date;
 
 
 public class EUExKekelian extends EUExBase implements Parcelable {
     public static final String BASE="EUExKekelian";
+    public static final String INFO="info";
     public static final String TAG = "EUExKekelian";
     public static final String CALLBACK_ON_FRAGMENT_VIP_CLICK = "uexKekelian.onFragmentVipClick";
-    public static final String CALLBACK_ON_FRAGMENT_BUY_VIP_CLICK = "uexKekelian.onFragmentBuyVipClick";
+    public static final String CALLBACK_ON_FRAGMENT_DO_EXERCISE = "uexKekelian.onFragmentDoExercise";
+    public static final String CALLBACK_ON_KEKELIAN_CLOSE="uexKekelian.onKekelianClose";
     private static Context context=null;
     private static EBrowserView view=null;
     private View mMapDecorView;
@@ -60,7 +67,12 @@ public class EUExKekelian extends EUExBase implements Parcelable {
      * @param parm
      */
     public void startActivity(String[] parm) {
-       addActivity(HealthPush.class,ID_TAG);
+        if(parm==null || parm.length<1){
+            return;
+        }
+        final InfoBean infoBean = DataHelper.gson.fromJson(parm[0], InfoBean.class);
+        Log.i(TAG,"参数如下："+infoBean.toString());
+       addActivity(HealthPush.class,ID_TAG,infoBean);
 
     }
 
@@ -68,10 +80,17 @@ public class EUExKekelian extends EUExBase implements Parcelable {
      * 打开课课练的入口
      * @param parm
      */
-    public void opentActivity(String[] parm) {
+    public void opentScoreReportcActivity(String[] parm) {
+        addActivity(ScoreReport.class,ID_SCORE);
+    }
+
+    /**
+     * 打开课课练的入口
+     * @param parm
+     */
+    public void launchActivity(String[] parm) {
         try {
             Intent intent = new Intent();
-            intent.putExtra(BASE,EUExKekelian.this);
             intent.setClass(mContext, HealthPush.class);
             startActivity(intent);
         } catch (Exception e) {
@@ -82,20 +101,40 @@ public class EUExKekelian extends EUExBase implements Parcelable {
     }
 
     /**
-     * 打开课课练的入口
-     * @param parm
+     * 1.启动新的Activity
+     * 2.将新启动activity所在的View放入到WebView中
+     * @param cls
+     * @param id
      */
-    public void launchActivity(String[] parm) {
-        try {
-            Intent intent = new Intent();
-            intent.setClass(mContext, PracticeCardPage.class);
-            startActivity(intent);
-        } catch (Exception e) {
-            e.printStackTrace();
-            Toast.makeText(mContext, "找不到此Activity!!", Toast.LENGTH_LONG)
-                    .show();
-        }
+    public void  addActivity(final Class<?> cls, final String id, final InfoBean infoBean){
+        ((Activity) mContext).runOnUiThread(new Runnable() {
+
+            @Override
+            public void run() {
+                if (mMapDecorView != null) {
+                    Log.i("corVideo", "already open");
+                    return;
+                }
+                Intent intent = new Intent();
+                intent.putExtra(BASE,EUExKekelian.this);
+                intent.putExtra(INFO,infoBean);
+                intent.setClass(mContext,cls );
+                if (mgr == null) {
+                    mgr = new LocalActivityManager((Activity) mContext, true);
+                    mgr.dispatchCreate(null);
+                }
+                Window window = mgr.startActivity(id, intent);
+                mMapDecorView = window.getDecorView();
+                RelativeLayout.LayoutParams lp;
+                lp = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT,
+                        RelativeLayout.LayoutParams.MATCH_PARENT);
+                lp.leftMargin = 0;
+                lp.topMargin = 0;
+                addView2CurrentWindow(mMapDecorView, lp);
+            }
+        });
     }
+
 
     /**
      * 1.启动新的Activity
@@ -131,6 +170,7 @@ public class EUExKekelian extends EUExBase implements Parcelable {
         });
     }
 
+
     /**
      * 当当前Activity所在的View添加到webView中
      * @param child
@@ -150,12 +190,6 @@ public class EUExKekelian extends EUExBase implements Parcelable {
         mBrwView.addViewToCurrentWindow(child, lp);
     }
 
-    /**
-     * 关闭启动tab页面
-     */
-    public void closeTabActivity(@NonNull String id) {
-        removeActivity(id);
-    }
 
 
     /**
@@ -175,6 +209,31 @@ public class EUExKekelian extends EUExBase implements Parcelable {
         });
     }
 
+    /**
+     * 关闭课课练界面
+     * @param params
+     */
+    public void closeKekelian(String[] params){
+        removeActivity(ID_TAG);
+    }
+
+    /**
+     * 关闭没体面的界面
+     */
+    public void closeScoreReport(){
+        removeActivity(ID_SCORE);
+    }
+
+    public void closeKekelianCallBack() {
+        JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject.put("currentTime", new Date().getTime()); //返回的时间单位为秒
+            callBackPluginJs(CALLBACK_ON_KEKELIAN_CLOSE, jsonObject.toString());
+            Log.i(TAG,"课课练界面消失："+jsonObject.toString());
+        } catch (JSONException e) {
+            Log.i(TAG, String.valueOf(e.getMessage()));
+        }
+    }
 
     /**
      * 将当前的activiti所在的View从WebView中移除
@@ -206,7 +265,7 @@ public class EUExKekelian extends EUExBase implements Parcelable {
     // clean something
     @Override
     protected boolean clean() {
-        return true;
+        return false;
     }
 
 

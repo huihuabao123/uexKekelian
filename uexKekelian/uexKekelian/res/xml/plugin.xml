@@ -1,16 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <uexplugins>
-    <plugin
-        className="com.kekelian.EUExKekelian" uexName="uexKekelian" >
-        <method name = "launchActivity"/>
-        <method name = "opentActivity"/>
-        <method name = "startActivity"/>
-        <method name = "test_startActivityForResult" />
-        <method name = "test_addView"/>
-        <method name = "test_removeView"/>
-        <method name = "test_vibrator" />
-        <method name = "test_showInputDialog" />
-        <method name = "test_addFragment" />
-        <method name = "test_removeFragment" />
-    </plugin>
+<plugin
+    className="com.kekelian.EUExKekelian" uexName="uexKekelian" >
+    <method name = "launchActivity"/>
+    <method name = "opentScoreReportcActivity"/>
+    <method name = "startActivity"/>
+    <method name = "closeKekelian"/>
+    <method name = "closeScoreReport"/>
+
+</plugin>
 </uexplugins>

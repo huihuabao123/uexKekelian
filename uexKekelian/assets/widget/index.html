@@ -18,7 +18,15 @@
                 uexKekelian.onFragmentVipClick=function(data){
                     alert(data);
                 };
+
             }
+            /**
+         *跳转做题的逻辑
+         */
+        uexKekelian.onFragmentDoExercise=function(data){
+            alert('即将跳转做题界面');
+
+        };
         };
 
         function openv(){
@@ -65,12 +73,11 @@
         }
         function startActivity() {
             var params = {
-                domain:'huihuabao.gensee.com',
-                number:95760405,
-                nickName:'kk',
-                joinPwd:'222222',
-                className:'test one',
-                uid: 12345678998
+                menuId:'1',
+                userId:'ff808181478107c601478f34e1ac0303',
+                isVip:'Y',
+                unitTitle:'Unit2'
+
             };
             uexKekelian.startActivity(params);
 

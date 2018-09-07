@@ -3,9 +3,10 @@
     <plugin
         className="com.kekelian.EUExKekelian" uexName="uexKekelian" >
         <method name = "launchActivity"/>
-        <method name = "opentActivity"/>
+        <method name = "opentScoreReportcActivity"/>
         <method name = "startActivity"/>
-
+        <method name = "closeKekelian"/>
+        <method name = "closeScoreReport"/>
 
     </plugin>
 </uexplugins>
