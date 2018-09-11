@@ -85,6 +85,14 @@ public class EUExKekelian extends EUExBase implements Parcelable {
     }
 
     /**
+     * 打开没题的界面
+     * @param parm
+     */
+    public void openNoTopic(String[] parm){
+        addActivity(NoTopic.class,ID_TOPIC);
+    }
+
+    /**
      * 打开课课练的入口
      * @param parm
      */
@@ -218,10 +226,15 @@ public class EUExKekelian extends EUExBase implements Parcelable {
     }
 
     /**
-     * 关闭没体面的界面
+     * 关闭成绩报告的界面
      */
     public void closeScoreReport(){
         removeActivity(ID_SCORE);
+    }
+
+
+    public void closeNotopic(){
+        removeActivity(ID_TOPIC);
     }
 
     public void closeKekelianCallBack() {

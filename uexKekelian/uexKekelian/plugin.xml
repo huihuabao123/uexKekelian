@@ -4,9 +4,11 @@
         className="com.kekelian.EUExKekelian" uexName="uexKekelian" >
         <method name = "launchActivity"/>
         <method name = "opentScoreReportcActivity"/>
+        <method name = "openNoTopic"/>
         <method name = "startActivity"/>
         <method name = "closeKekelian"/>
         <method name = "closeScoreReport"/>
+        <mthod  name = "closeNotopic"/>
 
     </plugin>
 </uexplugins>

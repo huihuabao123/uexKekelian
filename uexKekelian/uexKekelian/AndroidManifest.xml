@@ -23,7 +23,8 @@
     android:versionName="3.0"
     tools:overrideLibrary="org.zywx.wbpalmstar.widgetone.uex">
 
-    <application android:label="UexKekelian">
+    <application android:label="UexKekelian"
+                 android:theme="@style/AppTheme">
         <activity
             android:name="org.zywx.wbpalmstar.engine.LoadingActivity"
             android:configChanges="keyboardHidden|orientation"
@@ -37,26 +38,20 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.kekelian.PracticeCardPage"
+            android:name="com.kekelian.HealthPush"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme" />
-        <activity
-            android:name="com.kekelian.HealthPush"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme" />
+            android:screenOrientation="portrait" />
         <activity
             android:name="com.kekelian.ScoreReport"
+            android:configChanges="keyboardHidden|orientation|screenSize"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme" />
+            android:screenOrientation="portrait" />
         <activity
             android:name="com.kekelian.NoTopic"
+            android:configChanges="keyboardHidden|orientation|screenSize"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme" />
+            android:screenOrientation="portrait" />
 
     </application>
 

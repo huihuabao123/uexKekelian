@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:src="@drawable/kkl_bg04"
-        android:scaleType="fitXY"/>
+        android:scaleType="center"/>
     <RelativeLayout
         android:id="@+id/rl_back"
         android:layout_width="wrap_content"
@@ -38,17 +38,44 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/frog_01"/>
-
     <LinearLayout
-        android:id="@+id/ll_button"
         android:layout_below="@+id/iv_status"
-        android:layout_centerHorizontal="true"
         android:layout_marginTop="5dp"
+        android:layout_centerHorizontal="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="vertical">
+        <LinearLayout
+            android:id="@+id/ll_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/bt_continue"
+                android:layout_width="wrap_content"
+                android:background="@drawable/view_shape_button_green"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="继续闯关"
+                android:textStyle="bold"
+                android:textSize="@dimen/text_16_sp"
+                android:textColor="@color/color_white"/>
+            <Button
+                android:id="@+id/bt_wipe"
+                android:layout_marginLeft="30dp"
+                android:padding="5dp"
+                android:layout_width="wrap_content"
+                android:background="@drawable/view_shape_button_yellow_error"
+                android:layout_height="wrap_content"
+                android:text="消灭错题"
+                android:textStyle="bold"
+                android:textSize="@dimen/text_16_sp"
+                android:textColor="@color/color_white"/>
+        </LinearLayout>
         <Button
-            android:id="@+id/bt_continue"
+            android:visibility="gone"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/bt_again"
             android:layout_width="wrap_content"
             android:background="@drawable/view_shape_button_green"
             android:layout_height="wrap_content"
@@ -57,26 +84,16 @@
             android:textStyle="bold"
             android:textSize="@dimen/text_16_sp"
             android:textColor="@color/color_white"/>
-        <Button
-            android:id="@+id/bt_wipe"
-            android:layout_marginLeft="40dp"
-            android:padding="5dp"
+        <TextView
+            android:id="@+id/tv_info"
             android:layout_width="wrap_content"
-            android:background="@drawable/view_shape_button_yellow_error"
             android:layout_height="wrap_content"
-            android:text="消灭错题"
-            android:textStyle="bold"
-            android:textSize="@dimen/text_16_sp"
-            android:textColor="@color/color_white"/>
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:textSize="@dimen/text_14_sp"
+            android:text="消灭错题,可以拿满心哦~"/>
     </LinearLayout>
-    <TextView
-        android:id="@+id/tv_info"
-        android:layout_below="@+id/ll_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="5dp"
-        android:textSize="@dimen/text_14_sp"
-        android:text="消灭错题,可以拿满心哦~"/>
+
+
 
 </RelativeLayout>

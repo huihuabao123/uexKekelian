@@ -21,11 +21,13 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -41,9 +43,13 @@ import com.kekelian.net.Api;
 import com.kekelian.net.CallBack;
 import com.kekelian.net.HttpClient;
 import com.kekelian.transformer.CardTransformer;
+import com.kekelian.unit.AndroidBug5497Workaround;
 import com.kekelian.unit.NetworkUtils;
 import com.kekelian.unit.StatusBarUtil;
+import com.kekelian.unit.UIUtils;
 
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.zywx.wbpalmstar.engine.universalex.EUExUtil;
 
 import java.util.ArrayList;
@@ -88,8 +94,8 @@ public class HealthPush extends FragmentActivity implements OnFragmentCallBack {
     /** Fragment列表 */
     private ArrayList<Fragment> fragments;
 
-    public  static View mMapDecorView;
-    public static  Context context;
+//    public  static View mMapDecorView;
+//    public static  Context context;
     /**
      * 指示器动画联动
      */
@@ -98,7 +104,7 @@ public class HealthPush extends FragmentActivity implements OnFragmentCallBack {
             initStartAnimation(msg.arg1, (Float)msg.obj);		//移动指示器
         };
     };
-    public static LocalActivityManager mgr;
+//    public static LocalActivityManager mgr;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -108,10 +114,10 @@ public class HealthPush extends FragmentActivity implements OnFragmentCallBack {
         if("Y".equals(infoBean.getIsVip())){
             isVip=true;
         }
-        context=this;
+//        context=this;
         Log.i(TAG,"HealthPush---->onCreate()");
         setContentView(EUExUtil.getResLayoutID("hpush_activity"));
-        StatusBarUtil.setColor(HealthPush.this, Color.parseColor("#94dace"),0);
+//        StatusBarUtil.setColor(HealthPush.this, Color.parseColor("#94dace"),0);
         initView();
         getKekelianList();
 
@@ -283,14 +289,14 @@ public class HealthPush extends FragmentActivity implements OnFragmentCallBack {
         fragments.add(unitTestFragment);
 
         mViewPager.removeAllViews();
-        mViewPager.setOffscreenPageLimit(list.size()+1);
+
         mViewPager.setPageMargin(dip2px(HealthPush.this,34));
         mViewPager.setPageTransformer(false, new CardTransformer());
         if(mAdapetr!=null)
             mAdapetr.clearFragment();
         mAdapetr = new IntegralFragmentPagerAdapter(getSupportFragmentManager(), fragments);
         mViewPager.setAdapter(mAdapetr);
-        mViewPager.setOffscreenPageLimit(list.size());
+        mViewPager.setOffscreenPageLimit(list.size()+1);
         mViewPager.setOnPageChangeListener(new MyOnPageChangeListener());
         mViewPager.setCurrentItem(columnSelectIndex);
     }
@@ -311,15 +317,35 @@ public class HealthPush extends FragmentActivity implements OnFragmentCallBack {
      */
     @Override
     public void onResultClick(int type) {
-        if(type==4){
-            addActivity(NoTopic.class,EUExKekelian.ID_TOPIC);
-        } else if(type==5){
-            mUexBaseObj.callBackPluginJs(EUExKekelian.CALLBACK_ON_FRAGMENT_DO_EXERCISE,""+5);
-        }else {
-            mUexBaseObj.callBackPluginJs(EUExKekelian.CALLBACK_ON_FRAGMENT_VIP_CLICK,""+type);
-        }
+
+        mUexBaseObj.callBackPluginJs(EUExKekelian.CALLBACK_ON_FRAGMENT_VIP_CLICK,""+type);
 
     }
+
+
+    /**
+     * 跳转做题的界面
+     * @param isLocked 是否有题
+     * @param isErrors 是否显示错题
+     * @param levelTypeName 关卡的名称
+     * @param recordId
+     */
+    @Override
+    public void onDoExerciseCallBack(boolean isLocked,boolean isErrors, String levelTypeName, String recordId) {
+        JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject.put("isLocked", isLocked);
+            jsonObject.put("isErrors",isErrors);
+            jsonObject.put("levelTypeName", levelTypeName);
+            jsonObject.put("exerciseRecordId",recordId);
+            mUexBaseObj.callBackPluginJs(EUExKekelian.CALLBACK_ON_FRAGMENT_DO_EXERCISE,jsonObject.toString());
+        } catch (JSONException e) {
+            Log.i(TAG, String.valueOf(e.getMessage()));
+        }
+    }
+
+
+
 
     /**
      * ViewPager切换监听方法
@@ -443,63 +469,63 @@ public class HealthPush extends FragmentActivity implements OnFragmentCallBack {
     }
 
 
-    public void  addActivity(final Class<?> cls, final String id){
-        ((Activity)HealthPush.this ).runOnUiThread(new Runnable() {
-
-            @Override
-            public void run() {
-                if (mMapDecorView != null) {
-                    Log.i("corVideo", "already open");
-                    return;
-                }
-                Intent intent = new Intent();
-                intent.putExtra(EUExKekelian.BASE,mUexBaseObj);
-                intent.setClass(HealthPush.this,cls );
-                if (mgr == null) {
-                    mgr = new LocalActivityManager((Activity) HealthPush.this, true);
-                    mgr.dispatchCreate(null);
-                }
-                Window window = mgr.startActivity(id, intent);
-                mMapDecorView = window.getDecorView();
-                RelativeLayout.LayoutParams lp;
-                lp = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT,
-                        RelativeLayout.LayoutParams.MATCH_PARENT);
-                lp.leftMargin = 0;
-                lp.topMargin = 0;
-                addView2CurrentWindow(mMapDecorView, lp);
-            }
-        });
-    }
-    private void addView2CurrentWindow(View child, RelativeLayout.LayoutParams params) {
-        int l = params.leftMargin;
-        int t = params.topMargin;
-        int w = params.width;
-        int h = params.height;
-        FrameLayout.LayoutParams lp = new FrameLayout.LayoutParams(w, h);
-        lp.gravity = Gravity.NO_GRAVITY;
-        lp.leftMargin = l;
-        lp.topMargin = t;
-        // adptLayoutParams(params, lp);
-        // Log.i(TAG, "addView2CurrentWindow");
-        mUexBaseObj.mBrwView.addViewToCurrentWindow(child, lp);
-    }
-
-
-    /**
-     * 将当前的activiti所在的View从WebView中移除
-     */
-    public void  removeActivity(){
-        ((Activity) HealthPush.this).runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                if (mMapDecorView != null) {
-                    mUexBaseObj.removeViewFromCurrentWindow(mMapDecorView);
-                    mUexBaseObj=null;
-                    mgr.destroyActivity(EUExKekelian.ID_TOPIC, true);
-                }
-            }
-        });
-    }
+//    public void  addActivity(final Class<?> cls, final String id){
+//        ((Activity)HealthPush.this ).runOnUiThread(new Runnable() {
+//
+//            @Override
+//            public void run() {
+//                if (mMapDecorView != null) {
+//                    Log.i("corVideo", "already open");
+//                    return;
+//                }
+//                Intent intent = new Intent();
+//                intent.putExtra(EUExKekelian.BASE,mUexBaseObj);
+//                intent.setClass(HealthPush.this,cls );
+//                if (mgr == null) {
+//                    mgr = new LocalActivityManager((Activity) HealthPush.this, true);
+//                    mgr.dispatchCreate(null);
+//                }
+//                Window window = mgr.startActivity(id, intent);
+//                mMapDecorView = window.getDecorView();
+//                RelativeLayout.LayoutParams lp;
+//                lp = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT,
+//                        RelativeLayout.LayoutParams.MATCH_PARENT);
+//                lp.leftMargin = 0;
+//                lp.topMargin = 0;
+//                addView2CurrentWindow(mMapDecorView, lp);
+//            }
+//        });
+//    }
+//    private void addView2CurrentWindow(View child, RelativeLayout.LayoutParams params) {
+//        int l = params.leftMargin;
+//        int t = params.topMargin;
+//        int w = params.width;
+//        int h = params.height;
+//        FrameLayout.LayoutParams lp = new FrameLayout.LayoutParams(w, h);
+//        lp.gravity = Gravity.NO_GRAVITY;
+//        lp.leftMargin = l;
+//        lp.topMargin = t;
+//        // adptLayoutParams(params, lp);
+//        // Log.i(TAG, "addView2CurrentWindow");
+//        mUexBaseObj.mBrwView.addViewToCurrentWindow(child, lp);
+//    }
+//
+//
+//    /**
+//     * 将当前的activiti所在的View从WebView中移除
+//     */
+//    public void  removeActivity(){
+//        ((Activity) HealthPush.this).runOnUiThread(new Runnable() {
+//            @Override
+//            public void run() {
+//                if (mMapDecorView != null) {
+//                    mUexBaseObj.removeViewFromCurrentWindow(mMapDecorView);
+//                    mUexBaseObj=null;
+//                    mgr.destroyActivity(EUExKekelian.ID_TOPIC, true);
+//                }
+//            }
+//        });
+//    }
 
 
 

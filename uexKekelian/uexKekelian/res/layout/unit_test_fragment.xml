@@ -28,16 +28,30 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:src="@drawable/kkl_img05_lock"/>
-            <TextView
+            <LinearLayout
+                android:id="@+id/ll_score_star"
                 android:visibility="gone"
-                android:id="@+id/tv_score"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:text="100分"
-                android:textSize="@dimen/text_50_sp"
                 android:gravity="center"
-                android:background="@drawable/score_shape_textview"/>
+                android:orientation="vertical"
+                android:background="@drawable/score_shape_textview">
+                <TextView
+                    android:id="@+id/tv_score"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="100分"
+                    android:textSize="@dimen/text_50_sp"
+                    android:gravity="center" />
+                <ImageView
+                    android:id="@+id/iv_star"
+                    android:layout_centerHorizontal="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/star01"/>
+            </LinearLayout>
+
 
 
         </RelativeLayout>

@@ -4,16 +4,14 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.kekelian.bean.KKLLessionListBean;
 import com.kekelian.bean.UnitTestBean;
-import com.kekelian.bean.UnitTestTabRecordBean;
 import com.kekelian.callBack.OnClickCallBack;
 import com.kekelian.callBack.OnFragmentCallBack;
 import com.kekelian.dialog.ExameDialog;
@@ -22,7 +20,6 @@ import com.kekelian.net.Api;
 import com.kekelian.net.CallBack;
 import com.kekelian.net.HttpClient;
 
-import org.w3c.dom.Text;
 import org.zywx.wbpalmstar.engine.universalex.EUExUtil;
 
 /**
@@ -36,17 +33,21 @@ public class UnitTestFragment extends Fragment {
     private String userid;
     private String menuid;
     private ImageView ivStatus;
-    private TextView tvScore;
     private TextView tvBlock;
+    private LinearLayout llScoreStar;
+    private ImageView ivStar;
+    private TextView tvScore;
     private ExameDialog popExameStatus;
     protected boolean isCreated = false;
     public static final String IS_vIP="is_vip";
     private boolean isVip=false;
     private VipDialog vipDialog;
-    //总题目数
-    private int totalItemCount=0;
     //是否解锁状态
-    private boolean isLocked=true;
+    private Boolean isLocked;
+    //是否重新生成题目
+    private boolean isUnitLocked=true;
+    private boolean isErrors=false;//是否显示错题
+    private String unitTestRecordId;
 
     public static UnitTestFragment newInstance(String userid,String menuid,Boolean isVip) {
         UnitTestFragment fragment = new UnitTestFragment();
@@ -90,6 +91,7 @@ public class UnitTestFragment extends Fragment {
         return view;
     }
 
+
     /**
      * 懒加载
      * @param isVisibleToUser
@@ -105,6 +107,7 @@ public class UnitTestFragment extends Fragment {
         }
     }
 
+
     private void LoadData() {
         String params="?menuId="+menuid+"&userId="+userid;
         HttpClient.get(this, Api.GET_UNIT_TEST_CONTENT + params, new CallBack<UnitTestBean>() {
@@ -114,9 +117,23 @@ public class UnitTestFragment extends Fragment {
                     return;
                 }
                 if(result.getMessage().isStatus()){
-                    totalItemCount=result.getMessage().getData().getUnitTestTabRecord().getTotalItemCount();
+                   int totalItemCount=result.getMessage().getData().getUnitTestTabRecord().getTotalItemCount();
+                    int correctItemCount=result.getMessage().getData().getUnitTestTabRecord().getCorrectItemCount();
+                    unitTestRecordId=result.getMessage().getData().getUnitTestTabRecord().getUnitTestRecordId();
+                    if(totalItemCount>0){
+                        isUnitLocked=false;
+                    }else {
+                        isUnitLocked=true;
+                    }
+                    if(correctItemCount>0 && totalItemCount>0 && correctItemCount==totalItemCount){
+                        isErrors=false;
+                    }else if(correctItemCount==0 &&correctItemCount==totalItemCount){
+                        isErrors=false;
+                    }else{
+                        isErrors=true;
+                    }
                     isLocked=result.getMessage().getData().getUnitTestTabRecord().isIsLocked();
-                    if(result.getMessage().getData().getUnitTestTabRecord().isIsLocked()){
+                    if(isLocked){
                         tvBlock.setText("请完成所有课时的小试牛刀哦！");
                         tvBlock.setVisibility(View.VISIBLE);
                         ivStatus.setImageResource(EUExUtil.getResDrawableID("kkl_img05_lock"));
@@ -131,18 +148,26 @@ public class UnitTestFragment extends Fragment {
                      if(result.getMessage().getData().getUnitTestTabRecord().getFinishItemCount()>0 ){
                         tvBlock.setVisibility(View.GONE);
                         ivStatus.setVisibility(View.GONE);
-                        tvScore.setText(result.getMessage().getData().getUnitTestTabRecord().getScore()+"分");
-                        tvScore.setVisibility(View.VISIBLE);
+                        llScoreStar.setVisibility(View.VISIBLE);
+                         tvScore.setText(result.getMessage().getData().getUnitTestTabRecord().getScore()+"分");
+                             if(correctItemCount==0){
+                                 //全错
+                                 ivStar.setVisibility(View.GONE);
+                             } else if (totalItemCount>0 && correctItemCount==1 ){
+                                 //一颗星
+                                 ivStar.setImageResource(EUExUtil.getResDrawableID("star03"));
+                             }else if(correctItemCount>0 && totalItemCount>0 && correctItemCount==totalItemCount) {
+                                 //三颗星
+                                 ivStar.setImageResource(EUExUtil.getResDrawableID("star01"));
+                             }else {
+                                 //两颗星
+                                 ivStar.setImageResource(EUExUtil.getResDrawableID("star02"));
+                             }
+
                      }
-
-
 
                 }
             }
-
-
-
-
         });
     }
 
@@ -151,8 +176,10 @@ public class UnitTestFragment extends Fragment {
         vipDialog=new VipDialog(getContext());
         popExameStatus=new ExameDialog(getActivity());
         ivStatus=(ImageView) view.findViewById(EUExUtil.getResIdID("iv_status"));
-        tvScore=(TextView) view.findViewById(EUExUtil.getResIdID("tv_score"));
         tvBlock=(TextView) view.findViewById(EUExUtil.getResIdID("tv_block"));
+        llScoreStar=(LinearLayout) view.findViewById(EUExUtil.getResIdID("ll_score_star"));
+        tvScore=(TextView) view.findViewById(EUExUtil.getResIdID("tv_score"));
+        ivStar=(ImageView) view.findViewById(EUExUtil.getResIdID("iv_star"));
         ivStatus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -168,17 +195,19 @@ public class UnitTestFragment extends Fragment {
                     if(isLocked){
                         popExameStatus.pop();
                     }else {
-                        if(totalItemCount>0){
-                            //跳转做题界面
-                            onFragmentCallBack.onResultClick(5);
-                        }else {
-                            //跳转没有题目的界面
-                            onFragmentCallBack.onResultClick(4);
-                        }
+                        //跳转做题界面
+                        onFragmentCallBack.onDoExerciseCallBack(isUnitLocked,isErrors,"单元测验",unitTestRecordId);
                     }
 
-
                 }
+            }
+        });
+        //跳转逻辑
+        llScoreStar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //跳转做题界面
+                onFragmentCallBack.onDoExerciseCallBack(isUnitLocked,isErrors,"单元测验",unitTestRecordId);
             }
         });
 

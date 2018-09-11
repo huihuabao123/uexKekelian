@@ -32,15 +32,15 @@ public class NoTopic extends Activity {
         rlBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mUexBaseObj.removeActivity(HealthPush.context,HealthPush.mgr,HealthPush.mMapDecorView,EUExKekelian.ID_TOPIC,mUexBaseObj);
-                HealthPush.mMapDecorView=null;
+                mUexBaseObj.closeNotopic();
+
             }
         });
         btStudyCourse=(Button)findViewById(EUExUtil.getResIdID("bt_study_course"));
         btStudyCourse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mUexBaseObj.callBackPluginJs(EUExKekelian.CALLBACK_ON_FRAGMENT_VIP_CLICK,""+4);
+                mUexBaseObj.callBackPluginJs(EUExKekelian.CALLBACK_ON_FRAGMENT_VIP_CLICK,""+3);
             }
         });
     }

@@ -49,10 +49,16 @@ public class CourseItemFragment extends Fragment {
     private VipDialog vipDialog;
     private Boolean stuffStats=false;
     protected boolean isCreated = false;
-    //小试牛刀的题目数
-    private int totalItemballadeCount=0;
-    //大显身手的题目数
-    private int totalItemstuffCount=0;
+    //小试牛刀的是否重新生成题目
+    private boolean balladeIsLocked=false;
+    private String balladeRecordId;
+    //是否显示错题
+    private boolean isErrorsBallade=false;
+    //大显身手的是否重新生成题目
+    private boolean stuffIsLocked=false;
+    private String stuffRecordId;
+    //是否显示错题
+    private boolean isErrorsStuff=false;
     private KKLLessionListBean.MessageBean.DataBean.LessonTabRecordBean dataBean;
 
     private OnFragmentCallBack onFragmentCallBack;
@@ -98,6 +104,8 @@ public class CourseItemFragment extends Fragment {
     }
 
 
+
+
     /**
      * 懒加载
      * @param isVisibleToUser
@@ -137,14 +145,28 @@ public class CourseItemFragment extends Fragment {
                         llNotPoint.setVisibility(View.VISIBLE);
                     }
                     //显示小试牛刀和大显身手的状态
-//                     LessonContentBean.MessageBean.DataBean.QuizListBean balladeBean=result.getMessage().getData().getQuizList().get(0);
-//                     LessonContentBean.MessageBean.DataBean.QuizListBean stuffBean=result.getMessage().getData().getQuizList().get(1);
                      List<LessonContentBean.MessageBean.DataBean.QuizListBean> quizList=result.getMessage().getData().getQuizList();
                     for (int i=0;i<quizList.size();i++){
                         LessonContentBean.MessageBean.DataBean.QuizListBean quizListBean;
                         quizListBean=quizList.get(i);
                          if(quizListBean.getDisplayOrder()==1){
-                             totalItemballadeCount=quizListBean.getTotalItemCount();
+                             int totalItemCount=quizListBean.getTotalItemCount();
+                             int correctItemCount=quizListBean.getCorrectItemCount();
+                             //是否重新生成题目
+                             if(totalItemCount>0){
+                                 balladeIsLocked=false;
+                             }else {
+                                 balladeIsLocked=true;
+                             }
+                             //是否显示错题判断
+                             if(correctItemCount>0 && totalItemCount>0 && correctItemCount==totalItemCount){
+                                 isErrorsBallade=false;
+                             }else if(correctItemCount==0 &&correctItemCount==totalItemCount){
+                                 isErrorsBallade=false;
+                             }else{
+                                isErrorsBallade=true;
+                             }
+                             balladeRecordId=quizListBean.getLevelRecordId();
                              //小试牛刀
                              /**
                               * 1.finishItemCount=0表示没做
@@ -174,7 +196,22 @@ public class CourseItemFragment extends Fragment {
                              }
 
                          }else if(quizListBean.getDisplayOrder()==2 ){
-                             totalItemstuffCount=quizListBean.getTotalItemCount();
+                             int totalItemCount=quizListBean.getTotalItemCount();
+                             int correctItemCount=quizListBean.getCorrectItemCount();
+                             if(totalItemCount>0){
+                                 stuffIsLocked=false;
+                             }else {
+                                 stuffIsLocked=true;
+                             }
+                             //是否显示错题判断
+                             if(correctItemCount>0&& totalItemCount>0 && correctItemCount==totalItemCount){
+                                 isErrorsStuff=false;
+                             }else if(correctItemCount==0 &&correctItemCount==totalItemCount){
+                                 isErrorsStuff=false;
+                             }else{
+                                 isErrorsStuff=true;
+                             }
+                             stuffRecordId=quizListBean.getLevelRecordId();
                               //大显身手
                              if(!stuffStats){
                                  //没有权限开启闯关
@@ -237,13 +274,8 @@ public class CourseItemFragment extends Fragment {
                         popLevelStatus.pop();
                         return;
                     }
-                    if(totalItemstuffCount>0){
-                        //跳转做题界面
-                        onFragmentCallBack.onResultClick(5);
-                    }else {
-                        //跳转没有题目的界面
-                        onFragmentCallBack.onResultClick(4);
-                    }
+                    //跳转做题界面
+                    onFragmentCallBack.onDoExerciseCallBack(stuffIsLocked,isErrorsStuff,"大显身手",stuffRecordId);
                 }
             }
         });
@@ -273,14 +305,8 @@ public class CourseItemFragment extends Fragment {
 
                     });
                 }else {
-                    if(totalItemballadeCount>0){
-                           //跳转做题界面
-                        onFragmentCallBack.onResultClick(5);
-                    }else {
-                        //跳转没有题目的界面
-                        onFragmentCallBack.onResultClick(5);
-                    }
-
+                      //跳转做题界面
+                    onFragmentCallBack.onDoExerciseCallBack(balladeIsLocked,isErrorsBallade,"小试牛刀",balladeRecordId);
 
                 }
             }
