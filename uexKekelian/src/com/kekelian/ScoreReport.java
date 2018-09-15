@@ -70,13 +70,6 @@ public class ScoreReport extends Activity {
                         btAgain.setVisibility(View.VISIBLE);
                         ivStatus.setImageResource(EUExUtil.getResDrawableID("frog_01_02"));
                         tvInfo.setText("只要做对题目，就奖励智慧星");
-                    } else if (totalItemCount>0 && correctItemCount==1 ){
-                        //一颗星
-                        ivImg.setImageResource(EUExUtil.getResDrawableID("kkl_bg05"));
-                        llButtons.setVisibility(View.VISIBLE);
-                        btAgain.setVisibility(View.GONE);
-                        ivStatus.setImageResource(EUExUtil.getResDrawableID("frog_01"));
-                        tvInfo.setText("消灭错题，可以拿满星哦~");
                     }else if(correctItemCount>0 && totalItemCount>0 && correctItemCount==totalItemCount) {
                         //三颗星
                         ivImg.setImageResource(EUExUtil.getResDrawableID("kkl_bg03"));
@@ -85,6 +78,13 @@ public class ScoreReport extends Activity {
                         btAgain.setVisibility(View.VISIBLE);
                         ivStatus.setImageResource(EUExUtil.getResDrawableID("frog_01"));
                         tvInfo.setText("");
+                    } else if (totalItemCount>0 && correctItemCount==1 ){
+                        //一颗星
+                        ivImg.setImageResource(EUExUtil.getResDrawableID("kkl_bg05"));
+                        llButtons.setVisibility(View.VISIBLE);
+                        btAgain.setVisibility(View.GONE);
+                        ivStatus.setImageResource(EUExUtil.getResDrawableID("frog_01"));
+                        tvInfo.setText("消灭错题，可以拿满星哦~");
                     }else {
                         //两颗星
                         ivImg.setImageResource(EUExUtil.getResDrawableID("kkl_bg04"));

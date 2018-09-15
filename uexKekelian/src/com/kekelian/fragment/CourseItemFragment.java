@@ -98,12 +98,6 @@ public class CourseItemFragment extends Fragment {
         return view;
     }
 
-//    @Override
-//    public void onResume() {
-//        super.onResume();
-//        loadData();
-//    }
-
 
     /**
      * 懒加载
@@ -167,14 +161,14 @@ public class CourseItemFragment extends Fragment {
                              if(finishItemCount> 0 &&correctItemCount==0){
                                  //全错
                                  ivButcher.setImageResource(EUExUtil.getResDrawableID("kkl_checkpoint01_01"));
-                             } else if (totalItemCount>0 &&correctItemCount==1 ){
-                                 //一颗星
-                                 stuffStats=true;
-                                 ivButcher.setImageResource(EUExUtil.getResDrawableID("kkl_checkpoint01_02"));
                              }else if(correctItemCount>0 && totalItemCount>0 && correctItemCount==totalItemCount) {
                                  //三颗星
                                  stuffStats=true;
                                  ivButcher.setImageResource(EUExUtil.getResDrawableID("kkl_checkpoint01_04"));
+                             } else if (totalItemCount>0 &&correctItemCount==1 ){
+                                 //一颗星
+                                 stuffStats=true;
+                                 ivButcher.setImageResource(EUExUtil.getResDrawableID("kkl_checkpoint01_02"));
                              }else {
                                  //两颗星
                                  stuffStats=true;

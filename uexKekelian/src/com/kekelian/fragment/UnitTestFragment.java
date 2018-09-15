@@ -91,11 +91,6 @@ public class UnitTestFragment extends Fragment {
     }
 
 
-//    @Override
-//    public void onResume() {
-//        super.onResume();
-//        loadData();
-//    }
 
     /**
      * 懒加载
@@ -149,12 +144,12 @@ public class UnitTestFragment extends Fragment {
                              if(correctItemCount==0){
                                  //全错
                                  ivStar.setVisibility(View.GONE);
-                             } else if (totalItemCount>0 && correctItemCount==1 ){
-                                 //一颗星
-                                 ivStar.setImageResource(EUExUtil.getResDrawableID("star03"));
                              }else if(correctItemCount>0 && totalItemCount>0 && correctItemCount==totalItemCount) {
                                  //三颗星
                                  ivStar.setImageResource(EUExUtil.getResDrawableID("star01"));
+                             } else if (totalItemCount>0 && correctItemCount==1 ){
+                                 //一颗星
+                                 ivStar.setImageResource(EUExUtil.getResDrawableID("star03"));
                              }else {
                                  //两颗星
                                  ivStar.setImageResource(EUExUtil.getResDrawableID("star02"));
