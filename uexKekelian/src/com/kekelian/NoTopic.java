@@ -23,7 +23,6 @@ public class NoTopic extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(EUExUtil.getResLayoutID("activity_no_topic"));
         mUexBaseObj =  getIntent().getParcelableExtra(EUExKekelian.BASE);
-        StatusBarUtil.setColor(NoTopic.this, Color.parseColor("#8ed8bb"),0);
         initView();
     }
 
@@ -32,7 +31,7 @@ public class NoTopic extends Activity {
         rlBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mUexBaseObj.closeNotopic();
+                mUexBaseObj.callBackPluginJs(EUExKekelian.CALLBACK_ON_NO_TOPIC_CLOSE,"");
 
             }
         });

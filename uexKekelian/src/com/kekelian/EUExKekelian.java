@@ -16,6 +16,7 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.kekelian.bean.InfoBean;
+import com.kekelian.callBack.OnResumeCallBackListener;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -33,15 +34,21 @@ public class EUExKekelian extends EUExBase implements Parcelable {
     public static final String CALLBACK_ON_FRAGMENT_VIP_CLICK = "uexKekelian.onFragmentVipClick";
     public static final String CALLBACK_ON_FRAGMENT_DO_EXERCISE = "uexKekelian.onFragmentDoExercise";
     public static final String CALLBACK_ON_KEKELIAN_CLOSE="uexKekelian.onKekelianClose";
+    public static final String CALLBACK_ON_SCORE_REPORT_CLOSE="uexKekelian.onScoreReportClose";
+    public static final String CALLBACK_ON_NO_TOPIC_CLOSE="uexKekelian.onNoTopicClose";
     private static Context context=null;
     private static EBrowserView view=null;
     private View mMapDecorView;
-    private static LocalActivityManager mgr;
+    public static LocalActivityManager mgr;
     public static final String ID_TAG="TAG_KEKELIAN_TAG";
     public static final String ID_SCORE="TAG_KEKELIAN_SCORE";
     public static final String ID_TOPIC="TAG_KEKELIAN_TOPIC";
+    private OnResumeCallBackListener onResumeCallBackListener;
 
 
+    public void setOnResumeCallBackListener(OnResumeCallBackListener onResumeCallBackListener) {
+        this.onResumeCallBackListener = onResumeCallBackListener;
+    }
 
     public EUExKekelian(Context context, EBrowserView view) {
         super(context, view);
@@ -50,10 +57,14 @@ public class EUExKekelian extends EUExBase implements Parcelable {
     }
 
 
-    public static void onActivityResume(Context context) {
-        if (mgr != null) {
-            mgr.dispatchResume();
-        }
+
+    public  void onActivityResume(String[] parm) {
+//        if (mgr != null) {
+////            mgr.dispatchResume();
+////
+////        }
+        Log.i(TAG, "onDoExerciseBack: 刷新数据");
+        onResumeCallBackListener.onResumeCallBack();
     }
 
     public static void onActivityPause(Context context) {
@@ -62,6 +73,15 @@ public class EUExKekelian extends EUExBase implements Parcelable {
         }
     }
 
+    /**
+     * 做题界面点击返回的刷新课课练的卡片页
+     * @param parm
+     */
+    public void  onDoExerciseBack(String[] parm){
+        Log.i(TAG, "onDoExerciseBack: 刷新数据");
+        onResumeCallBackListener.onResumeCallBack();
+
+    }
     /**
      * 打开课课练的入口
      * @param parm
@@ -77,11 +97,14 @@ public class EUExKekelian extends EUExBase implements Parcelable {
     }
 
     /**
-     * 打开课课练的入口
+     * 打开课课练成绩界面的入口
      * @param parm
      */
     public void opentScoreReportcActivity(String[] parm) {
-        addActivity(ScoreReport.class,ID_SCORE);
+        if(parm==null ){
+            return;
+        }
+        addActivity(ScoreReport.class,ID_SCORE,parm[0]);
     }
 
     /**
@@ -109,10 +132,10 @@ public class EUExKekelian extends EUExBase implements Parcelable {
     }
 
     /**
-     * 1.启动新的Activity
-     * 2.将新启动activity所在的View放入到WebView中
+     *
      * @param cls
      * @param id
+     * @param infoBean javabean
      */
     public void  addActivity(final Class<?> cls, final String id, final InfoBean infoBean){
         ((Activity) mContext).runOnUiThread(new Runnable() {
@@ -126,6 +149,41 @@ public class EUExKekelian extends EUExBase implements Parcelable {
                 Intent intent = new Intent();
                 intent.putExtra(BASE,EUExKekelian.this);
                 intent.putExtra(INFO,infoBean);
+                intent.setClass(mContext,cls );
+                if (mgr == null) {
+                    mgr = new LocalActivityManager((Activity) mContext, true);
+                    mgr.dispatchCreate(null);
+                }
+                Window window = mgr.startActivity(id, intent);
+                mMapDecorView = window.getDecorView();
+                RelativeLayout.LayoutParams lp;
+                lp = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT,
+                        RelativeLayout.LayoutParams.MATCH_PARENT);
+                lp.leftMargin = 0;
+                lp.topMargin = 0;
+                addView2CurrentWindow(mMapDecorView, lp);
+            }
+        });
+    }
+
+    /**
+     *
+     * @param cls
+     * @param id
+     * @param levelRecordId 做题记录的id
+     */
+    public void  addActivity(final Class<?> cls, final String id, final String levelRecordId ){
+        ((Activity) mContext).runOnUiThread(new Runnable() {
+
+            @Override
+            public void run() {
+                if (mMapDecorView != null) {
+                    Log.i("corVideo", "already open");
+                    return;
+                }
+                Intent intent = new Intent();
+                intent.putExtra(BASE,EUExKekelian.this);
+                intent.putExtra(INFO,levelRecordId);
                 intent.setClass(mContext,cls );
                 if (mgr == null) {
                     mgr = new LocalActivityManager((Activity) mContext, true);
@@ -228,12 +286,12 @@ public class EUExKekelian extends EUExBase implements Parcelable {
     /**
      * 关闭成绩报告的界面
      */
-    public void closeScoreReport(){
+    public void closeScoreReport(String[] params){
         removeActivity(ID_SCORE);
     }
 
 
-    public void closeNotopic(){
+    public void closeNotopic(String[] params){
         removeActivity(ID_TOPIC);
     }
 

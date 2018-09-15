@@ -1,8 +1,8 @@
 package com.kekelian.net;
 
 public class Api {
-    public static  final String Host="http://192.168.1.200:8081";//正式环境
-//    public static  final String Host="http://192.168.1.168:8080";//正式环境
+//    public static  final String Host="http://192.168.1.200:8081";//正式环境
+    public static  final String Host="http://192.168.1.168:8080";//正式环境
 
     /**
      * 展示课课练的状态
@@ -19,4 +19,9 @@ public class Api {
      * 查看单元测试的具体内容
      */
     public static String GET_UNIT_TEST_CONTENT=Host+"/app/getUnitTestContent.action";
+
+    /**
+     *获取小试牛刀和大显身手的成绩报告页面
+     */
+    public static String GET_KEKELIAN_LESSON_SUCCESS_CONTENT=Host+"/app/getKKLLessonSuccessContent.action";
 }

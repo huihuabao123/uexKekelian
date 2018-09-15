@@ -2,9 +2,7 @@ package com.kekelian;
 
 
 import android.app.Activity;
-import android.app.LocalActivityManager;
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
@@ -20,33 +18,26 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
-import android.view.Window;
-import android.view.WindowManager;
-import android.widget.FrameLayout;
 import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import android.widget.Switch;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.kekelian.adapter.IntegralFragmentPagerAdapter;
 import com.kekelian.bean.InfoBean;
 import com.kekelian.bean.KKLLessionListBean;
 import com.kekelian.bean.UnitTestTabRecordBean;
 import com.kekelian.callBack.OnFragmentCallBack;
+import com.kekelian.callBack.OnResumeCallBackListener;
 import com.kekelian.fragment.CourseItemFragment;
 import com.kekelian.fragment.UnitTestFragment;
 import com.kekelian.net.Api;
 import com.kekelian.net.CallBack;
 import com.kekelian.net.HttpClient;
 import com.kekelian.transformer.CardTransformer;
-import com.kekelian.unit.AndroidBug5497Workaround;
 import com.kekelian.unit.NetworkUtils;
-import com.kekelian.unit.StatusBarUtil;
-import com.kekelian.unit.UIUtils;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -55,7 +46,7 @@ import org.zywx.wbpalmstar.engine.universalex.EUExUtil;
 import java.util.ArrayList;
 
 
-public class HealthPush extends FragmentActivity implements OnFragmentCallBack {
+public class HealthPush extends FragmentActivity implements OnFragmentCallBack,OnResumeCallBackListener {
     private static final String TAG="HealthPush";
     private EUExKekelian mUexBaseObj;
     private InfoBean infoBean;
@@ -110,6 +101,7 @@ public class HealthPush extends FragmentActivity implements OnFragmentCallBack {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mUexBaseObj =  getIntent().getParcelableExtra(EUExKekelian.BASE);
+        mUexBaseObj.setOnResumeCallBackListener(this);
         infoBean=getIntent().getParcelableExtra(EUExKekelian.INFO);
         if("Y".equals(infoBean.getIsVip())){
             isVip=true;
@@ -122,6 +114,15 @@ public class HealthPush extends FragmentActivity implements OnFragmentCallBack {
         getKekelianList();
 
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.i(TAG,"HealthPush---->onResume()");
+//        fragments.get(mViewPager.getCurrentItem()).setUserVisibleHint(true);
+    }
+
+
 
     private void getKekelianList() {
         showPreload();
@@ -325,17 +326,13 @@ public class HealthPush extends FragmentActivity implements OnFragmentCallBack {
 
     /**
      * 跳转做题的界面
-     * @param isLocked 是否有题
-     * @param isErrors 是否显示错题
      * @param levelTypeName 关卡的名称
      * @param recordId
      */
     @Override
-    public void onDoExerciseCallBack(boolean isLocked,boolean isErrors, String levelTypeName, String recordId) {
+    public void onDoExerciseCallBack( String levelTypeName, String recordId) {
         JSONObject jsonObject = new JSONObject();
         try {
-            jsonObject.put("isLocked", isLocked);
-            jsonObject.put("isErrors",isErrors);
             jsonObject.put("levelTypeName", levelTypeName);
             jsonObject.put("exerciseRecordId",recordId);
             mUexBaseObj.callBackPluginJs(EUExKekelian.CALLBACK_ON_FRAGMENT_DO_EXERCISE,jsonObject.toString());
@@ -344,7 +341,10 @@ public class HealthPush extends FragmentActivity implements OnFragmentCallBack {
         }
     }
 
-
+    @Override
+    public void onResumeCallBack() {
+        fragments.get(mViewPager.getCurrentItem()).setUserVisibleHint(true);
+    }
 
 
     /**

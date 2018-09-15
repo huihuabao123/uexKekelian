@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <uexplugins>
-<plugin
-    className="com.kekelian.EUExKekelian" uexName="uexKekelian" >
-    <method name = "launchActivity"/>
-    <method name = "opentScoreReportcActivity"/>
-    <method name = "startActivity"/>
-    <method name = "closeKekelian"/>
-    <method name = "closeScoreReport"/>
-
-</plugin>
+    <plugin
+        className="com.kekelian.EUExKekelian" uexName="uexKekelian" >
+        <method name = "launchActivity"/>
+        <method name = "opentScoreReportcActivity"/>
+        <method name = "openNoTopic"/>
+        <method name = "startActivity"/>
+        <method name = "closeKekelian"/>
+        <method name = "closeScoreReport"/>
+        <method name = "closeNotopic"/>
+        <method name = "onDoExerciseBack"/>
+        <method name = "onActivityResume"/>
+    </plugin>
 </uexplugins>

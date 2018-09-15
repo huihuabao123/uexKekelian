@@ -49,13 +49,8 @@ public class CourseItemFragment extends Fragment {
     private VipDialog vipDialog;
     private Boolean stuffStats=false;
     protected boolean isCreated = false;
-    //小试牛刀的是否重新生成题目
-    private boolean balladeIsLocked=false;
+
     private String balladeRecordId;
-    //是否显示错题
-    private boolean isErrorsBallade=false;
-    //大显身手的是否重新生成题目
-    private boolean stuffIsLocked=false;
     private String stuffRecordId;
     //是否显示错题
     private boolean isErrorsStuff=false;
@@ -103,7 +98,11 @@ public class CourseItemFragment extends Fragment {
         return view;
     }
 
-
+//    @Override
+//    public void onResume() {
+//        super.onResume();
+//        loadData();
+//    }
 
 
     /**
@@ -152,20 +151,7 @@ public class CourseItemFragment extends Fragment {
                          if(quizListBean.getDisplayOrder()==1){
                              int totalItemCount=quizListBean.getTotalItemCount();
                              int correctItemCount=quizListBean.getCorrectItemCount();
-                             //是否重新生成题目
-                             if(totalItemCount>0){
-                                 balladeIsLocked=false;
-                             }else {
-                                 balladeIsLocked=true;
-                             }
-                             //是否显示错题判断
-                             if(correctItemCount>0 && totalItemCount>0 && correctItemCount==totalItemCount){
-                                 isErrorsBallade=false;
-                             }else if(correctItemCount==0 &&correctItemCount==totalItemCount){
-                                 isErrorsBallade=false;
-                             }else{
-                                isErrorsBallade=true;
-                             }
+                             int finishItemCount=quizListBean.getFinishItemCount();
                              balladeRecordId=quizListBean.getLevelRecordId();
                              //小试牛刀
                              /**
@@ -173,19 +159,19 @@ public class CourseItemFragment extends Fragment {
                               * 2.然后totalItemCount和
                               * correctItemCount 判断得几颗星
                               */
-                             if(quizListBean.getFinishItemCount()==0){
+                             if(finishItemCount==0){
                                  //没有闯关
                                  ivButcher.setImageResource(EUExUtil.getResDrawableID("kkl_checkpoint01_00"));
                                  return;
                              }
-                             if(quizListBean.getFinishItemCount()> 0 &&quizListBean.getCorrectItemCount()==0){
+                             if(finishItemCount> 0 &&correctItemCount==0){
                                  //全错
                                  ivButcher.setImageResource(EUExUtil.getResDrawableID("kkl_checkpoint01_01"));
-                             } else if (quizListBean.getTotalItemCount()>0 && quizListBean.getCorrectItemCount()==1 ){
+                             } else if (totalItemCount>0 &&correctItemCount==1 ){
                                  //一颗星
                                  stuffStats=true;
                                  ivButcher.setImageResource(EUExUtil.getResDrawableID("kkl_checkpoint01_02"));
-                             }else if(quizListBean.getCorrectItemCount()>0 && quizListBean.getTotalItemCount()>0 && quizListBean.getCorrectItemCount()==quizListBean.getTotalItemCount()) {
+                             }else if(correctItemCount>0 && totalItemCount>0 && correctItemCount==totalItemCount) {
                                  //三颗星
                                  stuffStats=true;
                                  ivButcher.setImageResource(EUExUtil.getResDrawableID("kkl_checkpoint01_04"));
@@ -198,11 +184,8 @@ public class CourseItemFragment extends Fragment {
                          }else if(quizListBean.getDisplayOrder()==2 ){
                              int totalItemCount=quizListBean.getTotalItemCount();
                              int correctItemCount=quizListBean.getCorrectItemCount();
-                             if(totalItemCount>0){
-                                 stuffIsLocked=false;
-                             }else {
-                                 stuffIsLocked=true;
-                             }
+                             int finishItemCount=quizListBean.getFinishItemCount();
+
                              //是否显示错题判断
                              if(correctItemCount>0&& totalItemCount>0 && correctItemCount==totalItemCount){
                                  isErrorsStuff=false;
@@ -218,18 +201,18 @@ public class CourseItemFragment extends Fragment {
                                  ivShow.setImageResource(EUExUtil.getResDrawableID("kkl_checkpoint02_00"));
                              }
 
-                             if(quizListBean.getFinishItemCount()==0 && quizListBean.getCorrectItemCount()==0){
+                             if(finishItemCount==0 && correctItemCount==0){
                                  //没有闯关
                                  ivShow.setImageResource(EUExUtil.getResDrawableID("kkl_checkpoint02_01"));
                                  return;
                              }
-                             if(quizListBean.getTotalItemCount()>0 &&quizListBean.getCorrectItemCount()==0){
+                             if(totalItemCount>0 &&correctItemCount==0){
                                  //全错
                                  ivShow.setImageResource(EUExUtil.getResDrawableID("kkl_checkpoint02_02"));
-                             } else if (quizListBean.getTotalItemCount()>0 && quizListBean.getCorrectItemCount()==1 ){
+                             } else if (totalItemCount>0 && correctItemCount==1 ){
                                  //一颗星
                                  ivShow.setImageResource(EUExUtil.getResDrawableID("kkl_checkpoint02_03"));
-                             }else if(quizListBean.getCorrectItemCount()>0 && quizListBean.getTotalItemCount()>0 && quizListBean.getCorrectItemCount()==quizListBean.getTotalItemCount()) {
+                             }else if(correctItemCount>0 && totalItemCount>0 && correctItemCount==totalItemCount) {
                                  //三颗星
                                  ivShow.setImageResource(EUExUtil.getResDrawableID("kkl_checkpoint02_05"));
                              }else {
@@ -275,7 +258,7 @@ public class CourseItemFragment extends Fragment {
                         return;
                     }
                     //跳转做题界面
-                    onFragmentCallBack.onDoExerciseCallBack(stuffIsLocked,isErrorsStuff,"大显身手",stuffRecordId);
+                    onFragmentCallBack.onDoExerciseCallBack("大显身手",stuffRecordId);
                 }
             }
         });
@@ -306,7 +289,7 @@ public class CourseItemFragment extends Fragment {
                     });
                 }else {
                       //跳转做题界面
-                    onFragmentCallBack.onDoExerciseCallBack(balladeIsLocked,isErrorsBallade,"小试牛刀",balladeRecordId);
+                    onFragmentCallBack.onDoExerciseCallBack("小试牛刀",balladeRecordId);
 
                 }
             }

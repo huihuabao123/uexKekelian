@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,9 +45,7 @@ public class UnitTestFragment extends Fragment {
     private VipDialog vipDialog;
     //是否解锁状态
     private Boolean isLocked;
-    //是否重新生成题目
-    private boolean isUnitLocked=true;
-    private boolean isErrors=false;//是否显示错题
+
     private String unitTestRecordId;
 
     public static UnitTestFragment newInstance(String userid,String menuid,Boolean isVip) {
@@ -92,6 +91,12 @@ public class UnitTestFragment extends Fragment {
     }
 
 
+//    @Override
+//    public void onResume() {
+//        super.onResume();
+//        loadData();
+//    }
+
     /**
      * 懒加载
      * @param isVisibleToUser
@@ -103,12 +108,13 @@ public class UnitTestFragment extends Fragment {
             return;
         }
         if(isVisibleToUser){
-              LoadData();
+            loadData();
         }
     }
 
 
-    private void LoadData() {
+
+    private void loadData() {
         String params="?menuId="+menuid+"&userId="+userid;
         HttpClient.get(this, Api.GET_UNIT_TEST_CONTENT + params, new CallBack<UnitTestBean>() {
             @Override
@@ -119,19 +125,9 @@ public class UnitTestFragment extends Fragment {
                 if(result.getMessage().isStatus()){
                    int totalItemCount=result.getMessage().getData().getUnitTestTabRecord().getTotalItemCount();
                     int correctItemCount=result.getMessage().getData().getUnitTestTabRecord().getCorrectItemCount();
+                    int finishItemCount=result.getMessage().getData().getUnitTestTabRecord().getFinishItemCount();
                     unitTestRecordId=result.getMessage().getData().getUnitTestTabRecord().getUnitTestRecordId();
-                    if(totalItemCount>0){
-                        isUnitLocked=false;
-                    }else {
-                        isUnitLocked=true;
-                    }
-                    if(correctItemCount>0 && totalItemCount>0 && correctItemCount==totalItemCount){
-                        isErrors=false;
-                    }else if(correctItemCount==0 &&correctItemCount==totalItemCount){
-                        isErrors=false;
-                    }else{
-                        isErrors=true;
-                    }
+
                     isLocked=result.getMessage().getData().getUnitTestTabRecord().isIsLocked();
                     if(isLocked){
                         tvBlock.setText("请完成所有课时的小试牛刀哦！");
@@ -139,13 +135,13 @@ public class UnitTestFragment extends Fragment {
                         ivStatus.setImageResource(EUExUtil.getResDrawableID("kkl_img05_lock"));
                         return;
                     }
-                    if(result.getMessage().getData().getUnitTestTabRecord().getFinishItemCount()==0){
+                    if(finishItemCount==0){
                         tvBlock.setText("请完成所有课时的小试牛刀哦！");
                         tvBlock.setVisibility(View.VISIBLE);
                          ivStatus.setImageResource(EUExUtil.getResDrawableID("kkl_img05_unlock"));
                          return;
                      }
-                     if(result.getMessage().getData().getUnitTestTabRecord().getFinishItemCount()>0 ){
+                     if(finishItemCount>0 ){
                         tvBlock.setVisibility(View.GONE);
                         ivStatus.setVisibility(View.GONE);
                         llScoreStar.setVisibility(View.VISIBLE);
@@ -196,7 +192,7 @@ public class UnitTestFragment extends Fragment {
                         popExameStatus.pop();
                     }else {
                         //跳转做题界面
-                        onFragmentCallBack.onDoExerciseCallBack(isUnitLocked,isErrors,"单元测验",unitTestRecordId);
+                        onFragmentCallBack.onDoExerciseCallBack("单元测验",unitTestRecordId);
                     }
 
                 }
@@ -207,7 +203,7 @@ public class UnitTestFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 //跳转做题界面
-                onFragmentCallBack.onDoExerciseCallBack(isUnitLocked,isErrors,"单元测验",unitTestRecordId);
+                onFragmentCallBack.onDoExerciseCallBack("单元测验",unitTestRecordId);
             }
         });
 

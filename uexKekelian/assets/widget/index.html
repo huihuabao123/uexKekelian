@@ -29,48 +29,7 @@
         };
         };
 
-        function openv(){
-            var param = {
-                time:3000
-            };
-            var result=uexKekelian.test(param);
-            alert(result);
-        }
 
-        function showInputDialog(){
-            var param = {
-                defaultValue:'这是默认值'
-            };
-            uexKekelian.test_showInputDialog(param,function (error, data) {
-                if (!error){
-                    alert(data);
-                }else{
-                    alert("用户取消了操作");
-                }
-            });
-        }
-
-        function addFragment(){
-            var params = {
-                left:100,
-                top:200,
-                width:400,
-                height:400,
-                isScrollWithWebView:true
-            };
-            uexKekelian.test_addFragment(params);
-        }
-
-        function addView(){
-            var params = {
-                left:0,
-                top:500,
-                width:400,
-                height:400,
-                isScrollWithWebView:true
-            };
-            uexKekelian.test_addView(params);
-        }
         function startActivity() {
             var params = {
                 menuId:'1',
@@ -84,29 +43,26 @@
 
         }
 
-        function opentActivity() {
-            var params = {
-                domain:'huihuabao.gensee.com',
-                number:95760405,
-                nickName:'kk',
-                joinPwd:'222222',
-                className:'test one',
-                uid: 12345678998
-            };
-            uexKekelian.opentActivity(params);
+        function openNoTopic() {
+            uexKekelian.openNoTopic();
 
 
         }
-        function launchActivity() {
-            var params = {
-                domain:'huihuabao.gensee.com',
-                number:95760405,
-                nickName:'kk',
-                joinPwd:'222222',
-                className:'test one',
-                uid: 12345678998
+         function launchActivity() {
+             var params = {
+                menuId:'1',
+                userId:'ff808181478107c601478f34e1ac0303',
+                isVip:'Y',
+                unitTitle:'Unit2'
+
             };
-            uexKekelian.launchActivity(params);
+            uexKekelian.startActivity(params);
+
+
+        }
+        function opentScoreReportcActivity() {
+
+            uexKekelian.opentScoreReportcActivity('2f85ec29f05049a5a125417a08a6727c');
 
 
         }
@@ -118,30 +74,24 @@
 <div class="conbor">
     <div class="consj">
 
-        <span>1.TabLayoutActivity</span>
+        <span>1.打开课课练卡片页面</span>
         <!--此接口将打开一个自定义的activity，并获取其操作后的返回值。-->
         <input class="btn" type="button" value="startActivity"
                onclick="startActivity()"><br>
 
-        <input class="btn" type="button" value="openActivity"
-               onclick="opentActivity()"><br>
+        <span>2.打开无题目的界面</span>
+        <input class="btn" type="button" value="openNoTopic"
+               onclick="openNoTopic()"><br>
 
+        <span>3.打开成绩报告页面</span>
+        <input class="btn" type="button" value="opentScoreReportcActivity"
+               onclick="opentScoreReportcActivity()"><br>
+
+        <span>3.打开新的Activity</span>
         <input class="btn" type="button" value="launchActivity"
                onclick="launchActivity()"><br>
 
-        <span>2.test_vibrator接口</span>
-        <!--此接口将调用设备的震动，需输入震动时间，单位为毫秒-->
-        <input class="btn" type="button" value="test_vibrator"
-               onclick="openv();"><br>
 
-        <span>3.test_showInputDialog接口</span>
-        <!--此接口将打开一个自定义的输入框，并获取其操作后的返回值。-->
-        <input class="btn" type="button" value="test_showInputDialog"
-               onclick="showInputDialog();"><br>
-
-        <span>4.test_addFragment接口</span>
-        <!--此接口将打开一个自定义的FragmentView添加到当前屏幕上。-->
-        <input class="btn" type="button" value="test_addFragment" onclick="addFragment();"><br>
 
 
     </div>
