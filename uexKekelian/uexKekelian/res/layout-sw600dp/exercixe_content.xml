@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:id="@+id/ll_content"
+    android:background="@drawable/kkl_bg02"
+    tools:showIn="@layout/hpush_activity">
+
+
+
+        <HorizontalScrollView
+            android:id="@+id/mColumnHorizontalScrollView_IntegralShop"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:fillViewport="true"
+            android:scrollbars="none" >
+
+            <LinearLayout
+                android:id="@+id/mRadioGroup_content_ll"
+                android:layout_width="wrap_content"
+                android:layout_height="80dp"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:id="@+id/mRadioGroup_content_IntegralShop"
+                    android:layout_width="match_parent"
+                    android:layout_height="75dip"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal" />
+                <!-- 指示器 -->
+
+                <TextView
+                    android:id="@+id/indicateId"
+                    android:layout_width="105dp"
+                    android:layout_height="4dp"
+                    android:background="@drawable/view_shape_indicated" />
+                <!-- 横线 -->
+                <View
+                    android:id="@+id/category_line_IntegralShop"
+                    android:layout_width="fill_parent"
+                    android:layout_height="0.2dip"
+                    android:background="@color/color_line" />
+            </LinearLayout>
+        </HorizontalScrollView>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/mViewPager_IntegralShop"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipChildren="false"
+        android:overScrollMode="never" />
+</LinearLayout>

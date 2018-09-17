@@ -240,7 +240,8 @@ public class HealthPush extends FragmentActivity implements OnFragmentCallBack,O
     private void initTabColumn() {
         mScreenWidth = getWindowsWidth(this);
         // 一个Item宽度为屏幕的1/list.size()
-        int count =list.size()+1;
+//        int count =list.size()+1;
+        int count =list.size();
         if(count<4 && count>0){
             mItemWidth = mScreenWidth / count;
         }else {
@@ -252,12 +253,18 @@ public class HealthPush extends FragmentActivity implements OnFragmentCallBack,O
             TextView localTextView = new TextView(this);
             localTextView.setGravity(Gravity.CENTER);
             localTextView.setPadding(5,0,5,0);
-            if(i==count-1){
-                localTextView.setText("单元测验");
+//            if(i==count-1){
+//                localTextView.setText("单元测验");
+//            }else {
+//                localTextView.setText(list.get(i).getLessonName());
+//            }
+            localTextView.setText(list.get(i).getLessonName());
+            if(mScreenWidth>=600){
+                localTextView.setTextSize(25);
             }else {
-                localTextView.setText(list.get(i).getLessonName());
+                localTextView.setTextSize(20);
             }
-            localTextView.setTextSize(20);
+
             localTextView.setTextColor(Color.parseColor("#c4e4d6"));
             if (columnSelectIndex == i) {//设置第一个被选中,颜色变化
                 localTextView.setTextColor(Color.parseColor("#73a891"));
@@ -285,9 +292,9 @@ public class HealthPush extends FragmentActivity implements OnFragmentCallBack,O
 
         }
              //添加单元测验
-        UnitTestFragment unitTestFragment=UnitTestFragment.newInstance(infoBean.getUserId(),infoBean.getMenuId(),isVip);
-        unitTestFragment.setOnFragmentCallBack(this);
-        fragments.add(unitTestFragment);
+//        UnitTestFragment unitTestFragment=UnitTestFragment.newInstance(infoBean.getUserId(),infoBean.getMenuId(),isVip);
+//        unitTestFragment.setOnFragmentCallBack(this);
+//        fragments.add(unitTestFragment);
 
         mViewPager.removeAllViews();
 
@@ -297,7 +304,8 @@ public class HealthPush extends FragmentActivity implements OnFragmentCallBack,O
             mAdapetr.clearFragment();
         mAdapetr = new IntegralFragmentPagerAdapter(getSupportFragmentManager(), fragments);
         mViewPager.setAdapter(mAdapetr);
-        mViewPager.setOffscreenPageLimit(list.size()+1);
+//        mViewPager.setOffscreenPageLimit(list.size()+1);
+        mViewPager.setOffscreenPageLimit(list.size());
         mViewPager.setOnPageChangeListener(new MyOnPageChangeListener());
         mViewPager.setCurrentItem(columnSelectIndex);
     }
