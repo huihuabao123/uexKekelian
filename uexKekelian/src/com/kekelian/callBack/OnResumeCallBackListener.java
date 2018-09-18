@@ -4,5 +4,5 @@ package com.kekelian.callBack;
  * 界面跳转的回调
  */
 public interface OnResumeCallBackListener {
-    public void onResumeCallBack();
+     void onResumeCallBack();
 }

@@ -1,11 +1,9 @@
 package com.kekelian;
 
 import android.app.Activity;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -16,7 +14,6 @@ import com.kekelian.bean.KekelianSuccessBean;
 import com.kekelian.net.Api;
 import com.kekelian.net.CallBack;
 import com.kekelian.net.HttpClient;
-import com.kekelian.unit.StatusBarUtil;
 
 import org.json.JSONException;
 import org.json.JSONObject;

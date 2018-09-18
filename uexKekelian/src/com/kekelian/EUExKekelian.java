@@ -6,7 +6,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.text.Html;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;

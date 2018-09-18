@@ -2,7 +2,7 @@
 <uexplugins>
     <plugin
         uexName="uexKekelian" version="4.0.0" build="0">
-        <info>0:测试插件Demo</info>
+        <info>0:课课练插件</info>
     </plugin>
 
 </uexplugins>

@@ -3,6 +3,7 @@ package com.kekelian;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.res.Configuration;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
@@ -32,7 +33,6 @@ import com.kekelian.bean.UnitTestTabRecordBean;
 import com.kekelian.callBack.OnFragmentCallBack;
 import com.kekelian.callBack.OnResumeCallBackListener;
 import com.kekelian.fragment.CourseItemFragment;
-import com.kekelian.fragment.UnitTestFragment;
 import com.kekelian.net.Api;
 import com.kekelian.net.CallBack;
 import com.kekelian.net.HttpClient;
@@ -93,7 +93,7 @@ public class HealthPush extends FragmentActivity implements OnFragmentCallBack,O
     private Handler handler=new Handler(){
         public void handleMessage(android.os.Message msg) {
             initStartAnimation(msg.arg1, (Float)msg.obj);		//移动指示器
-        };
+        }
     };
 //    public static LocalActivityManager mgr;
 
@@ -238,6 +238,8 @@ public class HealthPush extends FragmentActivity implements OnFragmentCallBack,O
      * 初始化Column栏目项
      * */
     private void initTabColumn() {
+        Configuration config = getResources().getConfiguration();
+        int smallestScreenWidth = config.smallestScreenWidthDp;
         mScreenWidth = getWindowsWidth(this);
         // 一个Item宽度为屏幕的1/list.size()
 //        int count =list.size()+1;
@@ -259,7 +261,8 @@ public class HealthPush extends FragmentActivity implements OnFragmentCallBack,O
 //                localTextView.setText(list.get(i).getLessonName());
 //            }
             localTextView.setText(list.get(i).getLessonName());
-            if(mScreenWidth>=600){
+
+            if(smallestScreenWidth>=600){
                 localTextView.setTextSize(25);
             }else {
                 localTextView.setTextSize(20);
@@ -284,7 +287,7 @@ public class HealthPush extends FragmentActivity implements OnFragmentCallBack,O
      * 初始化Fragment
      * */
     private void initFragment() {
-        fragments = new ArrayList<Fragment>();
+        fragments = new ArrayList<>();
         for (int i = 0; i < list.size(); i++) {
             CourseItemFragment courseItemFragment= CourseItemFragment.newInstance(list.get(i),isVip);
             courseItemFragment.setOnFragmentCallBack(this);
@@ -377,7 +380,7 @@ public class HealthPush extends FragmentActivity implements OnFragmentCallBack,O
         public void onPageSelected(int position) {
             selectMode(position);
         }
-    };
+    }
 
 
     private void initStartAnimation(int position, float offset) {

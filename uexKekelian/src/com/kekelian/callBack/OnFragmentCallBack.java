@@ -7,12 +7,12 @@ public interface OnFragmentCallBack {
      * 2.是Vip中点击购买会员
      * 3.点击课本预习
      */
-    public void onResultClick(int type);
+     void onResultClick(int type);
 
     /**
      * 跳转到做题界面
      * @param levelTypeName 关卡类型
      * @param RecordId 做题的id
      */
-    public void onDoExerciseCallBack(String levelTypeName,String RecordId);
+     void onDoExerciseCallBack(String levelTypeName,String RecordId);
 }
