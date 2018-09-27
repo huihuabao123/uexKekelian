@@ -7,7 +7,7 @@ import android.telephony.TelephonyManager;
 import android.util.Log;
 
 /**
- * Created by Administrator on 2018/5/11.
+ * Created by Administrator on 2018/8/11.
  */
 
 public class NetworkUtils {

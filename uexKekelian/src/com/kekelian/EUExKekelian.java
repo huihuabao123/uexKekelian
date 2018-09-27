@@ -58,12 +58,11 @@ public class EUExKekelian extends EUExBase implements Parcelable {
 
 
     public  void onActivityResume(String[] parm) {
-//        if (mgr != null) {
-////            mgr.dispatchResume();
-////
-////        }
         Log.i(TAG, "onDoExerciseBack: 刷新数据");
         onResumeCallBackListener.onResumeCallBack();
+//        if (mgr != null) {
+//            mgr.dispatchResume();
+//        }
     }
 
     public static void onActivityPause(Context context) {

@@ -2,6 +2,7 @@ package com.kekelian.net;
 
 import android.os.Handler;
 import android.os.Looper;
+import android.support.annotation.NonNull;
 import android.util.Log;
 
 import com.google.gson.Gson;
@@ -30,7 +31,6 @@ public class HttpClient {
             .readTimeout(60, TimeUnit.SECONDS)
             .build();
 
-
     /**
      * post请求
      *
@@ -39,7 +39,7 @@ public class HttpClient {
      * @param map
      * @param callBack
      */
-    public static void post(Object tag, final String url, HashMap<String, String> map, final CallBack callBack) {
+    public static void post(@NonNull Object tag, @NonNull final String url, @NonNull HashMap<String, String> map, @NonNull final CallBack callBack) {
 
 
         FormBody.Builder builder = new FormBody.Builder();
@@ -96,7 +96,7 @@ public class HttpClient {
 
 
 
-    public static void get(final Object tag, final String url, final CallBack callBack) {
+    public static void get(@NonNull final Object tag, @NonNull final String url, @NonNull final CallBack callBack) {
         Request request = new Request.Builder()
                 .tag(tag)
                 .url(url)

@@ -8,6 +8,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
@@ -33,6 +34,7 @@ import com.kekelian.bean.UnitTestTabRecordBean;
 import com.kekelian.callBack.OnFragmentCallBack;
 import com.kekelian.callBack.OnResumeCallBackListener;
 import com.kekelian.fragment.CourseItemFragment;
+import com.kekelian.fragment.UnitTestFragment;
 import com.kekelian.net.Api;
 import com.kekelian.net.CallBack;
 import com.kekelian.net.HttpClient;
@@ -84,9 +86,6 @@ public class HealthPush extends FragmentActivity implements OnFragmentCallBack,O
     private UnitTestTabRecordBean recordBean;
     /** Fragment列表 */
     private ArrayList<Fragment> fragments;
-
-//    public  static View mMapDecorView;
-//    public static  Context context;
     /**
      * 指示器动画联动
      */
@@ -95,7 +94,6 @@ public class HealthPush extends FragmentActivity implements OnFragmentCallBack,O
             initStartAnimation(msg.arg1, (Float)msg.obj);		//移动指示器
         }
     };
-//    public static LocalActivityManager mgr;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -106,20 +104,11 @@ public class HealthPush extends FragmentActivity implements OnFragmentCallBack,O
         if("Y".equals(infoBean.getIsVip())){
             isVip=true;
         }
-//        context=this;
         Log.i(TAG,"HealthPush---->onCreate()");
         setContentView(EUExUtil.getResLayoutID("hpush_activity"));
-//        StatusBarUtil.setColor(HealthPush.this, Color.parseColor("#94dace"),0);
         initView();
         getKekelianList();
 
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        Log.i(TAG,"HealthPush---->onResume()");
-//        fragments.get(mViewPager.getCurrentItem()).setUserVisibleHint(true);
     }
 
 
@@ -242,8 +231,8 @@ public class HealthPush extends FragmentActivity implements OnFragmentCallBack,O
         int smallestScreenWidth = config.smallestScreenWidthDp;
         mScreenWidth = getWindowsWidth(this);
         // 一个Item宽度为屏幕的1/list.size()
-//        int count =list.size()+1;
-        int count =list.size();
+        int count =list.size()+1;
+//        int count =list.size();
         if(count<4 && count>0){
             mItemWidth = mScreenWidth / count;
         }else {
@@ -255,12 +244,12 @@ public class HealthPush extends FragmentActivity implements OnFragmentCallBack,O
             TextView localTextView = new TextView(this);
             localTextView.setGravity(Gravity.CENTER);
             localTextView.setPadding(5,0,5,0);
-//            if(i==count-1){
-//                localTextView.setText("单元测验");
-//            }else {
-//                localTextView.setText(list.get(i).getLessonName());
-//            }
-            localTextView.setText(list.get(i).getLessonName());
+            if(i==count-1){
+                localTextView.setText("单元测验");
+            }else {
+                localTextView.setText(list.get(i).getLessonName());
+            }
+//            localTextView.setText(list.get(i).getLessonName());
 
             if(smallestScreenWidth>=600){
                 localTextView.setTextSize(25);
@@ -295,9 +284,9 @@ public class HealthPush extends FragmentActivity implements OnFragmentCallBack,O
 
         }
              //添加单元测验
-//        UnitTestFragment unitTestFragment=UnitTestFragment.newInstance(infoBean.getUserId(),infoBean.getMenuId(),isVip);
-//        unitTestFragment.setOnFragmentCallBack(this);
-//        fragments.add(unitTestFragment);
+        UnitTestFragment unitTestFragment=UnitTestFragment.newInstance(infoBean.getUserId(),infoBean.getMenuId(),isVip);
+        unitTestFragment.setOnFragmentCallBack(this);
+        fragments.add(unitTestFragment);
 
         mViewPager.removeAllViews();
 
@@ -307,8 +296,7 @@ public class HealthPush extends FragmentActivity implements OnFragmentCallBack,O
             mAdapetr.clearFragment();
         mAdapetr = new IntegralFragmentPagerAdapter(getSupportFragmentManager(), fragments);
         mViewPager.setAdapter(mAdapetr);
-//        mViewPager.setOffscreenPageLimit(list.size()+1);
-        mViewPager.setOffscreenPageLimit(list.size());
+        mViewPager.setOffscreenPageLimit(list.size()+1);
         mViewPager.setOnPageChangeListener(new MyOnPageChangeListener());
         mViewPager.setCurrentItem(columnSelectIndex);
     }
@@ -317,7 +305,6 @@ public class HealthPush extends FragmentActivity implements OnFragmentCallBack,O
         //重置选择器位置
         selectMode(columnSelectIndex);
         //初始化指示器并设置指示器位置
-//        indicateParams.width=mItemWidth;//设置指示器宽度
         indicateParams.width=mItemWidth/3;//设置指示器宽度
         indicateParams.setMargins(0,0,0,0);
         indicateTV.setLayoutParams(indicateParams);//设置指示器宽度
@@ -341,7 +328,7 @@ public class HealthPush extends FragmentActivity implements OnFragmentCallBack,O
      * @param recordId
      */
     @Override
-    public void onDoExerciseCallBack( String levelTypeName, String recordId) {
+    public void onDoExerciseCallBack(@NonNull String levelTypeName, @NonNull String recordId) {
         JSONObject jsonObject = new JSONObject();
         try {
             jsonObject.put("levelTypeName", levelTypeName);
@@ -390,11 +377,9 @@ public class HealthPush extends FragmentActivity implements OnFragmentCallBack,O
             indicateTV.setVisibility(View.VISIBLE);
         }
         if (offset == 0){ // 停止滚动
-//            indicateParams.setMargins(indicateParams.width * position,0, 0, 0);
             indicateParams.setMargins(indicateParams.width+mItemWidth * position,0, 0, 0);
         }
         else{
-//            indicateParams.setMargins((int) ( indicateParams.width * (position + offset)),0, 0, 0);
             indicateParams.setMargins((int) ( indicateParams.width+mItemWidth * (position + offset)),0, 0, 0);
         }
         indicateTV.setLayoutParams(indicateParams);

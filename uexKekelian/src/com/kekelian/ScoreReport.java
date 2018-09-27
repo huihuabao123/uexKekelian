@@ -2,6 +2,7 @@ package com.kekelian;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -56,46 +57,53 @@ public class ScoreReport extends Activity {
                 }
                 if(result.getMessage().isStatus()){
                     dataBean=result.getMessage().getData();
-                    int totalItemCount=dataBean.getTotalItemCount();
-                    int correctItemCount=dataBean.getCorrectItemCount();
-                    tvTitle.setText(dataBean.getLessonName()+" "+dataBean.getLevelTypeName());
-                    if(correctItemCount==0){
-                        //全错
-                        ivImg.setImageResource(EUExUtil.getResDrawableID("kkl_bg06"));
-                        llButtons.setVisibility(View.GONE);
-                        btAgain.setText("再试一次");
-                        btAgain.setVisibility(View.VISIBLE);
-                        ivStatus.setImageResource(EUExUtil.getResDrawableID("frog_01_02"));
-                        tvInfo.setText("只要做对题目，就奖励智慧星");
-                    }else if(correctItemCount>0 && totalItemCount>0 && correctItemCount==totalItemCount) {
-                        //三颗星
-                        ivImg.setImageResource(EUExUtil.getResDrawableID("kkl_bg03"));
-                        llButtons.setVisibility(View.GONE);
-                        btAgain.setText("继续闯关");
-                        btAgain.setVisibility(View.VISIBLE);
-                        ivStatus.setImageResource(EUExUtil.getResDrawableID("frog_01"));
-                        tvInfo.setText("");
-                    } else if (totalItemCount>0 && correctItemCount==1 ){
-                        //一颗星
-                        ivImg.setImageResource(EUExUtil.getResDrawableID("kkl_bg05"));
-                        llButtons.setVisibility(View.VISIBLE);
-                        btAgain.setVisibility(View.GONE);
-                        ivStatus.setImageResource(EUExUtil.getResDrawableID("frog_01"));
-                        tvInfo.setText("消灭错题，可以拿满星哦~");
-                    }else {
-                        //两颗星
-                        ivImg.setImageResource(EUExUtil.getResDrawableID("kkl_bg04"));
-                        llButtons.setVisibility(View.VISIBLE);
-                        btAgain.setVisibility(View.GONE);
-                        ivStatus.setImageResource(EUExUtil.getResDrawableID("frog_01"));
-                        tvInfo.setText("消灭错题，可以拿满星哦~");
-                    }
+                    showStatus(dataBean);
                 }
-                rlScoreReport.setVisibility(View.VISIBLE);
+
             }
 
 
         });
+    }
+
+
+
+    private void showStatus(@NonNull KekelianSuccessBean.MessageBean.DataBean dataBean) {
+        int totalItemCount=dataBean.getTotalItemCount();
+        int correctItemCount=dataBean.getCorrectItemCount();
+        tvTitle.setText(dataBean.getLessonName()+" "+dataBean.getLevelTypeName());
+        if(correctItemCount==0){
+            //全错
+            ivImg.setImageResource(EUExUtil.getResDrawableID("kkl_bg06"));
+            llButtons.setVisibility(View.GONE);
+            btAgain.setText("再试一次");
+            btAgain.setVisibility(View.VISIBLE);
+            ivStatus.setImageResource(EUExUtil.getResDrawableID("frog_01_02"));
+            tvInfo.setText("只要做对题目，就奖励智慧星");
+        }else if(correctItemCount>0 && totalItemCount>0 && correctItemCount==totalItemCount) {
+            //三颗星
+            ivImg.setImageResource(EUExUtil.getResDrawableID("kkl_bg03"));
+            llButtons.setVisibility(View.GONE);
+            btAgain.setText("继续闯关");
+            btAgain.setVisibility(View.VISIBLE);
+            ivStatus.setImageResource(EUExUtil.getResDrawableID("frog_01"));
+            tvInfo.setText("");
+        } else if (totalItemCount>0 && correctItemCount==1 ){
+            //一颗星
+            ivImg.setImageResource(EUExUtil.getResDrawableID("kkl_bg05"));
+            llButtons.setVisibility(View.VISIBLE);
+            btAgain.setVisibility(View.GONE);
+            ivStatus.setImageResource(EUExUtil.getResDrawableID("frog_01"));
+            tvInfo.setText("消灭错题，可以拿满星哦~");
+        }else {
+            //两颗星
+            ivImg.setImageResource(EUExUtil.getResDrawableID("kkl_bg04"));
+            llButtons.setVisibility(View.VISIBLE);
+            btAgain.setVisibility(View.GONE);
+            ivStatus.setImageResource(EUExUtil.getResDrawableID("frog_01"));
+            tvInfo.setText("消灭错题，可以拿满星哦~");
+        }
+        rlScoreReport.setVisibility(View.VISIBLE);
     }
 
     private void initView() {
@@ -128,15 +136,7 @@ public class ScoreReport extends Activity {
         btWipe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                JSONObject jsonObject = new JSONObject();
-                try {
-                    jsonObject.put("levelTypeName", dataBean.getLevelTypeName());
-                    jsonObject.put("exerciseRecordId",dataBean.getLevelRecordId());
-                    mUexBaseObj.callBackPluginJs(EUExKekelian.CALLBACK_ON_FRAGMENT_DO_EXERCISE,jsonObject.toString());
-                    mUexBaseObj.closeScoreReport(null);
-                } catch (JSONException e) {
-                    Log.i(TAG, String.valueOf(e.getMessage()));
-                }
+                onCallBack(dataBean.getLevelTypeName(),dataBean.getLevelRecordId());
             }
         });
         //再试一次或者继续闯关
@@ -144,15 +144,7 @@ public class ScoreReport extends Activity {
             @Override
             public void onClick(View v) {
                 if("再试一次".equals(btAgain.getText().toString())){
-                    JSONObject jsonObject = new JSONObject();
-                    try {
-                        jsonObject.put("levelTypeName", dataBean.getLevelTypeName());
-                        jsonObject.put("exerciseRecordId",dataBean.getLevelRecordId());
-                        mUexBaseObj.callBackPluginJs(EUExKekelian.CALLBACK_ON_FRAGMENT_DO_EXERCISE,jsonObject.toString());
-                        mUexBaseObj.closeScoreReport(null);
-                    } catch (JSONException e) {
-                        Log.i(TAG, String.valueOf(e.getMessage()));
-                    }
+                   onCallBack(dataBean.getLevelTypeName(),dataBean.getLevelRecordId());
                 }else{
                     //继续闯关
                     mUexBaseObj.callBackPluginJs(EUExKekelian.CALLBACK_ON_SCORE_REPORT_CLOSE,"");
@@ -160,4 +152,16 @@ public class ScoreReport extends Activity {
             }
         });
     }
+
+   private void onCallBack(@NonNull String levelTypeName,@NonNull String exerciseRecordId){
+       JSONObject jsonObject = new JSONObject();
+       try {
+           jsonObject.put("levelTypeName", levelTypeName);
+           jsonObject.put("exerciseRecordId",exerciseRecordId);
+           mUexBaseObj.callBackPluginJs(EUExKekelian.CALLBACK_ON_FRAGMENT_DO_EXERCISE,jsonObject.toString());
+           mUexBaseObj.closeScoreReport(null);
+       } catch (JSONException e) {
+           Log.i(TAG, String.valueOf(e.getMessage()));
+       }
+   }
 }

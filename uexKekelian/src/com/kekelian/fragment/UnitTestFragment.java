@@ -2,6 +2,7 @@ package com.kekelian.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -117,48 +118,54 @@ public class UnitTestFragment extends Fragment {
                     return;
                 }
                 if(result.getMessage().isStatus()){
-                   int totalItemCount=result.getMessage().getData().getUnitTestTabRecord().getTotalItemCount();
-                    int correctItemCount=result.getMessage().getData().getUnitTestTabRecord().getCorrectItemCount();
-                    int finishItemCount=result.getMessage().getData().getUnitTestTabRecord().getFinishItemCount();
-                    unitTestRecordId=result.getMessage().getData().getUnitTestTabRecord().getUnitTestRecordId();
-
-                    isLocked=result.getMessage().getData().getUnitTestTabRecord().isIsLocked();
-                    if(isLocked){
-                        tvBlock.setText("请完成所有课时的小试牛刀哦！");
-                        tvBlock.setVisibility(View.VISIBLE);
-                        ivStatus.setImageResource(EUExUtil.getResDrawableID("kkl_img05_lock"));
-                        return;
-                    }
-                    if(finishItemCount==0){
-                        tvBlock.setText("请完成所有课时的小试牛刀哦！");
-                        tvBlock.setVisibility(View.VISIBLE);
-                         ivStatus.setImageResource(EUExUtil.getResDrawableID("kkl_img05_unlock"));
-                         return;
-                     }
-                     if(finishItemCount>0 ){
-                        tvBlock.setVisibility(View.GONE);
-                        ivStatus.setVisibility(View.GONE);
-                        llScoreStar.setVisibility(View.VISIBLE);
-                         tvScore.setText(result.getMessage().getData().getUnitTestTabRecord().getScore()+"分");
-                             if(correctItemCount==0){
-                                 //全错
-                                 ivStar.setVisibility(View.GONE);
-                             }else if(correctItemCount>0 && totalItemCount>0 && correctItemCount==totalItemCount) {
-                                 //三颗星
-                                 ivStar.setImageResource(EUExUtil.getResDrawableID("star01"));
-                             } else if (totalItemCount>0 && correctItemCount==1 ){
-                                 //一颗星
-                                 ivStar.setImageResource(EUExUtil.getResDrawableID("star03"));
-                             }else {
-                                 //两颗星
-                                 ivStar.setImageResource(EUExUtil.getResDrawableID("star02"));
-                             }
-
-                     }
+                    showStatus(result);
 
                 }
             }
         });
+    }
+
+    private void showStatus( @NonNull UnitTestBean result) {
+
+        int totalItemCount=result.getMessage().getData().getUnitTestTabRecord().getTotalItemCount();
+        int correctItemCount=result.getMessage().getData().getUnitTestTabRecord().getCorrectItemCount();
+        int finishItemCount=result.getMessage().getData().getUnitTestTabRecord().getFinishItemCount();
+        unitTestRecordId=result.getMessage().getData().getUnitTestTabRecord().getUnitTestRecordId();
+
+        isLocked=result.getMessage().getData().getUnitTestTabRecord().isIsLocked();
+        if(isLocked){
+            tvBlock.setText("请完成所有课时的小试牛刀哦！");
+            tvBlock.setVisibility(View.VISIBLE);
+            ivStatus.setImageResource(EUExUtil.getResDrawableID("kkl_img05_lock"));
+            return;
+        }
+        if(finishItemCount==0){
+            tvBlock.setText("请完成所有课时的小试牛刀哦！");
+            tvBlock.setVisibility(View.VISIBLE);
+            ivStatus.setImageResource(EUExUtil.getResDrawableID("kkl_img05_unlock"));
+            return;
+        }
+        if(finishItemCount>0 ){
+            tvBlock.setVisibility(View.GONE);
+            ivStatus.setVisibility(View.GONE);
+            llScoreStar.setVisibility(View.VISIBLE);
+            tvScore.setText(result.getMessage().getData().getUnitTestTabRecord().getScore()+"分");
+            if(correctItemCount==0){
+                //全错
+                ivStar.setVisibility(View.GONE);
+            }else if(correctItemCount>0 && totalItemCount>0 && correctItemCount==totalItemCount) {
+                //三颗星
+                ivStar.setImageResource(EUExUtil.getResDrawableID("star01"));
+            } else if (totalItemCount>0 && correctItemCount==1 ){
+                //一颗星
+                ivStar.setImageResource(EUExUtil.getResDrawableID("star03"));
+            }else {
+                //两颗星
+                ivStar.setImageResource(EUExUtil.getResDrawableID("star02"));
+            }
+
+        }
+
     }
 
 

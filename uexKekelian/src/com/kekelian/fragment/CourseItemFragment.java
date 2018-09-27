@@ -2,6 +2,7 @@ package com.kekelian.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
@@ -125,102 +126,106 @@ public class CourseItemFragment extends Fragment {
                 }
                  if(result.getMessage().isStatus()){
                     Log.i(TAG,"返回的json:"+result.toString());
-                     //显示blockName
-                     if(!TextUtils.isEmpty(result.getMessage().getData().getBlockName())){
-                         tvBlock.setText(result.getMessage().getData().getBlockName());
-                     }
-                     //显示是否有知识点
-                    if(result.getMessage().getData().isHasKP()){
-                        rlContent.setVisibility(View.VISIBLE);
-                        llNotPoint.setVisibility(View.GONE);
-                    }else {
-                        rlContent.setVisibility(View.GONE);
-                        llNotPoint.setVisibility(View.VISIBLE);
-                    }
-                    //显示小试牛刀和大显身手的状态
-                     List<LessonContentBean.MessageBean.DataBean.QuizListBean> quizList=result.getMessage().getData().getQuizList();
-                    for (int i=0;i<quizList.size();i++){
-                        LessonContentBean.MessageBean.DataBean.QuizListBean quizListBean;
-                        quizListBean=quizList.get(i);
-                         if(quizListBean.getDisplayOrder()==1){
-                             int totalItemCount=quizListBean.getTotalItemCount();
-                             int correctItemCount=quizListBean.getCorrectItemCount();
-                             int finishItemCount=quizListBean.getFinishItemCount();
-                             balladeRecordId=quizListBean.getLevelRecordId();
-                             //小试牛刀
-                             /**
-                              * 1.finishItemCount=0表示没做
-                              * 2.然后totalItemCount和
-                              * correctItemCount 判断得几颗星
-                              */
-                             if(finishItemCount==0){
-                                 //没有闯关
-                                 ivButcher.setImageResource(EUExUtil.getResDrawableID("kkl_checkpoint01_00"));
-                                 return;
-                             }
-                             if(finishItemCount> 0 &&correctItemCount==0){
-                                 //全错
-                                 ivButcher.setImageResource(EUExUtil.getResDrawableID("kkl_checkpoint01_01"));
-                             }else if(correctItemCount>0 && totalItemCount>0 && correctItemCount==totalItemCount) {
-                                 //三颗星
-                                 stuffStats=true;
-                                 ivButcher.setImageResource(EUExUtil.getResDrawableID("kkl_checkpoint01_04"));
-                             } else if (totalItemCount>0 &&correctItemCount==1 ){
-                                 //一颗星
-                                 stuffStats=true;
-                                 ivButcher.setImageResource(EUExUtil.getResDrawableID("kkl_checkpoint01_02"));
-                             }else {
-                                 //两颗星
-                                 stuffStats=true;
-                                 ivButcher.setImageResource(EUExUtil.getResDrawableID("kkl_checkpoint01_03"));
-                             }
-
-                         }else if(quizListBean.getDisplayOrder()==2 ){
-                             int totalItemCount=quizListBean.getTotalItemCount();
-                             int correctItemCount=quizListBean.getCorrectItemCount();
-                             int finishItemCount=quizListBean.getFinishItemCount();
-
-                             //是否显示错题判断
-                             if(correctItemCount>0&& totalItemCount>0 && correctItemCount==totalItemCount){
-                                 isErrorsStuff=false;
-                             }else if(correctItemCount==0 &&correctItemCount==totalItemCount){
-                                 isErrorsStuff=false;
-                             }else{
-                                 isErrorsStuff=true;
-                             }
-                             stuffRecordId=quizListBean.getLevelRecordId();
-                              //大显身手
-                             if(!stuffStats){
-                                 //没有权限开启闯关
-                                 ivShow.setImageResource(EUExUtil.getResDrawableID("kkl_checkpoint02_00"));
-                             }
-
-                             if(finishItemCount==0 && correctItemCount==0){
-                                 //没有闯关
-                                 ivShow.setImageResource(EUExUtil.getResDrawableID("kkl_checkpoint02_01"));
-                                 return;
-                             }
-                             if(totalItemCount>0 &&correctItemCount==0){
-                                 //全错
-                                 ivShow.setImageResource(EUExUtil.getResDrawableID("kkl_checkpoint02_02"));
-                             } else if (totalItemCount>0 && correctItemCount==1 ){
-                                 //一颗星
-                                 ivShow.setImageResource(EUExUtil.getResDrawableID("kkl_checkpoint02_03"));
-                             }else if(correctItemCount>0 && totalItemCount>0 && correctItemCount==totalItemCount) {
-                                 //三颗星
-                                 ivShow.setImageResource(EUExUtil.getResDrawableID("kkl_checkpoint02_05"));
-                             }else {
-                                 //两颗星
-                                 ivShow.setImageResource(EUExUtil.getResDrawableID("kkl_checkpoint02_04"));
-                             }
-
-                         }
-                    }
+                    showStatus(result);
                  }
 
             }
 
         });
+    }
+
+    private void showStatus(@NonNull LessonContentBean result) {
+        //显示blockName
+        if(!TextUtils.isEmpty(result.getMessage().getData().getBlockName())){
+            tvBlock.setText(result.getMessage().getData().getBlockName());
+        }
+        //显示是否有知识点
+        if(result.getMessage().getData().isHasKP()){
+            rlContent.setVisibility(View.VISIBLE);
+            llNotPoint.setVisibility(View.GONE);
+        }else {
+            rlContent.setVisibility(View.GONE);
+            llNotPoint.setVisibility(View.VISIBLE);
+        }
+        //显示小试牛刀和大显身手的状态
+        List<LessonContentBean.MessageBean.DataBean.QuizListBean> quizList=result.getMessage().getData().getQuizList();
+        for (int i=0;i<quizList.size();i++){
+            LessonContentBean.MessageBean.DataBean.QuizListBean quizListBean;
+            quizListBean=quizList.get(i);
+            if(quizListBean.getDisplayOrder()==1){
+                int totalItemCount=quizListBean.getTotalItemCount();
+                int correctItemCount=quizListBean.getCorrectItemCount();
+                int finishItemCount=quizListBean.getFinishItemCount();
+                balladeRecordId=quizListBean.getLevelRecordId();
+                //小试牛刀
+                /**
+                 * 1.finishItemCount=0表示没做
+                 * 2.然后totalItemCount和
+                 * correctItemCount 判断得几颗星
+                 */
+                if(finishItemCount==0){
+                    //没有闯关
+                    ivButcher.setImageResource(EUExUtil.getResDrawableID("kkl_checkpoint01_00"));
+                    return;
+                }
+                if(finishItemCount> 0 &&correctItemCount==0){
+                    //全错
+                    ivButcher.setImageResource(EUExUtil.getResDrawableID("kkl_checkpoint01_01"));
+                }else if(correctItemCount>0 && totalItemCount>0 && correctItemCount==totalItemCount) {
+                    //三颗星
+                    stuffStats=true;
+                    ivButcher.setImageResource(EUExUtil.getResDrawableID("kkl_checkpoint01_04"));
+                } else if (totalItemCount>0 &&correctItemCount==1 ){
+                    //一颗星
+                    stuffStats=true;
+                    ivButcher.setImageResource(EUExUtil.getResDrawableID("kkl_checkpoint01_02"));
+                }else {
+                    //两颗星
+                    stuffStats=true;
+                    ivButcher.setImageResource(EUExUtil.getResDrawableID("kkl_checkpoint01_03"));
+                }
+
+            }else if(quizListBean.getDisplayOrder()==2 ){
+                int totalItemCount=quizListBean.getTotalItemCount();
+                int correctItemCount=quizListBean.getCorrectItemCount();
+                int finishItemCount=quizListBean.getFinishItemCount();
+
+                //是否显示错题判断
+                if(correctItemCount>0&& totalItemCount>0 && correctItemCount==totalItemCount){
+                    isErrorsStuff=false;
+                }else if(correctItemCount==0 &&correctItemCount==totalItemCount){
+                    isErrorsStuff=false;
+                }else{
+                    isErrorsStuff=true;
+                }
+                stuffRecordId=quizListBean.getLevelRecordId();
+                //大显身手
+                if(!stuffStats){
+                    //没有权限开启闯关
+                    ivShow.setImageResource(EUExUtil.getResDrawableID("kkl_checkpoint02_00"));
+                }
+
+                if(finishItemCount==0 && correctItemCount==0){
+                    //没有闯关
+                    ivShow.setImageResource(EUExUtil.getResDrawableID("kkl_checkpoint02_01"));
+                    return;
+                }
+                if(totalItemCount>0 &&correctItemCount==0){
+                    //全错
+                    ivShow.setImageResource(EUExUtil.getResDrawableID("kkl_checkpoint02_02"));
+                } else if (totalItemCount>0 && correctItemCount==1 ){
+                    //一颗星
+                    ivShow.setImageResource(EUExUtil.getResDrawableID("kkl_checkpoint02_03"));
+                }else if(correctItemCount>0 && totalItemCount>0 && correctItemCount==totalItemCount) {
+                    //三颗星
+                    ivShow.setImageResource(EUExUtil.getResDrawableID("kkl_checkpoint02_05"));
+                }else {
+                    //两颗星
+                    ivShow.setImageResource(EUExUtil.getResDrawableID("kkl_checkpoint02_04"));
+                }
+
+            }
+        }
     }
 
     /**

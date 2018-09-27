@@ -1,5 +1,7 @@
 package com.kekelian.callBack;
 
+import android.support.annotation.NonNull;
+
 public interface OnFragmentCallBack {
     /**
      * @param type
@@ -14,5 +16,5 @@ public interface OnFragmentCallBack {
      * @param levelTypeName 关卡类型
      * @param RecordId 做题的id
      */
-     void onDoExerciseCallBack(String levelTypeName,String RecordId);
+     void onDoExerciseCallBack(@NonNull String levelTypeName, @NonNull String RecordId);
 }
