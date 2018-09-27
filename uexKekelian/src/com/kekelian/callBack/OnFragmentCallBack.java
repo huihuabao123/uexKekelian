@@ -13,8 +13,9 @@ public interface OnFragmentCallBack {
 
     /**
      * 跳转到做题界面
+     * @param  isErrored //是否是错做题
      * @param levelTypeName 关卡类型
      * @param RecordId 做题的id
      */
-     void onDoExerciseCallBack(@NonNull String levelTypeName, @NonNull String RecordId);
+     void onDoExerciseCallBack(@NonNull String isErrored,@NonNull String levelTypeName, @NonNull String RecordId);
 }

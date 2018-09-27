@@ -49,10 +49,10 @@ public class ExameDialog {
         Window window = dialog.getWindow();
         WindowManager.LayoutParams params = window.getAttributes();
 //        params.x = 10;
-        params.y = 120;
+//        params.y = 120;
 //        params.width = 220;
 //        params.height = 200;
-        window.setAttributes(params);
+//        window.setAttributes(params);
         dialog.getWindow().setGravity(Gravity.CENTER);//可以设置显示的位置
         dialog.setContentView(pView);
     }

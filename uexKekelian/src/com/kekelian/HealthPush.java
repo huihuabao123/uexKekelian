@@ -321,23 +321,27 @@ public class HealthPush extends FragmentActivity implements OnFragmentCallBack,O
 
     }
 
-
     /**
      * 跳转做题的界面
-     * @param levelTypeName 关卡的名称
-     * @param recordId
+     * @param  isErrored //是否是错做题
+     * @param levelTypeName 关卡类型
+     * @param RecordId 做题的id
      */
     @Override
-    public void onDoExerciseCallBack(@NonNull String levelTypeName, @NonNull String recordId) {
+    public void onDoExerciseCallBack(@NonNull String isErrored, @NonNull String levelTypeName, @NonNull String RecordId) {
         JSONObject jsonObject = new JSONObject();
         try {
+            jsonObject.put("isErrored",isErrored);
             jsonObject.put("levelTypeName", levelTypeName);
-            jsonObject.put("exerciseRecordId",recordId);
+            jsonObject.put("exerciseRecordId",RecordId);
             mUexBaseObj.callBackPluginJs(EUExKekelian.CALLBACK_ON_FRAGMENT_DO_EXERCISE,jsonObject.toString());
         } catch (JSONException e) {
             Log.i(TAG, String.valueOf(e.getMessage()));
         }
     }
+
+
+
 
     @Override
     public void onResumeCallBack() {

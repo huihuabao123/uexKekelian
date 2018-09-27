@@ -47,6 +47,7 @@ public class UnitTestFragment extends Fragment {
     private Boolean isLocked;
 
     private String unitTestRecordId;
+    private String isErrors="false";
 
     public static UnitTestFragment newInstance(String userid,String menuid,Boolean isVip) {
         UnitTestFragment fragment = new UnitTestFragment();
@@ -138,10 +139,10 @@ public class UnitTestFragment extends Fragment {
             tvBlock.setVisibility(View.VISIBLE);
             ivStatus.setImageResource(EUExUtil.getResDrawableID("kkl_img05_lock"));
             return;
+
         }
         if(finishItemCount==0){
-            tvBlock.setText("请完成所有课时的小试牛刀哦！");
-            tvBlock.setVisibility(View.VISIBLE);
+            tvBlock.setVisibility(View.GONE);
             ivStatus.setImageResource(EUExUtil.getResDrawableID("kkl_img05_unlock"));
             return;
         }
@@ -155,6 +156,7 @@ public class UnitTestFragment extends Fragment {
                 ivStar.setVisibility(View.GONE);
             }else if(correctItemCount>0 && totalItemCount>0 && correctItemCount==totalItemCount) {
                 //三颗星
+                isErrors="true";
                 ivStar.setImageResource(EUExUtil.getResDrawableID("star01"));
             } else if (totalItemCount>0 && correctItemCount==1 ){
                 //一颗星
@@ -193,7 +195,7 @@ public class UnitTestFragment extends Fragment {
                         popExameStatus.pop();
                     }else {
                         //跳转做题界面
-                        onFragmentCallBack.onDoExerciseCallBack("单元测验",unitTestRecordId);
+                        onFragmentCallBack.onDoExerciseCallBack(isErrors,"单元测验",unitTestRecordId);
                     }
 
                 }
@@ -204,7 +206,7 @@ public class UnitTestFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 //跳转做题界面
-                onFragmentCallBack.onDoExerciseCallBack("单元测验",unitTestRecordId);
+                onFragmentCallBack.onDoExerciseCallBack(isErrors,"单元测验",unitTestRecordId);
             }
         });
 

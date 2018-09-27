@@ -53,8 +53,9 @@ public class CourseItemFragment extends Fragment {
 
     private String balladeRecordId;
     private String stuffRecordId;
-    //是否显示错题
-    private boolean isErrorsStuff=false;
+    private String isErrorStuff="false";
+    private String isErrorBallade="false";
+
     private KKLLessionListBean.MessageBean.DataBean.LessonTabRecordBean dataBean;
 
     private OnFragmentCallBack onFragmentCallBack;
@@ -170,10 +171,11 @@ public class CourseItemFragment extends Fragment {
                 }
                 if(finishItemCount> 0 &&correctItemCount==0){
                     //全错
-                    ivButcher.setImageResource(EUExUtil.getResDrawableID("kkl_checkpoint01_01"));
+                    ivButcher.setImageResource(EUExUtil.getResDrawableID("kkl_checkpoint01_00"));
                 }else if(correctItemCount>0 && totalItemCount>0 && correctItemCount==totalItemCount) {
                     //三颗星
                     stuffStats=true;
+                    isErrorBallade="true";
                     ivButcher.setImageResource(EUExUtil.getResDrawableID("kkl_checkpoint01_04"));
                 } else if (totalItemCount>0 &&correctItemCount==1 ){
                     //一颗星
@@ -190,14 +192,7 @@ public class CourseItemFragment extends Fragment {
                 int correctItemCount=quizListBean.getCorrectItemCount();
                 int finishItemCount=quizListBean.getFinishItemCount();
 
-                //是否显示错题判断
-                if(correctItemCount>0&& totalItemCount>0 && correctItemCount==totalItemCount){
-                    isErrorsStuff=false;
-                }else if(correctItemCount==0 &&correctItemCount==totalItemCount){
-                    isErrorsStuff=false;
-                }else{
-                    isErrorsStuff=true;
-                }
+
                 stuffRecordId=quizListBean.getLevelRecordId();
                 //大显身手
                 if(!stuffStats){
@@ -212,12 +207,13 @@ public class CourseItemFragment extends Fragment {
                 }
                 if(totalItemCount>0 &&correctItemCount==0){
                     //全错
-                    ivShow.setImageResource(EUExUtil.getResDrawableID("kkl_checkpoint02_02"));
+                    ivShow.setImageResource(EUExUtil.getResDrawableID("kkl_checkpoint02_00"));
                 } else if (totalItemCount>0 && correctItemCount==1 ){
                     //一颗星
                     ivShow.setImageResource(EUExUtil.getResDrawableID("kkl_checkpoint02_03"));
                 }else if(correctItemCount>0 && totalItemCount>0 && correctItemCount==totalItemCount) {
                     //三颗星
+                    isErrorStuff="true";
                     ivShow.setImageResource(EUExUtil.getResDrawableID("kkl_checkpoint02_05"));
                 }else {
                     //两颗星
@@ -257,7 +253,7 @@ public class CourseItemFragment extends Fragment {
                         return;
                     }
                     //跳转做题界面
-                    onFragmentCallBack.onDoExerciseCallBack("大显身手",stuffRecordId);
+                    onFragmentCallBack.onDoExerciseCallBack(isErrorStuff,"大显身手",stuffRecordId);
                 }
             }
         });
@@ -288,7 +284,7 @@ public class CourseItemFragment extends Fragment {
                     });
                 }else {
                       //跳转做题界面
-                    onFragmentCallBack.onDoExerciseCallBack("小试牛刀",balladeRecordId);
+                    onFragmentCallBack.onDoExerciseCallBack(isErrorBallade,"小试牛刀",balladeRecordId);
 
                 }
             }
