@@ -15,26 +15,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9f1b121d-1b30-4195-8fd8-e32da63975e8" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/uexKekelian/res/layout/activity_score_report.xml" afterPath="$PROJECT_DIR$/uexKekelian/res/layout/activity_score_report.xml" />
-      <change beforePath="$PROJECT_DIR$/uexKekelian/src/com/kekelian/HealthPush.java" afterPath="$PROJECT_DIR$/uexKekelian/src/com/kekelian/HealthPush.java" />
-      <change beforePath="$PROJECT_DIR$/uexKekelian/src/com/kekelian/ScoreReport.java" afterPath="$PROJECT_DIR$/uexKekelian/src/com/kekelian/ScoreReport.java" />
-      <change beforePath="$PROJECT_DIR$/uexKekelian/src/com/kekelian/callBack/OnFragmentCallBack.java" afterPath="$PROJECT_DIR$/uexKekelian/src/com/kekelian/callBack/OnFragmentCallBack.java" />
-      <change beforePath="$PROJECT_DIR$/uexKekelian/src/com/kekelian/dialog/ExameDialog.java" afterPath="$PROJECT_DIR$/uexKekelian/src/com/kekelian/dialog/ExameDialog.java" />
-      <change beforePath="$PROJECT_DIR$/uexKekelian/src/com/kekelian/dialog/LevelDialog.java" afterPath="$PROJECT_DIR$/uexKekelian/src/com/kekelian/dialog/LevelDialog.java" />
-      <change beforePath="$PROJECT_DIR$/uexKekelian/src/com/kekelian/dialog/VipDialog.java" afterPath="$PROJECT_DIR$/uexKekelian/src/com/kekelian/dialog/VipDialog.java" />
-      <change beforePath="$PROJECT_DIR$/uexKekelian/src/com/kekelian/fragment/CourseItemFragment.java" afterPath="$PROJECT_DIR$/uexKekelian/src/com/kekelian/fragment/CourseItemFragment.java" />
-      <change beforePath="$PROJECT_DIR$/uexKekelian/src/com/kekelian/fragment/UnitTestFragment.java" afterPath="$PROJECT_DIR$/uexKekelian/src/com/kekelian/fragment/UnitTestFragment.java" />
       <change beforePath="$PROJECT_DIR$/uexKekelian/uexKekelian-android-4.0.0.zip" afterPath="$PROJECT_DIR$/uexKekelian/uexKekelian-android-4.0.0.zip" />
       <change beforePath="$PROJECT_DIR$/uexKekelian/uexKekelian/dex/plugin_uexKekelian_dex.jar" afterPath="$PROJECT_DIR$/uexKekelian/uexKekelian/dex/plugin_uexKekelian_dex.jar" />
       <change beforePath="$PROJECT_DIR$/uexKekelian/uexKekelian/jar/plugin_uexKekelian.jar" afterPath="$PROJECT_DIR$/uexKekelian/uexKekelian/jar/plugin_uexKekelian.jar" />
-      <change beforePath="$PROJECT_DIR$/uexKekelian/uexKekelian/res/drawable-hdpi/kkl_bg06.png" afterPath="$PROJECT_DIR$/uexKekelian/uexKekelian/res/drawable-hdpi/kkl_bg06.png" />
-      <change beforePath="$PROJECT_DIR$/uexKekelian/uexKekelian/res/drawable-xhdpi/kkl_bg06.png" afterPath="$PROJECT_DIR$/uexKekelian/uexKekelian/res/drawable-xhdpi/kkl_bg06.png" />
-      <change beforePath="$PROJECT_DIR$/uexKekelian/uexKekelian/res/drawable-xxhdpi/kkl_bg06.png" afterPath="$PROJECT_DIR$/uexKekelian/uexKekelian/res/drawable-xxhdpi/kkl_bg06.png" />
-      <change beforePath="$PROJECT_DIR$/uexKekelian/uexKekelian/res/drawable-xxxhdpi/kkl_bg06.png" afterPath="$PROJECT_DIR$/uexKekelian/uexKekelian/res/drawable-xxxhdpi/kkl_bg06.png" />
-      <change beforePath="$PROJECT_DIR$/uexKekelian/uexKekelian/res/layout/activity_score_report.xml" afterPath="$PROJECT_DIR$/uexKekelian/uexKekelian/res/layout/activity_score_report.xml" />
-      <change beforePath="$PROJECT_DIR$/uexKekelian/uexKekelian/res/layout/pop_exame_status.xml" afterPath="$PROJECT_DIR$/uexKekelian/uexKekelian/res/layout/pop_exame_status.xml" />
+      <change beforePath="$PROJECT_DIR$/uexKekelian/uexKekelian/res/layout/activity_no_topic.xml" afterPath="$PROJECT_DIR$/uexKekelian/uexKekelian/res/layout/activity_no_topic.xml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -2054,7 +2039,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/uexKekelian/res/layout/course_item_fragment.xml" />
         <option value="$PROJECT_DIR$/uexKekelian/uexKekelian/res/values/dimens.xml" />
         <option value="$PROJECT_DIR$/uexKekelian/src/com/kekelian/adapter/MyViewPagerAdapter.java" />
         <option value="$PROJECT_DIR$/uexKekelian/res/layout/unit_test_fragment.xml" />
@@ -2105,6 +2089,7 @@
         <option value="$PROJECT_DIR$/uexKekelian/src/com/kekelian/fragment/UnitTestFragment.java" />
         <option value="$PROJECT_DIR$/uexKekelian/src/com/kekelian/HealthPush.java" />
         <option value="$PROJECT_DIR$/uexKekelian/src/com/kekelian/fragment/CourseItemFragment.java" />
+        <option value="$PROJECT_DIR$/uexKekelian/uexKekelian/res/layout/activity_no_topic.xml" />
       </list>
     </option>
   </component>
@@ -2214,6 +2199,14 @@
               <item name="uexKekelian" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="uexKekelian" type="462c0819:PsiDirectoryNode" />
               <item name="res" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="appcan-plugin-kekelian" type="b2602c69:ProjectViewProjectNode" />
+              <item name="appcan-plugin-kekelian" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="uexKekelian" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="uexKekelian" type="462c0819:PsiDirectoryNode" />
+              <item name="res" type="462c0819:PsiDirectoryNode" />
+              <item name="layout" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="appcan-plugin-kekelian" type="b2602c69:ProjectViewProjectNode" />
@@ -2507,7 +2500,7 @@
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20526598" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.36098656" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18914562" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18914562" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Device File Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3299356" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -2578,13 +2571,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$PROJECT_DIR$/uexKekelian/libs/okhttp-3.4.1.jar!/okhttp3/internal/http/HttpStream.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="14" column="17" lean-forward="false" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$PROJECT_DIR$/uexKekelian/libs/okhttp-3.4.1.jar!/okhttp3/Connection.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="168">
@@ -3029,6 +3015,17 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="278">
           <caret line="177" column="41" lean-forward="false" selection-start-line="177" selection-start-column="35" selection-end-line="177" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/uexKekelian/uexKekelian/res/layout/activity_no_topic.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="215">
+          <caret line="28" column="35" lean-forward="false" selection-start-line="28" selection-start-column="35" selection-end-line="28" selection-end-column="35" />
           <folding />
         </state>
       </provider>
