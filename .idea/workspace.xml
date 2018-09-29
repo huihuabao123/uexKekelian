@@ -18,7 +18,6 @@
     <list default="true" id="9f1b121d-1b30-4195-8fd8-e32da63975e8" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/uexKekelian/src/com/kekelian/fragment/CourseItemFragment.java" afterPath="$PROJECT_DIR$/uexKekelian/src/com/kekelian/fragment/CourseItemFragment.java" />
-      <change beforePath="$PROJECT_DIR$/uexKekelian/src/com/kekelian/fragment/UnitTestFragment.java" afterPath="$PROJECT_DIR$/uexKekelian/src/com/kekelian/fragment/UnitTestFragment.java" />
       <change beforePath="$PROJECT_DIR$/uexKekelian/uexKekelian-android-4.0.0.zip" afterPath="$PROJECT_DIR$/uexKekelian/uexKekelian-android-4.0.0.zip" />
       <change beforePath="$PROJECT_DIR$/uexKekelian/uexKekelian/dex/plugin_uexKekelian_dex.jar" afterPath="$PROJECT_DIR$/uexKekelian/uexKekelian/dex/plugin_uexKekelian_dex.jar" />
       <change beforePath="$PROJECT_DIR$/uexKekelian/uexKekelian/jar/plugin_uexKekelian.jar" afterPath="$PROJECT_DIR$/uexKekelian/uexKekelian/jar/plugin_uexKekelian.jar" />
@@ -78,8 +77,8 @@
       <file leaf-file-name="CourseItemFragment.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/uexKekelian/src/com/kekelian/fragment/CourseItemFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2151">
-              <caret line="214" column="30" lean-forward="false" selection-start-line="214" selection-start-column="30" selection-end-line="214" selection-end-column="30" />
+            <state relative-caret-position="-1181">
+              <caret line="190" column="30" lean-forward="false" selection-start-line="190" selection-start-column="30" selection-end-line="190" selection-end-column="30" />
               <folding />
             </state>
           </provider>
@@ -88,7 +87,7 @@
       <file leaf-file-name="UnitTestFragment.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/uexKekelian/src/com/kekelian/fragment/UnitTestFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
+            <state relative-caret-position="537">
               <caret line="167" column="81" lean-forward="false" selection-start-line="167" selection-start-column="65" selection-end-line="167" selection-end-column="81" />
               <folding />
             </state>
@@ -2111,8 +2110,8 @@
         <option value="$PROJECT_DIR$/uexKekelian/uexKekelian/res/layout/activity_no_topic.xml" />
         <option value="$PROJECT_DIR$/uexKekelian/src/com/kekelian/HealthPush.java" />
         <option value="$PROJECT_DIR$/uexKekelian/src/com/kekelian/ScoreReport.java" />
-        <option value="$PROJECT_DIR$/uexKekelian/src/com/kekelian/fragment/CourseItemFragment.java" />
         <option value="$PROJECT_DIR$/uexKekelian/src/com/kekelian/fragment/UnitTestFragment.java" />
+        <option value="$PROJECT_DIR$/uexKekelian/src/com/kekelian/fragment/CourseItemFragment.java" />
       </list>
     </option>
   </component>
@@ -2148,19 +2147,6 @@
               <item name="appcan-plugin-kekelian" type="b2602c69:ProjectViewProjectNode" />
               <item name="appcan-plugin-kekelian" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="uexKekelian" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-            </path>
-            <path>
-              <item name="appcan-plugin-kekelian" type="b2602c69:ProjectViewProjectNode" />
-              <item name="appcan-plugin-kekelian" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="uexKekelian" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="res" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="appcan-plugin-kekelian" type="b2602c69:ProjectViewProjectNode" />
-              <item name="appcan-plugin-kekelian" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="uexKekelian" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="res" type="462c0819:PsiDirectoryNode" />
-              <item name="drawable-xxhdpi" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="appcan-plugin-kekelian" type="b2602c69:ProjectViewProjectNode" />
@@ -2508,7 +2494,7 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5414798" sideWeight="0.5029554" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28264374" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.37668163" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37668163" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295964" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.51793724" sideWeight="0.49785408" order="7" side_tool="false" content_ui="tabs" x="28" y="241" width="1864" height="558" />
@@ -2517,7 +2503,7 @@
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20526598" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.36098656" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18914562" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18914562" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39910313" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Device File Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3299356" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
@@ -2926,15 +2912,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/uexKekelian/src/com/kekelian/fragment/CourseItemFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2151">
-          <caret line="214" column="30" lean-forward="false" selection-start-line="214" selection-start-column="30" selection-end-line="214" selection-end-column="30" />
+        <state relative-caret-position="-1181">
+          <caret line="190" column="30" lean-forward="false" selection-start-line="190" selection-start-column="30" selection-end-line="190" selection-end-column="30" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/uexKekelian/src/com/kekelian/fragment/UnitTestFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
+        <state relative-caret-position="537">
           <caret line="167" column="81" lean-forward="false" selection-start-line="167" selection-start-column="65" selection-end-line="167" selection-end-column="81" />
           <folding />
         </state>

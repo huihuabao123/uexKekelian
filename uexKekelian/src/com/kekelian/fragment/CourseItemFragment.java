@@ -188,7 +188,7 @@ public class CourseItemFragment extends Fragment {
                             ivButcher.setImageResource(EUExUtil.getResDrawableID("kkl_checkpoint01_03"));
                         }
                     }else {
-                        //全错
+                        //没有题目
                         ivButcher.setImageResource(EUExUtil.getResDrawableID("kkl_checkpoint01_00"));
                     }
                 }
@@ -215,14 +215,14 @@ public class CourseItemFragment extends Fragment {
                         }else if( correctItemCount==0){
                             //全错
                             ivShow.setImageResource(EUExUtil.getResDrawableID("kkl_checkpoint02_01"));
-                        } else if ( correctItemCount==1 ){
-                            //一颗星
-                            ivShow.setImageResource(EUExUtil.getResDrawableID("kkl_checkpoint02_03"));
                         }else if( correctItemCount==totalItemCount) {
                             //三颗星
                             isErrorStuff="true";
                             ivShow.setImageResource(EUExUtil.getResDrawableID("kkl_checkpoint02_05"));
-                        }else {
+                        } else if ( correctItemCount==1 ){
+                            //一颗星
+                            ivShow.setImageResource(EUExUtil.getResDrawableID("kkl_checkpoint02_03"));
+                        } else {
                             //两颗星
                             ivShow.setImageResource(EUExUtil.getResDrawableID("kkl_checkpoint02_04"));
                         }
