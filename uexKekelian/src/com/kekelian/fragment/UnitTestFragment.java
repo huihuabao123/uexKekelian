@@ -143,7 +143,7 @@ public class UnitTestFragment extends Fragment {
         }
 
 
-        if(finishItemCount>0 && totalItemCount>0 ){
+        if(totalItemCount>0 ){
             tvBlock.setVisibility(View.GONE);
             ivStatus.setVisibility(View.GONE);
             llScoreStar.setVisibility(View.VISIBLE);
