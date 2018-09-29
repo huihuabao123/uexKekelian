@@ -194,30 +194,34 @@ public class CourseItemFragment extends Fragment {
 
 
                 stuffRecordId=quizListBean.getLevelRecordId();
-                //大显身手
                 if(!stuffStats){
                     //没有权限开启闯关
                     ivShow.setImageResource(EUExUtil.getResDrawableID("kkl_checkpoint02_00"));
-                }
+                }else{
+                    if(totalItemCount>0){
+                        //大显身手
+                        if(finishItemCount==0 && correctItemCount==0){
+                            //没有闯关
+                            ivShow.setImageResource(EUExUtil.getResDrawableID("kkl_checkpoint02_01"));
 
-                if(finishItemCount==0 && correctItemCount==0){
-                    //没有闯关
-                    ivShow.setImageResource(EUExUtil.getResDrawableID("kkl_checkpoint02_01"));
-                    return;
-                }
-                if(totalItemCount>0 &&correctItemCount==0){
-                    //全错
-                    ivShow.setImageResource(EUExUtil.getResDrawableID("kkl_checkpoint02_00"));
-                } else if (totalItemCount>0 && correctItemCount==1 ){
-                    //一颗星
-                    ivShow.setImageResource(EUExUtil.getResDrawableID("kkl_checkpoint02_03"));
-                }else if(correctItemCount>0 && totalItemCount>0 && correctItemCount==totalItemCount) {
-                    //三颗星
-                    isErrorStuff="true";
-                    ivShow.setImageResource(EUExUtil.getResDrawableID("kkl_checkpoint02_05"));
-                }else {
-                    //两颗星
-                    ivShow.setImageResource(EUExUtil.getResDrawableID("kkl_checkpoint02_04"));
+                        }if( correctItemCount==0){
+                            //全错
+                            ivShow.setImageResource(EUExUtil.getResDrawableID("kkl_checkpoint02_01"));
+                        } else if ( correctItemCount==1 ){
+                            //一颗星
+                            ivShow.setImageResource(EUExUtil.getResDrawableID("kkl_checkpoint02_03"));
+                        }else if( correctItemCount==totalItemCount) {
+                            //三颗星
+                            isErrorStuff="true";
+                            ivShow.setImageResource(EUExUtil.getResDrawableID("kkl_checkpoint02_05"));
+                        }else {
+                            //两颗星
+                            ivShow.setImageResource(EUExUtil.getResDrawableID("kkl_checkpoint02_04"));
+                        }
+                    }else {
+                        //没有闯关
+                        ivShow.setImageResource(EUExUtil.getResDrawableID("kkl_checkpoint02_00"));
+                    }
                 }
 
             }

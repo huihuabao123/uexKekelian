@@ -141,12 +141,9 @@ public class UnitTestFragment extends Fragment {
             return;
 
         }
-        if(finishItemCount==0){
-            tvBlock.setVisibility(View.GONE);
-            ivStatus.setImageResource(EUExUtil.getResDrawableID("kkl_img05_unlock"));
-            return;
-        }
-        if(finishItemCount>0 ){
+
+
+        if(finishItemCount>0 && totalItemCount>0 ){
             tvBlock.setVisibility(View.GONE);
             ivStatus.setVisibility(View.GONE);
             llScoreStar.setVisibility(View.VISIBLE);
@@ -154,11 +151,11 @@ public class UnitTestFragment extends Fragment {
             if(correctItemCount==0){
                 //全错
                 ivStar.setVisibility(View.GONE);
-            }else if(correctItemCount>0 && totalItemCount>0 && correctItemCount==totalItemCount) {
+            }else if( correctItemCount==totalItemCount) {
                 //三颗星
                 isErrors="true";
                 ivStar.setImageResource(EUExUtil.getResDrawableID("star01"));
-            } else if (totalItemCount>0 && correctItemCount==1 ){
+            } else if ( correctItemCount==1 ){
                 //一颗星
                 ivStar.setImageResource(EUExUtil.getResDrawableID("star03"));
             }else {
@@ -166,6 +163,9 @@ public class UnitTestFragment extends Fragment {
                 ivStar.setImageResource(EUExUtil.getResDrawableID("star02"));
             }
 
+        }else {
+            tvBlock.setVisibility(View.GONE);
+            ivStatus.setImageResource(EUExUtil.getResDrawableID("kkl_img05_unlock"));
         }
 
     }

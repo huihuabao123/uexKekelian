@@ -138,6 +138,8 @@ public class HealthPush extends FragmentActivity implements OnFragmentCallBack,O
                   recordBean=result.getMessage().getData().getUnitTestTabRecord();
                   setChangelView();
                   showContent();
+                }else{
+                    showErrorNet();
                 }
             }
 
