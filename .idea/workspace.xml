@@ -17,17 +17,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9f1b121d-1b30-4195-8fd8-e32da63975e8" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle____local_aars___E__workspace_appcan_plugin_kekelian_uexKekelian_libs_glide_3_7_0_jar_unspecified_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle____local_aars___E__workspace_appcan_plugin_kekelian_uexKekelian_libs_okhttp_3_4_1_jar_unspecified_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle____local_aars___E__workspace_appcan_plugin_kekelian_uexKekelian_libs_okio_1_9_0_jar_unspecified_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__engine_4_0_0_systemRelease__aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uexKekelian/src/com/kekelian/HealthPush.java" beforeDir="false" afterPath="$PROJECT_DIR$/uexKekelian/src/com/kekelian/HealthPush.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/uexKekelian/src/com/kekelian/net/Api.java" beforeDir="false" afterPath="$PROJECT_DIR$/uexKekelian/src/com/kekelian/net/Api.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uexKekelian/uexKekelian-android-4.0.0.zip" beforeDir="false" afterPath="$PROJECT_DIR$/uexKekelian/uexKekelian-android-4.0.0.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uexKekelian/uexKekelian/dex/plugin_uexKekelian_dex.jar" beforeDir="false" afterPath="$PROJECT_DIR$/uexKekelian/uexKekelian/dex/plugin_uexKekelian_dex.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uexKekelian/uexKekelian/jar/plugin_uexKekelian.jar" beforeDir="false" afterPath="$PROJECT_DIR$/uexKekelian/uexKekelian/jar/plugin_uexKekelian.jar" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -109,7 +99,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="HealthPush.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="HealthPush.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/uexKekelian/src/com/kekelian/HealthPush.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="351">
@@ -170,11 +160,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Api.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Api.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/uexKekelian/src/com/kekelian/net/Api.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="297">
-              <caret line="11" column="7" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
+            <state relative-caret-position="81">
+              <caret line="3" column="59" selection-start-line="3" selection-start-column="59" selection-end-line="3" selection-end-column="59" />
             </state>
           </provider>
         </entry>
@@ -2217,8 +2207,8 @@
         <option value="$PROJECT_DIR$/uexKekelian/src/com/kekelian/fragment/CourseItemFragment.java" />
         <option value="$PROJECT_DIR$/uexKekelian/build.gradle" />
         <option value="$PROJECT_DIR$/uexKekelian/uexKekelian/res/layout/course_item_fragment.xml" />
-        <option value="$PROJECT_DIR$/uexKekelian/src/com/kekelian/net/Api.java" />
         <option value="$PROJECT_DIR$/uexKekelian/src/com/kekelian/HealthPush.java" />
+        <option value="$PROJECT_DIR$/uexKekelian/src/com/kekelian/net/Api.java" />
       </list>
     </option>
   </component>
@@ -2614,7 +2604,7 @@
       <window_info id="Captures" order="2" weight="0.25" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21117678" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21117678" />
       <window_info anchor="bottom" id="Build" order="7" weight="0.36076662" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.4970446" weight="0.5414798" />
       <window_info anchor="right" id="Gradle" order="3" visible="true" weight="0.1262762" />
@@ -3051,13 +3041,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/uexKekelian/assets/widget/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="291">
-          <caret line="50" column="32" selection-start-line="50" selection-start-column="18" selection-end-line="50" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/uexKekelian/src/com/kekelian/fragment/UnitTestFragment.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="446">
@@ -3072,13 +3055,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/uexKekelian/src/com/kekelian/net/Api.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="11" column="7" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/uexKekelian/src/com/kekelian/fragment/CourseItemFragment.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="305">
@@ -3087,6 +3063,13 @@
             <element signature="e#3732#4130#0" expanded="true" />
             <element signature="e#4129#4130#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/uexKekelian/assets/widget/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="291">
+          <caret line="50" column="32" selection-start-line="50" selection-start-column="18" selection-end-line="50" selection-end-column="32" />
         </state>
       </provider>
     </entry>
@@ -3106,6 +3089,13 @@
             <element signature="e#14313#14548#0" expanded="true" />
             <element signature="e#14547#14548#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/uexKekelian/src/com/kekelian/net/Api.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="81">
+          <caret line="3" column="59" selection-start-line="3" selection-start-column="59" selection-end-line="3" selection-end-column="59" />
         </state>
       </provider>
     </entry>
