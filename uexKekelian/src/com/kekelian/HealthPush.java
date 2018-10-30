@@ -48,11 +48,11 @@ import org.zywx.wbpalmstar.engine.universalex.EUExUtil;
 import java.util.ArrayList;
 
 
-public class HealthPush extends FragmentActivity implements OnFragmentCallBack,OnResumeCallBackListener {
-    private static final String TAG="HealthPush";
+public class HealthPush extends FragmentActivity implements OnFragmentCallBack, OnResumeCallBackListener {
+    private static final String TAG = "HealthPush";
     private EUExKekelian mUexBaseObj;
     private InfoBean infoBean;
-    private boolean isVip=false;
+    private boolean isVip = false;
     // View
     private HorizontalScrollView mColumnHorizontalScrollView;
     private LinearLayout mColumnContent;
@@ -72,39 +72,49 @@ public class HealthPush extends FragmentActivity implements OnFragmentCallBack,O
     private TextView tvTitle;
     private ImageView ivLoad;
 
-    /** fragment适配器 */
+    /**
+     * fragment适配器
+     */
     private IntegralFragmentPagerAdapter mAdapetr;
-    /** 当前选中的类别 */
+    /**
+     * 当前选中的类别
+     */
     private int columnSelectIndex = 1;
-    /** 屏幕宽度 */
+    /**
+     * 屏幕宽度
+     */
     private int mScreenWidth = 0;
-    /** Item宽度 */
+    /**
+     * Item宽度
+     */
     private int mItemWidth = 0;
 
     //存放tabItem的文本 模拟数据源
     private ArrayList<KKLLessionListBean.MessageBean.DataBean.LessonTabRecordBean> list = new ArrayList<>();
     private UnitTestTabRecordBean recordBean;
-    /** Fragment列表 */
+    /**
+     * Fragment列表
+     */
     private ArrayList<Fragment> fragments;
     /**
      * 指示器动画联动
      */
-    private Handler handler=new Handler(){
+    private Handler handler = new Handler() {
         public void handleMessage(android.os.Message msg) {
-            initStartAnimation(msg.arg1, (Float)msg.obj);		//移动指示器
+            initStartAnimation(msg.arg1, (Float) msg.obj);        //移动指示器
         }
     };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mUexBaseObj =  getIntent().getParcelableExtra(EUExKekelian.BASE);
+        mUexBaseObj = getIntent().getParcelableExtra(EUExKekelian.BASE);
         mUexBaseObj.setOnResumeCallBackListener(this);
-        infoBean=getIntent().getParcelableExtra(EUExKekelian.INFO);
-        if("Y".equals(infoBean.getIsVip())){
-            isVip=true;
+        infoBean = getIntent().getParcelableExtra(EUExKekelian.INFO);
+        if ("Y".equals(infoBean.getIsVip())) {
+            isVip = true;
         }
-        Log.i(TAG,"HealthPush---->onCreate()");
+        Log.i(TAG, "HealthPush---->onCreate()");
         setContentView(EUExUtil.getResLayoutID("hpush_activity"));
         initView();
         getKekelianList();
@@ -112,66 +122,84 @@ public class HealthPush extends FragmentActivity implements OnFragmentCallBack,O
     }
 
 
-
     private void getKekelianList() {
         showPreload();
-        String params="?menuId="+infoBean.getMenuId()+"&userId="+infoBean.getUserId();
+        String params = "?menuId=" + infoBean.getMenuId() + "&userId=" + infoBean.getUserId();
         HttpClient.get(this, Api.GET_KEKELIAN_LIST + params, new CallBack<KKLLessionListBean>() {
             @Override
             public void onSuccess(KKLLessionListBean result) {
-                if(result==null){
+                if (result == null) {
                     return;
                 }
-                if(result.getMessage().isStatus()){
+                if (result.getMessage().isStatus()) {
                     ivLoad.setVisibility(View.GONE);
                     rlLoad.setVisibility(View.VISIBLE);
-                  list.clear();
-                  list.addAll(result.getMessage().getData().getLessonTabRecord());
-                  //计算第一个小试牛刀未完成的下标
-                  for (int i=0;i<list.size();i++){
-                      if(list.get(i).getFinishProgress()==0){
-                          columnSelectIndex=i;
-                          break;
-                      }
-                  }
-                  Log.i(TAG,"tab的数量："+list.size());
-                  recordBean=result.getMessage().getData().getUnitTestTabRecord();
-                  setChangelView();
-                  showContent();
-                }else{
+                    list.clear();
+                    list.addAll(result.getMessage().getData().getLessonTabRecord());
+                    int progress = -1;
+                    //计算第一个小试牛刀未完成的下标
+                    for (int i = 0; i < list.size(); i++) {
+                        if (list.get(i).getFinishProgress() == 0) {
+                            columnSelectIndex = i;
+                            progress = 0;
+                            break;
+                        }
+                    }
+
+                    if(progress == -1) {
+                        //计算第一个大显身手未完成的下标
+                        for (int j = 0; j < list.size(); j++) {
+                            if (list.get(j).getFinishProgress() == 1) {
+                                columnSelectIndex = j;
+                                progress = 1;
+                                break;
+                            }
+                        }
+
+                        if(progress == -1) {
+                            columnSelectIndex = list.size();
+                        }
+                    }
+
+                    Log.i(TAG, "tab的数量：" + list.size());
+                    recordBean = result.getMessage().getData().getUnitTestTabRecord();
+                    setChangelView();
+                    showContent();
+                } else {
                     showErrorNet();
                 }
             }
-
 
 
         });
     }
 
 
-    /** 初始化layout控件 */
+    /**
+     * 初始化layout控件
+     */
     private void initView() {
-         rlBack=(RelativeLayout)findViewById(EUExUtil.getResIdID("rl_back"));
-         rlBack.setOnClickListener(new OnClickListener() {
-             @Override
-             public void onClick(View v) {
+        rlBack = (RelativeLayout) findViewById(EUExUtil.getResIdID("rl_back"));
+        rlBack.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 mUexBaseObj.closeKekelian(null);
-             }
-         });
-        tvTitle=(TextView) findViewById(EUExUtil.getResIdID("title_name_text"));
+            }
+        });
+        tvTitle = (TextView) findViewById(EUExUtil.getResIdID("title_name_text"));
         tvTitle.setText(infoBean.getUnitTitle());
-        llContent=(LinearLayout)findViewById(EUExUtil.getResIdID("ll_content"));
-        rlLoad=(RelativeLayout)findViewById(EUExUtil.getResIdID("rl_load"));
+        llContent = (LinearLayout) findViewById(EUExUtil.getResIdID("ll_content"));
+        rlLoad = (RelativeLayout) findViewById(EUExUtil.getResIdID("rl_load"));
         //初始化导航条
         mColumnHorizontalScrollView = (HorizontalScrollView) findViewById(EUExUtil.getResIdID("mColumnHorizontalScrollView_IntegralShop"));
         mColumnContent = (LinearLayout) findViewById(EUExUtil.getResIdID("mRadioGroup_content_IntegralShop"));
         mViewPager = (ViewPager) findViewById(EUExUtil.getResIdID("mViewPager_IntegralShop"));
         //初始化指示器
         indicateTV = (TextView) findViewById(EUExUtil.getResIdID("indicateId"));
-        ivLoad=(ImageView) findViewById(EUExUtil.getResIdID("load_view"));
-        llNetWork=(LinearLayout) findViewById(EUExUtil.getResIdID("ll_net_work"));
+        ivLoad = (ImageView) findViewById(EUExUtil.getResIdID("load_view"));
+        llNetWork = (LinearLayout) findViewById(EUExUtil.getResIdID("ll_net_work"));
         indicateParams = (LinearLayout.LayoutParams) indicateTV.getLayoutParams();
-        if(NetworkUtils.getNetworkStatus(this)==-1){
+        if (NetworkUtils.getNetworkStatus(this) == -1) {
             showErrorNet();
         }
 
@@ -212,7 +240,7 @@ public class HealthPush extends FragmentActivity implements OnFragmentCallBack,O
      * 初始化动态加载
      */
     private void setChangelView() {
-        if (list == null || list.size()==0) {
+        if (list == null || list.size() == 0) {
             //第一次进入APP,从网络获取数据
             return;
         }
@@ -224,20 +252,19 @@ public class HealthPush extends FragmentActivity implements OnFragmentCallBack,O
     }
 
 
-
     /**
      * 初始化Column栏目项
-     * */
+     */
     private void initTabColumn() {
         Configuration config = getResources().getConfiguration();
         int smallestScreenWidth = config.smallestScreenWidthDp;
         mScreenWidth = getWindowsWidth(this);
         // 一个Item宽度为屏幕的1/list.size()
-        int count =list.size()+1;
+        int count = list.size() + 1;
 //        int count =list.size();
-        if(count<4 && count>0){
+        if (count < 4 && count > 0) {
             mItemWidth = mScreenWidth / count;
-        }else {
+        } else {
             mItemWidth = mScreenWidth / 4;
         }
         mColumnContent.removeAllViews();
@@ -245,17 +272,17 @@ public class HealthPush extends FragmentActivity implements OnFragmentCallBack,O
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(mItemWidth, LayoutParams.WRAP_CONTENT);
             TextView localTextView = new TextView(this);
             localTextView.setGravity(Gravity.CENTER);
-            localTextView.setPadding(5,0,5,0);
-            if(i==count-1){
+            localTextView.setPadding(5, 0, 5, 0);
+            if (i == count - 1) {
                 localTextView.setText("单元测验");
-            }else {
+            } else {
                 localTextView.setText(list.get(i).getLessonName());
             }
 //            localTextView.setText(list.get(i).getLessonName());
 
-            if(smallestScreenWidth>=600){
+            if (smallestScreenWidth >= 600) {
                 localTextView.setTextSize(25);
-            }else {
+            } else {
                 localTextView.setTextSize(20);
             }
 
@@ -266,39 +293,39 @@ public class HealthPush extends FragmentActivity implements OnFragmentCallBack,O
             mColumnContent.addView(localTextView, i, params);
         }
         //重新设置宽度
-        LinearLayout.LayoutParams columuParams=(android.widget.LinearLayout.LayoutParams) mColumnContent.getLayoutParams();
-        columuParams.width=mItemWidth*count;
+        LinearLayout.LayoutParams columuParams = (android.widget.LinearLayout.LayoutParams) mColumnContent.getLayoutParams();
+        columuParams.width = mItemWidth * count;
         mColumnContent.setLayoutParams(columuParams);
         //设置标题类型选择点击事件
-        setModelClick() ;
+        setModelClick();
     }
 
 
     /**
      * 初始化Fragment
-     * */
+     */
     private void initFragment() {
         fragments = new ArrayList<>();
         for (int i = 0; i < list.size(); i++) {
-            CourseItemFragment courseItemFragment= CourseItemFragment.newInstance(list.get(i),isVip);
+            CourseItemFragment courseItemFragment = CourseItemFragment.newInstance(list.get(i), isVip);
             courseItemFragment.setOnFragmentCallBack(this);
             fragments.add(courseItemFragment);
 
         }
-             //添加单元测验
-        UnitTestFragment unitTestFragment=UnitTestFragment.newInstance(infoBean.getUserId(),infoBean.getMenuId(),isVip);
+        //添加单元测验
+        UnitTestFragment unitTestFragment = UnitTestFragment.newInstance(infoBean.getUserId(), infoBean.getMenuId(), isVip);
         unitTestFragment.setOnFragmentCallBack(this);
         fragments.add(unitTestFragment);
 
         mViewPager.removeAllViews();
 
-        mViewPager.setPageMargin(dip2px(HealthPush.this,34));
+        mViewPager.setPageMargin(dip2px(HealthPush.this, 34));
         mViewPager.setPageTransformer(false, new CardTransformer());
-        if(mAdapetr!=null)
+        if (mAdapetr != null)
             mAdapetr.clearFragment();
         mAdapetr = new IntegralFragmentPagerAdapter(getSupportFragmentManager(), fragments);
         mViewPager.setAdapter(mAdapetr);
-        mViewPager.setOffscreenPageLimit(list.size()+1);
+        mViewPager.setOffscreenPageLimit(list.size() + 1);
         mViewPager.setOnPageChangeListener(new MyOnPageChangeListener());
         mViewPager.setCurrentItem(columnSelectIndex);
     }
@@ -307,42 +334,42 @@ public class HealthPush extends FragmentActivity implements OnFragmentCallBack,O
         //重置选择器位置
         selectMode(columnSelectIndex);
         //初始化指示器并设置指示器位置
-        indicateParams.width=mItemWidth/3;//设置指示器宽度
-        indicateParams.setMargins(0,0,0,0);
+        indicateParams.width = mItemWidth / 3;//设置指示器宽度
+        indicateParams.setMargins(0, 0, 0, 0);
         indicateTV.setLayoutParams(indicateParams);//设置指示器宽度
     }
 
     /**
      * Fragment中会员的点击事件
+     *
      * @param type
      */
     @Override
     public void onResultClick(int type) {
 
-        mUexBaseObj.callBackPluginJs(EUExKekelian.CALLBACK_ON_FRAGMENT_VIP_CLICK,""+type);
+        mUexBaseObj.callBackPluginJs(EUExKekelian.CALLBACK_ON_FRAGMENT_VIP_CLICK, "" + type);
 
     }
 
     /**
      * 跳转做题的界面
-     * @param  isErrored //是否是错做题
+     *
+     * @param isErrored     //是否是错做题
      * @param levelTypeName 关卡类型
-     * @param RecordId 做题的id
+     * @param RecordId      做题的id
      */
     @Override
     public void onDoExerciseCallBack(@NonNull String isErrored, @NonNull String levelTypeName, @NonNull String RecordId) {
         JSONObject jsonObject = new JSONObject();
         try {
-            jsonObject.put("isErrored",isErrored);
+            jsonObject.put("isErrored", isErrored);
             jsonObject.put("levelTypeName", levelTypeName);
-            jsonObject.put("exerciseRecordId",RecordId);
-            mUexBaseObj.callBackPluginJs(EUExKekelian.CALLBACK_ON_FRAGMENT_DO_EXERCISE,jsonObject.toString());
+            jsonObject.put("exerciseRecordId", RecordId);
+            mUexBaseObj.callBackPluginJs(EUExKekelian.CALLBACK_ON_FRAGMENT_DO_EXERCISE, jsonObject.toString());
         } catch (JSONException e) {
             Log.i(TAG, String.valueOf(e.getMessage()));
         }
     }
-
-
 
 
     @Override
@@ -354,7 +381,7 @@ public class HealthPush extends FragmentActivity implements OnFragmentCallBack,O
     /**
      * ViewPager切换监听方法
      */
-    class MyOnPageChangeListener implements OnPageChangeListener{
+    class MyOnPageChangeListener implements OnPageChangeListener {
 
         @Override
         public void onPageScrollStateChanged(int arg0) {
@@ -363,9 +390,9 @@ public class HealthPush extends FragmentActivity implements OnFragmentCallBack,O
 
         @Override
         public void onPageScrolled(int position, float offset, int offsetPixes) {
-            Message msg=Message.obtain();
-            msg.arg1=position;
-            msg.obj=offset;
+            Message msg = Message.obtain();
+            msg.arg1 = position;
+            msg.obj = offset;
             handler.sendMessage(msg);
         }
 
@@ -377,26 +404,26 @@ public class HealthPush extends FragmentActivity implements OnFragmentCallBack,O
 
 
     private void initStartAnimation(int position, float offset) {
-        if(fragments.isEmpty()){
+        if (fragments.isEmpty()) {
             indicateTV.setVisibility(View.GONE);
-        }else{
+        } else {
             indicateTV.setVisibility(View.VISIBLE);
         }
-        if (offset == 0){ // 停止滚动
-            indicateParams.setMargins(indicateParams.width+mItemWidth * position,0, 0, 0);
-        }
-        else{
-            indicateParams.setMargins((int) ( indicateParams.width+mItemWidth * (position + offset)),0, 0, 0);
+        if (offset == 0) { // 停止滚动
+            indicateParams.setMargins(indicateParams.width + mItemWidth * position, 0, 0, 0);
+        } else {
+            indicateParams.setMargins((int) (indicateParams.width + mItemWidth * (position + offset)), 0, 0, 0);
         }
         indicateTV.setLayoutParams(indicateParams);
     }
 
     /**
      * 设置HorizontalScrollView将被选中项移动到中间位置,并且设置被选中项字体变化
+     *
      * @param position
      */
     private void selectMode(int position) {
-        if(fragments.isEmpty())return;
+        if (fragments.isEmpty()) return;
         TextView selTextView = null;
         // 获取所有model,清除之前选择的状态
         for (int i = 0; i < mColumnContent.getChildCount(); i++) {
@@ -421,8 +448,6 @@ public class HealthPush extends FragmentActivity implements OnFragmentCallBack,O
     }
 
 
-
-
     /**
      * 设置每一个模块(标题)的点击事件
      */
@@ -442,7 +467,9 @@ public class HealthPush extends FragmentActivity implements OnFragmentCallBack,O
     }
 
 
-    /**获取屏幕宽度
+    /**
+     * 获取屏幕宽度
+     *
      * @param activity
      * @return
      */
@@ -452,7 +479,9 @@ public class HealthPush extends FragmentActivity implements OnFragmentCallBack,O
         return dm.widthPixels;
     }
 
-    /**获取屏幕高度
+    /**
+     * 获取屏幕高度
+     *
      * @param activity
      * @return
      */
@@ -530,8 +559,6 @@ public class HealthPush extends FragmentActivity implements OnFragmentCallBack,O
 //    }
 
 
-
-
     @Override
     public boolean onKeyUp(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
@@ -540,11 +567,10 @@ public class HealthPush extends FragmentActivity implements OnFragmentCallBack,O
         return super.onKeyUp(keyCode, event);
     }
 
-
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        Log.i(TAG,"HealthPush---->onDestroy()");
+        Log.i(TAG, "HealthPush---->onDestroy()");
     }
 }
 
