@@ -103,6 +103,7 @@ public class ScoreReport extends Activity {
             ivStatus.setImageResource(EUExUtil.getResDrawableID("frog_02"));
             tvInfo.setText("消灭错题，可以拿满星哦~");
         }
+
         rlScoreReport.setVisibility(View.VISIBLE);
     }
 

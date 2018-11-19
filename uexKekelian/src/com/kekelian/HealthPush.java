@@ -25,6 +25,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.kekelian.adapter.IntegralFragmentPagerAdapter;
@@ -118,11 +119,16 @@ public class HealthPush extends FragmentActivity implements OnFragmentCallBack, 
         setContentView(EUExUtil.getResLayoutID("hpush_activity"));
         initView();
         getKekelianList();
-
     }
 
+    public void onReloadClick (View view){
+        getKekelianList();
+    }
 
     private void getKekelianList() {
+        if (NetworkUtils.getNetworkStatus(this) == -1) {
+            return;
+        }
         showPreload();
         String params = "?menuId=" + infoBean.getMenuId() + "&userId=" + infoBean.getUserId();
         HttpClient.get(this, Api.GET_KEKELIAN_LIST + params, new CallBack<KKLLessionListBean>() {
@@ -138,13 +144,13 @@ public class HealthPush extends FragmentActivity implements OnFragmentCallBack, 
                     list.addAll(result.getMessage().getData().getLessonTabRecord());
                     int progress = -1;
                     //计算第一个小试牛刀未完成的下标
-                    for (int i = 0; i < list.size(); i++) {
+/*                    for (int i = 0; i < list.size(); i++) {
                         if (list.get(i).getFinishProgress() == 0) {
                             columnSelectIndex = i;
                             progress = 0;
                             break;
                         }
-                    }
+                    }*/
 
                     if(progress == -1) {
                         //计算第一个大显身手未完成的下标
@@ -202,8 +208,6 @@ public class HealthPush extends FragmentActivity implements OnFragmentCallBack, 
         if (NetworkUtils.getNetworkStatus(this) == -1) {
             showErrorNet();
         }
-
-
     }
 
     /**
@@ -281,9 +285,9 @@ public class HealthPush extends FragmentActivity implements OnFragmentCallBack, 
 //            localTextView.setText(list.get(i).getLessonName());
 
             if (smallestScreenWidth >= 600) {
-                localTextView.setTextSize(25);
-            } else {
                 localTextView.setTextSize(20);
+            } else {
+                localTextView.setTextSize(16);
             }
 
             localTextView.setTextColor(Color.parseColor("#c4e4d6"));
@@ -319,7 +323,7 @@ public class HealthPush extends FragmentActivity implements OnFragmentCallBack, 
 
         mViewPager.removeAllViews();
 
-        mViewPager.setPageMargin(dip2px(HealthPush.this, 34));
+        mViewPager.setPageMargin(dip2px(HealthPush.this, -30));
         mViewPager.setPageTransformer(false, new CardTransformer());
         if (mAdapetr != null)
             mAdapetr.clearFragment();
@@ -428,7 +432,7 @@ public class HealthPush extends FragmentActivity implements OnFragmentCallBack, 
         // 获取所有model,清除之前选择的状态
         for (int i = 0; i < mColumnContent.getChildCount(); i++) {
             TextView textView = (TextView) mColumnContent.getChildAt(i);
-            textView.setTextColor(Color.parseColor("#000000"));
+            textView.setTextColor(Color.parseColor("#73a891"));
             if (i == position) {
                 selTextView = textView;
                 //设置被选中项字体颜色变化为被选中颜色

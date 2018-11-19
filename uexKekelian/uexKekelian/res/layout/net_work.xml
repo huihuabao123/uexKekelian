@@ -6,24 +6,27 @@
     android:id="@+id/ll_net_work"
     android:orientation="vertical"
     android:gravity="center"
-    android:background="@drawable/kkl_bg"
+    android:background="@color/color_white"
     tools:showIn="@layout/hpush_activity">
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/wifi"/>
     <TextView
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="网络连接出现问题了哦！"
+        android:paddingLeft="6dp"
+        android:text="网络连接出问题了喔！"
         android:textColor="@color/color_gray"
         android:textSize="@dimen/text_14_sp"/>
     <Button
         android:layout_marginTop="10dp"
-        android:layout_width="100dp"
-        android:layout_height="40dp"
+        android:layout_width="130dp"
+        android:layout_height="30dp"
         android:text="重新加载"
-        android:textSize="@dimen/text_20_sp"
-        android:background="@drawable/view_shape_button_red"/>
+        android:textColor="@color/color_white"
+        android:textSize="@dimen/text_16_sp"
+        android:onClick="onReloadClick"
+        android:background="@color/color_red"/>
 </LinearLayout>
