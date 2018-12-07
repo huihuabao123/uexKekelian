@@ -21,7 +21,7 @@
         android:maxEms="11"
         android:gravity="center"
         android:textColor="@color/color_black"
-        android:text="成功闯关本课时的小试牛刀 单元测验才能解锁哦"/>
+        android:text="成功闯关所有课时的小试牛刀 单元测验才能解锁哦"/>
     <Button
         android:id="@+id/bt_comfirm"
         android:layout_below="@+id/iv_icon"

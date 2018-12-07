@@ -12,7 +12,7 @@
         android:id="@+id/iv_img"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/kkl_bg06"
+        android:src="@drawable/kkl_bg07"
         android:scaleType="fitXY"/>
     <RelativeLayout
         android:id="@+id/rl_back"
@@ -61,10 +61,10 @@
                 android:layout_width="wrap_content"
                 android:background="@drawable/view_shape_button_green"
                 android:layout_height="wrap_content"
-                android:paddingTop="-5dp"
-                android:paddingBottom="-5dp"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
+                android:paddingTop="0dp"
+                android:paddingBottom="0dp"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
                 android:text="继续闯关"
                 android:textStyle="bold"
                 android:textSize="@dimen/text_16_sp"
@@ -72,10 +72,10 @@
             <Button
                 android:id="@+id/bt_wipe"
                 android:layout_marginLeft="30dp"
-                android:paddingTop="-5dp"
-                android:paddingBottom="-5dp"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
+                android:paddingTop="0dp"
+                android:paddingBottom="0dp"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
                 android:layout_width="wrap_content"
                 android:background="@drawable/view_shape_button_yellow_error"
                 android:layout_height="wrap_content"
@@ -92,7 +92,10 @@
             android:layout_marginTop="10dp"
             android:background="@drawable/view_shape_button_green"
             android:layout_height="wrap_content"
-            android:padding="2dp"
+            android:paddingTop="0dp"
+            android:paddingBottom="0dp"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp"
             android:text="继续闯关"
             android:textStyle="bold"
             android:textSize="@dimen/text_16_sp"
@@ -106,7 +109,5 @@
             android:textSize="@dimen/text_14_sp"
             android:text="消灭错题,可以拿满星哦~"/>
     </LinearLayout>
-
-
 
 </RelativeLayout>

@@ -14,7 +14,8 @@
         android:id="@+id/rl_back"
         android:layout_width="wrap_content"
         android:layout_margin="10dp"
-        android:padding="10dp"
+        android:paddingLeft="10dp"
+        android:paddingTop="30dp"
         android:layout_height="wrap_content">
         <ImageView
             android:layout_width="wrap_content"

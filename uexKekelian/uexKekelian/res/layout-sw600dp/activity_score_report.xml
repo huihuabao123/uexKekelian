@@ -12,7 +12,7 @@
         android:id="@+id/iv_img"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/kkl_bg04"
+        android:src="@drawable/kkl_bg07"
         android:scaleType="fitXY"/>
     <RelativeLayout
         android:id="@+id/rl_back"
@@ -53,6 +53,7 @@
         android:orientation="vertical">
         <LinearLayout
             android:id="@+id/ll_button"
+            android:visibility="gone"
             android:layout_marginTop="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
