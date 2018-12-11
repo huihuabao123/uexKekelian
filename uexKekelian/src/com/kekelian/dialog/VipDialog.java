@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import com.kekelian.callBack.OnClickCallBack;
 
@@ -37,13 +38,13 @@ public class VipDialog {
         dialog = new AlertDialog.Builder(context).create();
         final View pView = LayoutInflater.from(context)
                 .inflate(EUExUtil.getResLayoutID("pop_vip"),null);
-        Button btKnow= (Button) pView.findViewById(EUExUtil.getResIdID("bt_know"));
+        ImageView btnClose= (ImageView) pView.findViewById(EUExUtil.getResIdID("btn_close"));
         Button buBuy=(Button) pView.findViewById(EUExUtil.getResIdID("bt_buy"));
-        //了解会员
-        btKnow.setOnClickListener(new View.OnClickListener() {
+        //关闭弹窗
+        btnClose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                clickCallBack.clickCallBack(1);
+                //clickCallBack.clickCallBack(1);
                 dialog.dismiss();
             }
         });

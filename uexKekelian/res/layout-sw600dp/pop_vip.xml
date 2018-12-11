@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
 
     <ImageView
+        android:id="@+id/btn_close"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@id/iv_icon"
+        android:src="@drawable/btn_x" />
+    <ImageView
         android:id="@+id/iv_icon"
+        android:layout_marginTop="60dp"
         android:layout_centerInParent="true"
         android:layout_width="435dp"
         android:layout_height="413dp"
@@ -12,30 +20,17 @@
         android:src="@drawable/img"/>
     <LinearLayout
         android:layout_below="@+id/iv_icon"
-        android:layout_marginTop="-80dp"
+        android:layout_marginTop="-110dp"
         android:layout_centerHorizontal="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
-        <Button
-            android:id="@+id/bt_know"
-            android:layout_width="150dp"
-            android:background="@drawable/view_shape_button_yellow"
-            android:layout_height="60dp"
-            android:text="了解会员"
-            android:textStyle="italic|bold"
-            android:textSize="@dimen/text_20_sp"
-            android:textColor="@color/color_white"/>
+
         <Button
             android:id="@+id/bt_buy"
-            android:layout_marginLeft="50dp"
             android:layout_width="150dp"
-            android:background="@drawable/view_shape_button_red"
             android:layout_height="60dp"
-            android:text="购买会员"
-            android:textStyle="italic|bold"
-            android:textSize="@dimen/text_20_sp"
-            android:textColor="@color/color_white"/>
+            android:background="@drawable/btn" />
     </LinearLayout>
 
 

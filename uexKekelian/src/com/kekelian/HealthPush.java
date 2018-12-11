@@ -311,13 +311,15 @@ public class HealthPush extends FragmentActivity implements OnFragmentCallBack, 
     private void initFragment() {
         fragments = new ArrayList<>();
         for (int i = 0; i < list.size(); i++) {
-            CourseItemFragment courseItemFragment = CourseItemFragment.newInstance(list.get(i), isVip);
+            CourseItemFragment courseItemFragment = CourseItemFragment.newInstance(list.get(i),
+                    isVip, infoBean.getCourseTextBookFlag(), infoBean.getMenuIndex());
             courseItemFragment.setOnFragmentCallBack(this);
             fragments.add(courseItemFragment);
 
         }
         //添加单元测验
-        UnitTestFragment unitTestFragment = UnitTestFragment.newInstance(infoBean.getUserId(), infoBean.getMenuId(), isVip);
+        UnitTestFragment unitTestFragment = UnitTestFragment.newInstance(infoBean.getUserId(), infoBean.getMenuId(),
+                isVip, infoBean.getCourseTextBookFlag(), infoBean.getMenuIndex());
         unitTestFragment.setOnFragmentCallBack(this);
         fragments.add(unitTestFragment);
 
@@ -350,9 +352,7 @@ public class HealthPush extends FragmentActivity implements OnFragmentCallBack, 
      */
     @Override
     public void onResultClick(int type) {
-
         mUexBaseObj.callBackPluginJs(EUExKekelian.CALLBACK_ON_FRAGMENT_VIP_CLICK, "" + type);
-
     }
 
     /**

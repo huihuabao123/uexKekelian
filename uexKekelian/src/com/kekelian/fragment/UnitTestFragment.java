@@ -16,6 +16,7 @@ import com.kekelian.bean.UnitTestBean;
 import com.kekelian.callBack.OnClickCallBack;
 import com.kekelian.callBack.OnFragmentCallBack;
 import com.kekelian.dialog.ExameDialog;
+import com.kekelian.dialog.ExperienceDialog;
 import com.kekelian.dialog.VipDialog;
 import com.kekelian.net.Api;
 import com.kekelian.net.CallBack;
@@ -43,18 +44,24 @@ public class UnitTestFragment extends Fragment {
     public static final String IS_vIP="is_vip";
     private boolean isVip=false;
     private VipDialog vipDialog;
+    private ExperienceDialog experienceDialog;
     //是否解锁状态
     private Boolean isLocked;
 
     private String unitTestRecordId;
     private String isErrors="false";
+    private String courseTextBookFlag;
+    private String menuIndex;
 
-    public static UnitTestFragment newInstance(String userid,String menuid,Boolean isVip) {
+    public static UnitTestFragment newInstance(String userid,String menuid,Boolean isVip,
+                                               String courseTextBookFlag, String menuIndex) {
         UnitTestFragment fragment = new UnitTestFragment();
         Bundle args = new Bundle();
         args.putBoolean(IS_vIP, isVip);
         args.putString(USERID,userid);
         args.putString(MENUID,menuid);
+        args.putString("courseTextBookFlag", courseTextBookFlag);
+        args.putString("menuIndex", menuIndex);
         fragment.setArguments(args);
         return fragment;
     }
@@ -73,6 +80,8 @@ public class UnitTestFragment extends Fragment {
             userid=bundle.getString(USERID);
             menuid=bundle.getString(MENUID);
             isVip=bundle.getBoolean(IS_vIP,false);
+            courseTextBookFlag=bundle.getString("courseTextBookFlag", "0");
+            menuIndex=bundle.getString("menuIndex");
         }
     }
 
@@ -173,6 +182,7 @@ public class UnitTestFragment extends Fragment {
 
     private void initViews(View view) {
         vipDialog=new VipDialog(getContext());
+        experienceDialog=new ExperienceDialog(getContext());
         popExameStatus=new ExameDialog(getActivity());
         ivStatus=(ImageView) view.findViewById(EUExUtil.getResIdID("iv_status"));
         tvBlock=(TextView) view.findViewById(EUExUtil.getResIdID("tv_block"));
@@ -183,13 +193,31 @@ public class UnitTestFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if(!isVip){
-                    vipDialog.pop(new OnClickCallBack() {
-                        @Override
-                        public void clickCallBack(int type) {
-                            onFragmentCallBack.onResultClick(type);
-                        }
+                    if("1".equals(menuIndex)) {
+                        experienceDialog.pop(new OnClickCallBack() {
+                            @Override
+                            public void clickCallBack(int type) {
+                                if(type > 0) {
+                                    onFragmentCallBack.onResultClick(type);
+                                } else {
+                                    if(isLocked){
+                                        popExameStatus.pop();
+                                    }else {
+                                        //跳转做题界面
+                                        onFragmentCallBack.onDoExerciseCallBack(isErrors,"单元测验",unitTestRecordId);
+                                    }
+                                }
+                            }
+                        });
 
-                    });
+                    } else {
+                        vipDialog.pop(new OnClickCallBack() {
+                            @Override
+                            public void clickCallBack(int type) {
+                                onFragmentCallBack.onResultClick(type);
+                            }
+                        });
+                    }
                 }else {
                     if(isLocked){
                         popExameStatus.pop();

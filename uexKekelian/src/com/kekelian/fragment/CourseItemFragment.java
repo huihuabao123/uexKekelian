@@ -20,6 +20,7 @@ import com.kekelian.bean.KKLLessionListBean;
 import com.kekelian.bean.LessonContentBean;
 import com.kekelian.callBack.OnClickCallBack;
 import com.kekelian.callBack.OnFragmentCallBack;
+import com.kekelian.dialog.ExperienceDialog;
 import com.kekelian.dialog.LevelDialog;
 import com.kekelian.dialog.VipDialog;
 import com.kekelian.net.Api;
@@ -48,6 +49,7 @@ public class CourseItemFragment extends Fragment {
     private ImageView ivShow;
     private LevelDialog popLevelStatus;
     private VipDialog vipDialog;
+    private ExperienceDialog experienceDialog;
     private Boolean stuffStats=false;
     protected boolean isCreated = false;
 
@@ -55,7 +57,8 @@ public class CourseItemFragment extends Fragment {
     private String stuffRecordId;
     private String isErrorStuff="false";
     private String isErrorBallade="false";
-
+    private String courseTextBookFlag;
+    private String menuIndex;
     private KKLLessionListBean.MessageBean.DataBean.LessonTabRecordBean dataBean;
 
     private OnFragmentCallBack onFragmentCallBack;
@@ -66,11 +69,14 @@ public class CourseItemFragment extends Fragment {
     }
 
 
-    public static CourseItemFragment newInstance(KKLLessionListBean.MessageBean.DataBean.LessonTabRecordBean dataBean, Boolean isVip) {
+    public static CourseItemFragment newInstance(KKLLessionListBean.MessageBean.DataBean.LessonTabRecordBean dataBean,
+                                                 Boolean isVip, String courseTextBookFlag, String menuIndex) {
         CourseItemFragment fragment = new CourseItemFragment();
         Bundle args = new Bundle();
         args.putParcelable(DATA, dataBean);
         args.putBoolean(IS_vIP,isVip);
+        args.putString("courseTextBookFlag", courseTextBookFlag);
+        args.putString("menuIndex", menuIndex);
         fragment.setArguments(args);
         return fragment;
     }
@@ -82,6 +88,8 @@ public class CourseItemFragment extends Fragment {
         if (bundle != null) {
             dataBean = bundle.getParcelable(DATA);
             isVip=bundle.getBoolean(IS_vIP,false);
+            courseTextBookFlag=bundle.getString("courseTextBookFlag", "0");
+            menuIndex=bundle.getString("menuIndex");
         }
     }
 
@@ -136,10 +144,25 @@ public class CourseItemFragment extends Fragment {
         });
     }
 
+    /**
+     * 省略字符串超长溢出的部分
+     * @param text
+     * @return
+     */
+    private String textOverflow(String text) {
+        int OVERFLOW_LENGTH = 80;
+        if(text != null && text.length() > OVERFLOW_LENGTH) {
+            return new StringBuilder().append(text.substring(0, OVERFLOW_LENGTH)).append("...").toString();
+        }
+
+        return text;
+    }
+
     private void showStatus(@NonNull LessonContentBean result) {
         //显示blockName
         if(!TextUtils.isEmpty(result.getMessage().getData().getBlockName())){
-            tvBlock.setText(result.getMessage().getData().getBlockName());
+            tvBlock.setText(textOverflow(result.getMessage().getData().getBlockName()));
+            // 大于100字符加省略号
         }
         //显示是否有知识点
         if(result.getMessage().getData().isHasKP()){
@@ -245,19 +268,38 @@ public class CourseItemFragment extends Fragment {
         ivShow=(ImageView) view.findViewById(EUExUtil.getResIdID("iv_show"));
         popLevelStatus=new LevelDialog(getActivity());
         vipDialog=new VipDialog(getContext());
+        experienceDialog=new ExperienceDialog(getContext());
         //大显身手
         ivShow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(!isVip){
-                    //会员点击事件
-                    vipDialog.pop(new OnClickCallBack() {
-                        @Override
-                        public void clickCallBack(int type) {
-                            onFragmentCallBack.onResultClick(type);
-                        }
-
-                    });
+                    if("1".equals(menuIndex)) {
+                        experienceDialog.pop(new OnClickCallBack() {
+                            @Override
+                            public void clickCallBack(int type) {
+                                if(type > 0) {
+                                    onFragmentCallBack.onResultClick(type);
+                                } else {
+                                    if(!stuffStats){
+                                        //没有解锁的提示
+                                        popLevelStatus.pop();
+                                        return;
+                                    } else {
+                                        //跳转做题界面
+                                        onFragmentCallBack.onDoExerciseCallBack(isErrorStuff,"大显身手",stuffRecordId);
+                                    }
+                                }
+                            }
+                        });
+                    } else {
+                        vipDialog.pop(new OnClickCallBack() {
+                            @Override
+                            public void clickCallBack(int type) {
+                                onFragmentCallBack.onResultClick(type);
+                            }
+                        });
+                    }
                 }else {
                     if(!stuffStats){
                         //没有解锁的提示
@@ -286,14 +328,26 @@ public class CourseItemFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if(!isVip){
-                    //会员点击事件
-                    vipDialog.pop(new OnClickCallBack() {
-                        @Override
-                        public void clickCallBack(int type) {
-                            onFragmentCallBack.onResultClick(type);
-                        }
-
-                    });
+                    if("1".equals(menuIndex)) {
+                        experienceDialog.pop(new OnClickCallBack() {
+                            @Override
+                            public void clickCallBack(int type) {
+                                if(type > 0) {
+                                    onFragmentCallBack.onResultClick(type);
+                                } else {
+                                    //跳转做题界面
+                                    onFragmentCallBack.onDoExerciseCallBack(isErrorBallade,"小试牛刀",balladeRecordId);
+                                }
+                            }
+                        });
+                    } else {
+                        vipDialog.pop(new OnClickCallBack() {
+                            @Override
+                            public void clickCallBack(int type) {
+                                onFragmentCallBack.onResultClick(type);
+                            }
+                        });
+                    }
                 }else {
                       //跳转做题界面
                     onFragmentCallBack.onDoExerciseCallBack(isErrorBallade,"小试牛刀",balladeRecordId);

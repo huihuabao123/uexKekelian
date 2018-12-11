@@ -5,14 +5,12 @@ import android.os.Parcelable;
 
 public class InfoBean implements Parcelable {
 
-   private String menuId;
-   private String userId;
-   private String isVip;
-   private String unitTitle;
-
-
-
-
+    private String menuId;
+    private String userId;
+    private String isVip;
+    private String courseTextBookFlag;
+    private String menuIndex;
+    private String unitTitle;
 
     public String getMenuId() {
         return menuId;
@@ -46,6 +44,21 @@ public class InfoBean implements Parcelable {
         this.unitTitle = unitTitle;
     }
 
+    public String getCourseTextBookFlag() {
+        return courseTextBookFlag;
+    }
+
+    public void setCourseTextBookFlag(String courseTextBookFlag) {
+        this.courseTextBookFlag = courseTextBookFlag;
+    }
+
+    public String getMenuIndex() {
+        return menuIndex;
+    }
+
+    public void setMenuIndex(String menuIndex) {
+        this.menuIndex = menuIndex;
+    }
 
     @Override
     public String toString() {
@@ -53,6 +66,8 @@ public class InfoBean implements Parcelable {
                 "menuId='" + menuId + '\'' +
                 ", userId='" + userId + '\'' +
                 ", isVip='" + isVip + '\'' +
+                ", courseTextBookFlag='" + courseTextBookFlag + '\'' +
+                ", menuIndex='" + menuIndex + '\'' +
                 ", unitTitle='" + unitTitle + '\'' +
                 '}';
     }
@@ -67,6 +82,8 @@ public class InfoBean implements Parcelable {
         dest.writeString(this.menuId);
         dest.writeString(this.userId);
         dest.writeString(this.isVip);
+        dest.writeString(this.courseTextBookFlag);
+        dest.writeString(this.menuIndex);
         dest.writeString(this.unitTitle);
     }
 
@@ -77,6 +94,8 @@ public class InfoBean implements Parcelable {
         this.menuId = in.readString();
         this.userId = in.readString();
         this.isVip = in.readString();
+        this.courseTextBookFlag = in.readString();
+        this.menuIndex = in.readString();
         this.unitTitle = in.readString();
     }
 

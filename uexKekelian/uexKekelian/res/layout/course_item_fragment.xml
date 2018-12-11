@@ -87,6 +87,6 @@
             android:text="第1课时"
             android:textStyle="bold"
             android:textColor="@color/color_white"
-            android:textSize="16sp"/>
+            android:textSize="14sp"/>
 
 </FrameLayout>

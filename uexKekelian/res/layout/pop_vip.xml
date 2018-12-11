@@ -1,40 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
 
     <ImageView
+        android:id="@+id/btn_close"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@id/iv_icon"
+        android:src="@drawable/btn_x" />
+    <ImageView
         android:id="@+id/iv_icon"
+        android:layout_marginTop="60dp"
         android:layout_centerInParent="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/img"/>
     <LinearLayout
         android:layout_below="@+id/iv_icon"
-        android:layout_marginTop="-60dp"
+        android:layout_marginTop="-95dp"
         android:layout_centerHorizontal="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
-        <Button
-            android:id="@+id/bt_know"
-            android:layout_width="100dp"
-            android:background="@drawable/view_shape_button_yellow"
-            android:layout_height="40dp"
-            android:text="了解会员"
-            android:textStyle="italic|bold"
-            android:textSize="@dimen/text_18_sp"
-            android:textColor="@color/color_white"/>
+
         <Button
             android:id="@+id/bt_buy"
-            android:layout_marginLeft="50dp"
-            android:layout_width="100dp"
-            android:background="@drawable/view_shape_button_red"
-            android:layout_height="40dp"
-            android:text="购买会员"
-            android:textStyle="italic|bold"
-            android:textSize="@dimen/text_18_sp"
-            android:textColor="@color/color_white"/>
+            android:layout_width="wrap_content"
+            android:background="@drawable/btn"
+            android:layout_height="wrap_content"/>
     </LinearLayout>
 
 
