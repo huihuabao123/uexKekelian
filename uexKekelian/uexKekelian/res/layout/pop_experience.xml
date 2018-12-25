@@ -6,10 +6,10 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="160dp"
+        android:layout_height="180dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
         android:background="@drawable/textview_border_2"
         android:orientation="vertical">
 
@@ -20,7 +20,7 @@
             android:gravity="bottom|center"
             android:text="您正在免费试用VIP会员功能"
             android:textColor="@color/red"
-            android:textSize="@dimen/text_18_sp" />
+            android:textSize="@dimen/text_20_sp" />
 
         <TextView
             android:layout_width="match_parent"
@@ -29,7 +29,7 @@
             android:gravity="center"
             android:text="开通会员，可享受更多特权哦~"
             android:textColor="@color/black"
-            android:textSize="@dimen/text_14_sp" />
+            android:textSize="@dimen/text_16_sp" />
 
         <LinearLayout
             android:layout_width="match_parent"

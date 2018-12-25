@@ -30,7 +30,6 @@ public class ExameDialog {
         if (dialog != null){
             dialog.dismiss();
             dialog = null;
-            return;
         }
         dialog = new AlertDialog.Builder(context).create();
         final View pView = LayoutInflater.from(context)
@@ -55,6 +54,7 @@ public class ExameDialog {
 //        window.setAttributes(params);
         dialog.getWindow().setGravity(Gravity.CENTER);//可以设置显示的位置
         dialog.setContentView(pView);
+
     }
 
 }

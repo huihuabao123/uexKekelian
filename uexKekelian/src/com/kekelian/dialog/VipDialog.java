@@ -33,7 +33,6 @@ public class VipDialog {
         if (dialog != null){
             dialog.dismiss();
             dialog = null;
-            return;
         }
         dialog = new AlertDialog.Builder(context).create();
         final View pView = LayoutInflater.from(context)
