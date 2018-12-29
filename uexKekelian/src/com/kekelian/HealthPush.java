@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -58,7 +59,7 @@ public class HealthPush extends FragmentActivity implements OnFragmentCallBack, 
     private HorizontalScrollView mColumnHorizontalScrollView;
     private LinearLayout mColumnContent;
     //指示器
-    private TextView indicateTV;
+    private LinearLayout indicateTV;
     // 指示器的布局参数，可设置控件在布局中的相关属性
     private LinearLayout.LayoutParams indicateParams;
     private ViewPager mViewPager;
@@ -201,7 +202,7 @@ public class HealthPush extends FragmentActivity implements OnFragmentCallBack, 
         mColumnContent = (LinearLayout) findViewById(EUExUtil.getResIdID("mRadioGroup_content_IntegralShop"));
         mViewPager = (ViewPager) findViewById(EUExUtil.getResIdID("mViewPager_IntegralShop"));
         //初始化指示器
-        indicateTV = (TextView) findViewById(EUExUtil.getResIdID("indicateId"));
+        indicateTV = (LinearLayout) findViewById(EUExUtil.getResIdID("indicateId"));
         ivLoad = (ImageView) findViewById(EUExUtil.getResIdID("load_view"));
         llNetWork = (LinearLayout) findViewById(EUExUtil.getResIdID("ll_net_work"));
         indicateParams = (LinearLayout.LayoutParams) indicateTV.getLayoutParams();
@@ -264,8 +265,8 @@ public class HealthPush extends FragmentActivity implements OnFragmentCallBack, 
         int smallestScreenWidth = config.smallestScreenWidthDp;
         mScreenWidth = getWindowsWidth(this);
         // 一个Item宽度为屏幕的1/list.size()
-        int count = list.size() + 1;
-//        int count =list.size();
+        //int count = list.size() + 1;  // 屏蔽单元测验
+        int count =list.size();
         if (count < 4 && count > 0) {
             mItemWidth = mScreenWidth / count;
         } else {
@@ -277,20 +278,22 @@ public class HealthPush extends FragmentActivity implements OnFragmentCallBack, 
             TextView localTextView = new TextView(this);
             localTextView.setGravity(Gravity.CENTER);
             localTextView.setPadding(5, 0, 5, 0);
-            if (i == count - 1) {
-                localTextView.setText("单元测验");
-            } else {
-                localTextView.setText(list.get(i).getLessonName());
-            }
-//            localTextView.setText(list.get(i).getLessonName());
+            // 屏蔽单元测验
+//            if (i == count - 1) {
+//                localTextView.setText("单元测验");
+//            } else {
+//                localTextView.setText(list.get(i).getLessonName());
+//            }
+            localTextView.setText(list.get(i).getLessonName());
 
             if (smallestScreenWidth >= 600) {
-                localTextView.setTextSize(20);
+                localTextView.setTextSize(22);
             } else {
-                localTextView.setTextSize(16);
+                localTextView.setTextSize(18);
             }
 
             localTextView.setTextColor(Color.parseColor("#c4e4d6"));
+            localTextView.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
             if (columnSelectIndex == i) {//设置第一个被选中,颜色变化
                 localTextView.setTextColor(Color.parseColor("#73a891"));
             }
@@ -318,10 +321,10 @@ public class HealthPush extends FragmentActivity implements OnFragmentCallBack, 
 
         }
         //添加单元测验
-        UnitTestFragment unitTestFragment = UnitTestFragment.newInstance(infoBean.getUserId(), infoBean.getMenuId(),
-                isVip, infoBean.getCourseTextBookFlag(), infoBean.getMenuIndex());
-        unitTestFragment.setOnFragmentCallBack(this);
-        fragments.add(unitTestFragment);
+//        UnitTestFragment unitTestFragment = UnitTestFragment.newInstance(infoBean.getUserId(), infoBean.getMenuId(),
+//                isVip, infoBean.getCourseTextBookFlag(), infoBean.getMenuIndex());
+//        unitTestFragment.setOnFragmentCallBack(this);
+//        fragments.add(unitTestFragment);
 
         mViewPager.removeAllViews();
 

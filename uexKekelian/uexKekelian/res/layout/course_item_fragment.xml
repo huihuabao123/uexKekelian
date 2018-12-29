@@ -13,8 +13,8 @@
         <TextView
             android:id="@+id/tv_block"
             android:layout_marginTop="30dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
             android:textColor="@color/color_red"
             android:textSize="@dimen/text_18_sp"
             android:layout_width="match_parent"
@@ -38,12 +38,9 @@
             <Button
                 android:id="@+id/bt_book_preview"
                 android:layout_marginTop="30dp"
-                android:layout_width="130dp"
-                android:layout_height="50dp"
-                android:textColor="@color/white"
-                android:text="课本预习"
-                android:textSize="@dimen/text_16_sp"
-                android:background="@drawable/view_shape_button_book_green"/>
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/kbyx"/>
         </LinearLayout>
 
         <RelativeLayout
@@ -87,6 +84,6 @@
             android:text="第1课时"
             android:textStyle="bold"
             android:textColor="@color/color_white"
-            android:textSize="14sp"/>
+            android:textSize="18sp"/>
 
 </FrameLayout>

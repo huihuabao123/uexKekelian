@@ -150,7 +150,7 @@ public class CourseItemFragment extends Fragment {
      * @return
      */
     private String textOverflow(String text) {
-        int OVERFLOW_LENGTH = 80;
+        int OVERFLOW_LENGTH = 60;
         if(text != null && text.length() > OVERFLOW_LENGTH) {
             return new StringBuilder().append(text.substring(0, OVERFLOW_LENGTH)).append("...").toString();
         }
@@ -162,7 +162,7 @@ public class CourseItemFragment extends Fragment {
         //显示blockName
         if(!TextUtils.isEmpty(result.getMessage().getData().getBlockName())){
             tvBlock.setText(textOverflow(result.getMessage().getData().getBlockName()));
-            // 大于100字符加省略号
+            // 大于60字符加省略号
         }
         //显示是否有知识点
         if(result.getMessage().getData().isHasKP()){
@@ -215,8 +215,6 @@ public class CourseItemFragment extends Fragment {
                         ivButcher.setImageResource(EUExUtil.getResDrawableID("kkl_checkpoint01_00"));
                     }
                 }
-
-
 
             }else if(quizListBean.getDisplayOrder()==2 ){
                 int totalItemCount=quizListBean.getTotalItemCount();

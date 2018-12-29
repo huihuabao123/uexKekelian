@@ -61,12 +61,9 @@ public class ScoreReport extends Activity {
                 }
 
             }
-
-
         });
+
     }
-
-
 
     private void showStatus(@NonNull KekelianSuccessBean.MessageBean.DataBean dataBean) {
         int totalItemCount=dataBean.getTotalItemCount();
