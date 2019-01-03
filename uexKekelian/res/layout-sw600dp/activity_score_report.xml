@@ -32,7 +32,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/tv_title"
-        android:layout_marginTop="328dp"
+        android:layout_marginTop="332dp"
         android:layout_marginBottom="10dp"
         android:layout_centerHorizontal="true"
         android:text="第一课时 小试牛刀"
@@ -100,7 +100,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="15dp"
             android:textSize="@dimen/text_16_sp"
             android:text="消灭错题,可以拿满星哦~"/>
     </LinearLayout>
