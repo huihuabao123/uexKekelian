@@ -41,13 +41,14 @@
                         android:layout_height="5dp"
                         android:background="@drawable/view_shape_indicated" />
                 </LinearLayout>
-
                 <!-- 横线 -->
                 <View
-                    android:id="@+id/category_line_IntegralShop"
+                    android:id="@+id/tabLine"
                     android:layout_width="fill_parent"
-                    android:layout_height="0.2dip"
-                    android:background="@color/color_line" />
+                    android:layout_marginTop="-4dp"
+                    android:layout_height="2dp"
+                    android:elevation="-1dp"
+                    android:background="@drawable/view_shape_line_white" />
             </LinearLayout>
         </HorizontalScrollView>
 
