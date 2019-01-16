@@ -20,18 +20,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9f1b121d-1b30-4195-8fd8-e32da63975e8" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uexKekelian/res/drawable/view_shape_button_green.xml" beforeDir="false" afterPath="$PROJECT_DIR$/uexKekelian/res/drawable/view_shape_button_green.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uexKekelian/res/drawable/view_shape_button_yellow_error.xml" beforeDir="false" afterPath="$PROJECT_DIR$/uexKekelian/res/drawable/view_shape_button_yellow_error.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uexKekelian/res/layout-sw600dp/exercixe_content.xml" beforeDir="false" afterPath="$PROJECT_DIR$/uexKekelian/res/layout-sw600dp/exercixe_content.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uexKekelian/res/layout/exercixe_content.xml" beforeDir="false" afterPath="$PROJECT_DIR$/uexKekelian/res/layout/exercixe_content.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uexKekelian/assets/widget/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/uexKekelian/assets/widget/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uexKekelian/src/com/kekelian/HealthPush.java" beforeDir="false" afterPath="$PROJECT_DIR$/uexKekelian/src/com/kekelian/HealthPush.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/uexKekelian/uexKekelian-android-4.0.0.zip" beforeDir="false" afterPath="$PROJECT_DIR$/uexKekelian/uexKekelian-android-4.0.0.zip" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/uexKekelian/uexKekelian/dex/plugin_uexKekelian_dex.jar" beforeDir="false" afterPath="$PROJECT_DIR$/uexKekelian/uexKekelian/dex/plugin_uexKekelian_dex.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/uexKekelian/uexKekelian/jar/plugin_uexKekelian.jar" beforeDir="false" afterPath="$PROJECT_DIR$/uexKekelian/uexKekelian/jar/plugin_uexKekelian.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uexKekelian/uexKekelian/res/drawable/view_shape_button_green.xml" beforeDir="false" afterPath="$PROJECT_DIR$/uexKekelian/uexKekelian/res/drawable/view_shape_button_green.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uexKekelian/uexKekelian/res/drawable/view_shape_button_yellow_error.xml" beforeDir="false" afterPath="$PROJECT_DIR$/uexKekelian/uexKekelian/res/drawable/view_shape_button_yellow_error.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uexKekelian/uexKekelian/res/layout-sw600dp/exercixe_content.xml" beforeDir="false" afterPath="$PROJECT_DIR$/uexKekelian/uexKekelian/res/layout-sw600dp/exercixe_content.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uexKekelian/uexKekelian/res/layout/exercixe_content.xml" beforeDir="false" afterPath="$PROJECT_DIR$/uexKekelian/uexKekelian/res/layout/exercixe_content.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -108,8 +103,8 @@
       <file leaf-file-name="HealthPush.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/uexKekelian/src/com/kekelian/HealthPush.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4368">
-              <caret line="410" selection-start-line="410" selection-end-line="410" />
+            <state relative-caret-position="297">
+              <caret line="380" selection-start-line="380" selection-end-line="380" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -117,35 +112,95 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="exercixe_content.xml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/uexKekelian/res/layout-sw600dp/exercixe_content.xml">
-          <provider editor-type-id="android-designer2">
-            <state />
-          </provider>
+      <file leaf-file-name="KKLLessionListBean.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/uexKekelian/src/com/kekelian/bean/KKLLessionListBean.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="675">
-              <caret line="37" column="29" selection-start-line="37" selection-start-column="29" selection-end-line="37" selection-end-column="29" />
+            <state relative-caret-position="228">
+              <caret line="68" column="13" selection-start-line="68" selection-start-column="13" selection-end-line="68" selection-end-column="13" />
+              <folding>
+                <element signature="e#4022#4023#0" expanded="true" />
+                <element signature="e#4076#4077#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="exercixe_content.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/uexKekelian/res/layout/exercixe_content.xml">
-          <provider editor-type-id="android-designer2">
-            <state />
-          </provider>
+      <file leaf-file-name="EUExKekelian.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/uexKekelian/src/com/kekelian/EUExKekelian.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="179">
-              <caret line="43" selection-start-line="43" selection-end-line="50" selection-end-column="75" />
+            <state relative-caret-position="163">
+              <caret line="33" column="99" selection-start-line="33" selection-start-column="79" selection-end-line="33" selection-end-column="99" />
+              <folding>
+                <element signature="e#3495#3496#0" expanded="true" />
+                <element signature="e#3546#3547#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="view_shape_line_white.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/uexKekelian/res/drawable/view_shape_line_white.xml">
+      <file leaf-file-name="plugin.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/uexKekelian/uexKekelian/plugin.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="351">
-              <caret line="13" column="16" selection-start-line="13" selection-start-column="16" selection-end-line="13" selection-end-column="16" />
+            <state relative-caret-position="142">
+              <caret line="6" column="35" selection-start-line="6" selection-start-column="24" selection-end-line="6" selection-end-column="35" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pop_experience.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/uexKekelian/uexKekelian/res/layout/pop_experience.xml">
+          <provider editor-type-id="text-editor">
+            <state />
+          </provider>
+          <provider selected="true" editor-type-id="android-designer2">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CourseItemFragment.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/uexKekelian/src/com/kekelian/fragment/CourseItemFragment.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="301">
+              <caret line="122" column="28" lean-forward="true" selection-start-line="122" selection-start-column="28" selection-end-line="122" selection-end-column="28" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="activity_score_report.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/uexKekelian/res/layout/activity_score_report.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="107">
+              <caret line="73" column="40" selection-start-line="73" selection-start-column="33" selection-end-line="73" selection-end-column="40" />
+            </state>
+          </provider>
+          <provider editor-type-id="android-designer2">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ScoreReport.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/uexKekelian/src/com/kekelian/ScoreReport.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="298">
+              <caret line="158" column="71" selection-start-line="158" selection-start-column="71" selection-end-line="158" selection-end-column="71" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="HttpClient.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/uexKekelian/src/com/kekelian/net/HttpClient.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="729">
+              <caret line="129" column="82" selection-start-line="129" selection-start-column="82" selection-end-line="129" selection-end-column="86" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/uexKekelian/assets/widget/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="302">
+              <caret line="32" column="34" lean-forward="true" selection-start-line="32" selection-start-column="34" selection-end-line="32" selection-end-column="34" />
             </state>
           </provider>
         </entry>
@@ -162,36 +217,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>单元测验</find>
-      <find>Unit</find>
-      <find>课</find>
-      <find>课时</find>
-      <find>lesson</find>
-      <find>indicateId</find>
-      <find>indicateParams</find>
-      <find>mItemWidth</find>
-      <find>indicateParams.width</find>
-      <find>RelativeLayout</find>
-      <find>LinearLayout</find>
-      <find>view_shape_button_green</find>
-      <find>showStatus</find>
-      <find>pop_level_status</find>
-      <find>lessonname</find>
-      <find>LevelDialog</find>
-      <find>android:text=&quot;@string/exercise_title&quot;</find>
-      <find>mViewPager_IntegralShop</find>
-      <find>mViewPager</find>
-      <find>tvTitle</find>
-      <find>ll_not_point</find>
-      <find>title_name_text</find>
-      <find>llNotPoint</find>
-      <find>margin</find>
-      <find>/////</find>
-      <find>indicator</find>
-      <find>category_line_IntegralShop</find>
-      <find>screen</find>
-      <find>android:top</find>
-      <find>indicateTV</find>
+      <find>api</find>
+      <find>userId</find>
+      <find>getKKLLessonContent</find>
+      <find>GET_KEKELIAN_LESSON_CONTENT</find>
+      <find>json</find>
+      <find>butcher</find>
+      <find>kkl_bg</find>
+      <find>preload_content</find>
+      <find>hpush_activity</find>
+      <find>preload</find>
+      <find>load_view</find>
+      <find>ivLoad</find>
+      <find>rl_load</find>
+      <find>rlLoad</find>
+      <find>showContent</find>
+      <find>mRadioGroup_content_IntegralShop</find>
+      <find>mColumnContent</find>
+      <find>NoTopic</find>
+      <find>EUExKekelian</find>
+      <find>columnSelectIndex</find>
+      <find>返回的json数据</find>
+      <find>isVisibleToUser</find>
+      <find>onResumeCallBack</find>
+      <find>dataBean</find>
+      <find>view</find>
+      <find>onDoExerciseBack: 刷新数据</find>
+      <find>onDoExerciseBack</find>
+      <find>消灭错题</find>
+      <find>bt_wipe</find>
+      <find>onFragmentDoExercise</find>
     </findStrings>
     <replaceStrings>
       <replace>uexKekelian</replace>
@@ -2098,11 +2153,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/uexKekelian/uexKekelian/plugin.xml" />
-        <option value="$PROJECT_DIR$/uexKekelian/src/com/kekelian/EUExKekelian.java" />
-        <option value="$PROJECT_DIR$/uexKekelian/src/com/kekelian/net/HttpClient.java" />
-        <option value="$PROJECT_DIR$/uexKekelian/uexKekelian/res/layout/pop_exame_status.xml" />
-        <option value="$PROJECT_DIR$/uexKekelian/src/com/kekelian/callBack/OnFragmentCallBack.java" />
         <option value="$PROJECT_DIR$/uexKekelian/uexKekelian/res/layout/activity_no_topic.xml" />
         <option value="$PROJECT_DIR$/uexKekelian/uexKekelian/res/layout/course_item_fragment.xml" />
         <option value="$PROJECT_DIR$/uexKekelian/AndroidManifest.xml" />
@@ -2131,24 +2181,29 @@
         <option value="$PROJECT_DIR$/uexKekelian/src/com/kekelian/dialog/VipDialog.java" />
         <option value="$PROJECT_DIR$/uexKekelian/res/layout/pop_vip.xml" />
         <option value="$PROJECT_DIR$/uexKekelian/res/layout-sw600dp/pop_vip.xml" />
-        <option value="$PROJECT_DIR$/uexKekelian/build.gradle" />
         <option value="$PROJECT_DIR$/uexKekelian/res/drawable/view_shape_button.xml" />
         <option value="$PROJECT_DIR$/uexKekelian/res/layout/pop_level_status.xml" />
         <option value="$PROJECT_DIR$/uexKekelian/res/layout/course_item_fragment.xml" />
         <option value="$PROJECT_DIR$/uexKekelian/res/layout-sw600dp/course_item_fragment.xml" />
         <option value="$PROJECT_DIR$/uexKekelian/src/com/kekelian/bean/LessonContentBean.java" />
         <option value="$PROJECT_DIR$/uexKekelian/res/layout-sw600dp/pop_level_status.xml" />
-        <option value="$PROJECT_DIR$/uexKekelian/src/com/kekelian/fragment/CourseItemFragment.java" />
         <option value="$PROJECT_DIR$/uexKekelian/src/com/kekelian/ScoreReport.java" />
         <option value="$PROJECT_DIR$/uexKekelian/res/layout/activity_score_report.xml" />
         <option value="$PROJECT_DIR$/uexKekelian/res/layout-sw600dp/activity_score_report.xml" />
         <option value="$PROJECT_DIR$/uexKekelian/res/drawable/view_shape_button_green.xml" />
         <option value="$PROJECT_DIR$/uexKekelian/res/drawable/view_shape_button_yellow_error.xml" />
-        <option value="$PROJECT_DIR$/uexKekelian/src/com/kekelian/HealthPush.java" />
         <option value="$PROJECT_DIR$/uexKekelian/uexKekelian/res/drawable/view_shape_line_white.xml" />
         <option value="$PROJECT_DIR$/uexKekelian/res/drawable/view_shape_line_white.xml" />
         <option value="$PROJECT_DIR$/uexKekelian/res/layout/exercixe_content.xml" />
         <option value="$PROJECT_DIR$/uexKekelian/res/layout-sw600dp/exercixe_content.xml" />
+        <option value="$PROJECT_DIR$/uexKekelian/res/layout/hpush_activity.xml" />
+        <option value="$PROJECT_DIR$/uexKekelian/res/layout/preload_content.xml" />
+        <option value="$PROJECT_DIR$/uexKekelian/build.gradle" />
+        <option value="$PROJECT_DIR$/uexKekelian/src/com/kekelian/net/HttpClient.java" />
+        <option value="$PROJECT_DIR$/uexKekelian/assets/widget/index.html" />
+        <option value="$PROJECT_DIR$/uexKekelian/src/com/kekelian/EUExKekelian.java" />
+        <option value="$PROJECT_DIR$/uexKekelian/src/com/kekelian/HealthPush.java" />
+        <option value="$PROJECT_DIR$/uexKekelian/src/com/kekelian/fragment/CourseItemFragment.java" />
       </list>
     </option>
   </component>
@@ -2164,18 +2219,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView">
-        <subPane>
-          <expand>
-            <path>
-              <item name="appcan-plugin-kekelian" type="1abcf292:AndroidViewProjectNode" />
-              <item name="Gradle Scripts" type="ae0cef3a:AndroidBuildScriptsGroupNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
@@ -2188,6 +2231,19 @@
               <item name="appcan-plugin-kekelian" type="b2602c69:ProjectViewProjectNode" />
               <item name="appcan-plugin-kekelian" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="uexKekelian" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+            </path>
+            <path>
+              <item name="appcan-plugin-kekelian" type="b2602c69:ProjectViewProjectNode" />
+              <item name="appcan-plugin-kekelian" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="uexKekelian" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="appcan-plugin-kekelian" type="b2602c69:ProjectViewProjectNode" />
+              <item name="appcan-plugin-kekelian" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="uexKekelian" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="widget" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="appcan-plugin-kekelian" type="b2602c69:ProjectViewProjectNode" />
@@ -2213,6 +2269,27 @@
               <item name="appcan-plugin-kekelian" type="b2602c69:ProjectViewProjectNode" />
               <item name="appcan-plugin-kekelian" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="uexKekelian" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="appcan-plugin-kekelian" type="b2602c69:ProjectViewProjectNode" />
+              <item name="appcan-plugin-kekelian" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="uexKekelian" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="kekelian" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="appcan-plugin-kekelian" type="b2602c69:ProjectViewProjectNode" />
+              <item name="appcan-plugin-kekelian" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="uexKekelian" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="kekelian" type="462c0819:PsiDirectoryNode" />
+              <item name="transformer" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="appcan-plugin-kekelian" type="b2602c69:ProjectViewProjectNode" />
+              <item name="appcan-plugin-kekelian" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="uexKekelian" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="uexKekelian" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -2230,6 +2307,26 @@
               <item name="res" type="462c0819:PsiDirectoryNode" />
               <item name="drawable" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="appcan-plugin-kekelian" type="b2602c69:ProjectViewProjectNode" />
+              <item name="appcan-plugin-kekelian" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="uexKekelian" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="uexKekelian" type="462c0819:PsiDirectoryNode" />
+              <item name="res" type="462c0819:PsiDirectoryNode" />
+              <item name="layout" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+      <pane id="AndroidView">
+        <subPane>
+          <expand>
+            <path>
+              <item name="appcan-plugin-kekelian" type="1abcf292:AndroidViewProjectNode" />
+              <item name="Gradle Scripts" type="ae0cef3a:AndroidBuildScriptsGroupNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -2242,7 +2339,7 @@
     <property name="DEBUGGABLE_PROCESS" value="org.zywx.wbpalmstar.widgetone.uex11497828" />
     <property name="DEBUGGER_ID" value="Auto" />
     <property name="SHOW_ALL_PROCESSES" value="true" />
-    <property name="SearchEverywhereHistoryKey" value="api&#9;FILE&#9;file://D:/hhbapp/appcan-plugin-kekelian/uexKekelian/src/com/kekelian/net/Api.java&#10;pop_level_status&#9;FILE&#9;file://D:/hhbapp/appcan-plugin-kekelian/uexKekelian/res/layout/pop_level_status.xml&#10;r&#9;PSI&#9;JAVA://com.kekelian.R&#10;pop_vip&#9;FILE&#9;file://D:/hhbapp/appcan-plugin-kekelian/uexKekelian/uexKekelian/res/layout/pop_vip.xml&#10;activity_score_report&#9;FILE&#9;file://D:/hhbapp/appcan-plugin-kekelian/uexKekelian/res/layout/activity_score_report.xml&#10;color.xml&#9;FILE&#9;file://D:/hhbapp/appcan-plugin-kekelian/uexKekelian/uexKekelian/res/values/colors.xml&#10;mViewPager_IntegralShop&#9;PSI&#9;JAVA://com.kekelian.R.id#mViewPager_IntegralShop&#10;hpush_activity&#9;FILE&#9;file://D:/hhbapp/appcan-plugin-kekelian/uexKekelian/uexKekelian/res/layout/hpush_activity.xml&#10;EUExKekelian&#9;FILE&#9;file://D:/hhbapp/appcan-plugin-kekelian/uexKekelian/src/com/kekelian/EUExKekelian.java&#10;LevelDialog&#9;FILE&#9;file://D:/hhbapp/appcan-plugin-kekelian/uexKekelian/src/com/kekelian/dialog/LevelDialog.java" />
+    <property name="SearchEverywhereHistoryKey" value="httpclient&#9;FILE&#9;file://D:/hhbapp/appcan-plugin-kekelian/uexKekelian/src/com/kekelian/net/HttpClient.java&#10;course_item_fragment&#9;FILE&#9;file://D:/hhbapp/appcan-plugin-kekelian/uexKekelian/res/layout/course_item_fragment.xml&#10;api&#9;PSI&#9;JAVA://com.kekelian.net.Api&#10;pop_level_status&#9;FILE&#9;file://D:/hhbapp/appcan-plugin-kekelian/uexKekelian/res/layout/pop_level_status.xml&#10;r&#9;PSI&#9;JAVA://com.kekelian.R&#10;pop_vip&#9;FILE&#9;file://D:/hhbapp/appcan-plugin-kekelian/uexKekelian/uexKekelian/res/layout/pop_vip.xml&#10;activity_score_report&#9;FILE&#9;file://D:/hhbapp/appcan-plugin-kekelian/uexKekelian/res/layout/activity_score_report.xml&#10;color.xml&#9;FILE&#9;file://D:/hhbapp/appcan-plugin-kekelian/uexKekelian/uexKekelian/res/values/colors.xml&#10;mViewPager_IntegralShop&#9;PSI&#9;JAVA://com.kekelian.R.id#mViewPager_IntegralShop&#10;hpush_activity&#9;FILE&#9;file://D:/hhbapp/appcan-plugin-kekelian/uexKekelian/uexKekelian/res/layout/hpush_activity.xml&#10;EUExKekelian&#9;FILE&#9;file://D:/hhbapp/appcan-plugin-kekelian/uexKekelian/src/com/kekelian/EUExKekelian.java&#10;LevelDialog&#9;FILE&#9;file://D:/hhbapp/appcan-plugin-kekelian/uexKekelian/src/com/kekelian/dialog/LevelDialog.java" />
     <property name="android.profiler.active" value="true" />
     <property name="android.project.structure.last.selected" value="Project" />
     <property name="android.project.structure.proportion" value="0.15" />
@@ -2477,21 +2574,21 @@
       <window_info anchor="right" id="Capture Analysis" order="3" />
       <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.50107294" side_tool="true" weight="0.4732143" />
       <window_info anchor="right" id="Preview" order="5" sideWeight="0.48660713" weight="0.22424893" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49892703" weight="0.25558037" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49892703" weight="0.38169643" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.32924107" />
       <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.499194" weight="0.1875" />
       <window_info anchor="bottom" x="28" y="241" width="1864" height="558" id="Logcat" order="10" sideWeight="0.49785408" weight="0.49837837" />
       <window_info id="Captures" order="4" weight="0.25" />
       <window_info id="Capture Tool" order="6" />
       <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.57366073" visible="true" weight="0.19527897" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.5701439" weight="0.19527897" />
       <window_info anchor="bottom" id="Build" order="7" weight="0.2700893" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.4970446" weight="0.5414798" />
-      <window_info anchor="right" id="Gradle" order="6" sideWeight="0.49888393" visible="true" weight="0.18079399" />
-      <window_info id="Structure" order="1" sideWeight="0.4263393" side_tool="true" visible="true" weight="0.19527897" />
+      <window_info anchor="right" id="Gradle" order="6" sideWeight="0.49888393" weight="0.18079399" />
+      <window_info id="Structure" order="1" sideWeight="0.42985612" side_tool="true" weight="0.19527897" />
       <window_info anchor="right" id="Device File Explorer" order="4" sideWeight="0.51339287" side_tool="true" weight="0.22156653" />
       <window_info anchor="right" id="Theme Preview" order="7" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.27566963" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3794643" />
       <window_info id="Favorites" order="5" side_tool="true" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="bottom" id="Inspection Results" order="13" weight="0.52130044" />
@@ -2507,7 +2604,7 @@
       <window_info id="Designer" order="2" />
       <window_info id="Build Variants" order="3" side_tool="true" />
       <window_info id="Image Layers" order="7" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.4732143" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49892703" weight="0.20200893" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="Android Profiler" order="12" />
@@ -2517,24 +2614,24 @@
       <window_info anchor="right" id="Capture Analysis" order="3" />
       <window_info anchor="bottom" id="Inspection Results" order="13" weight="0.52130044" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
-      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.50080603" side_tool="true" weight="0.328125" />
-      <window_info anchor="right" id="Preview" order="4" sideWeight="0.48660713" weight="0.1303648" />
-      <window_info anchor="right" x="0" y="0" width="434" height="856" id="Documentation" order="9" sideWeight="0.50223213" weight="0.32618025" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" sideWeight="0.4983089" weight="0.16899142" />
-      <window_info anchor="right" id="Device File Explorer" order="5" sideWeight="0.51339287" side_tool="true" weight="0.22156653" />
-      <window_info anchor="bottom" x="28" y="241" width="1864" height="558" id="Logcat" order="10" sideWeight="0.49785408" weight="0.51785713" />
+      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.50107294" side_tool="true" weight="0.4732143" />
+      <window_info anchor="right" id="Preview" order="5" sideWeight="0.48660713" weight="0.22424893" />
+      <window_info anchor="right" x="0" y="0" width="434" height="856" id="Documentation" order="9" sideWeight="0.50223213" side_tool="true" weight="0.32618025" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" sideWeight="0.4983089" visible="true" weight="0.16899142" />
+      <window_info anchor="right" id="Device File Explorer" order="4" sideWeight="0.51339287" side_tool="true" weight="0.22156653" />
+      <window_info anchor="bottom" x="28" y="241" width="1864" height="558" id="Logcat" order="10" sideWeight="0.49785408" weight="0.49837837" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.32924107" />
       <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.499194" weight="0.1875" />
-      <window_info anchor="right" id="Gradle" order="6" sideWeight="0.49888393" visible="true" weight="0.18079399" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19527897" />
+      <window_info anchor="right" id="Gradle" order="6" sideWeight="0.49888393" weight="0.18079399" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.5701439" visible="true" weight="0.19527897" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32924107" />
       <window_info anchor="right" id="Palette&#9;" order="8" />
       <window_info anchor="right" id="Theme Preview" order="7" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Structure" order="1" sideWeight="0.42985612" side_tool="true" visible="true" weight="0.19527897" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.4970446" weight="0.5414798" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.2767857" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.3794643" />
     </layout-to-restore>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -2555,19 +2652,48 @@
           <properties />
           <option name="timeStamp" value="73" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/uexKekelian/src/com/kekelian/EUExKekelian.java</url>
+          <line>79</line>
+          <properties />
+          <option name="timeStamp" value="106" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/uexKekelian/src/com/kekelian/HealthPush.java</url>
+          <line>383</line>
+          <properties />
+          <option name="timeStamp" value="107" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="81" />
+      <option name="time" value="109" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Remote">
         <watch expression="resourceId" />
       </configuration>
       <configuration name="uexKekelian">
-        <watch expression="result.getMessage().getData().getBlockName()" />
+        <watch expression="result.getMessage().getData()" language="JAVA" />
+        <watch expression="quizListBean.getDisplayOrder()" />
+        <watch expression="result.toString()" language="JAVA" />
+        <watch expression="mColumnContent.getChildCount()" />
+        <watch expression="result.getMessage().getData().getLessonTabRecord()" />
+        <watch expression="dataBean.getLessonName()" />
       </configuration>
     </watches-manager>
   </component>
   <component name="debuggerHistoryManager">
+    <expressions id="watch">
+      <expression>
+        <expression-string>result.toString()</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>result.getMessage().getData()</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+    </expressions>
     <expressions id="evaluateExpression">
       <expression>
         <expression-string>NetworkUtils.getNetworkStatus(this)</expression-string>
@@ -2577,159 +2703,24 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/uexKekelian/res/drawable/textview_border_1.xml" />
-    <entry file="file://$PROJECT_DIR$/uexKekelian/src/com/kekelian/callBack/OnClickCallBack.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="7" column="10" selection-start-line="7" selection-start-column="10" selection-end-line="7" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/uexKekelian/res/layout-sw600dp/pop_experience.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="864">
-          <caret line="32" selection-start-line="32" selection-end-line="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/uexKekelian/src/com/kekelian/bean/InfoBean.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="11" column="28" selection-start-line="11" selection-start-column="19" selection-end-line="11" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/uexKekelian/res/drawable-hdpi/kkl_bg07.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/uexKekelian/src/com/kekelian/net/Api.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="5" selection-start-line="5" selection-end-line="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/uexKekelian/src/com/kekelian/dialog/ExameDialog.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="702">
-          <caret line="39" column="37" selection-start-line="39" selection-start-column="37" selection-end-line="39" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/uexKekelian/assets/widget/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="702">
-          <caret line="26" column="30" lean-forward="true" selection-start-line="26" selection-start-column="30" selection-end-line="26" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/uexKekelian/res/drawable-hdpi/btn.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/uexKekelian/res/layout/pop_vip.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="4" column="41" selection-start-line="4" selection-start-column="41" selection-end-line="4" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/uexKekelian/res/layout-sw600dp/pop_vip.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="20" column="17" selection-start-line="20" selection-start-column="17" selection-end-line="20" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/uexKekelian/src/com/kekelian/dialog/VipDialog.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="594">
-          <caret line="38" column="52" selection-start-line="38" selection-start-column="52" selection-end-line="38" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/uexKekelian/src/com/kekelian/dialog/ExperienceDialog.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1296">
-          <caret line="65" column="29" selection-start-line="65" selection-start-column="29" selection-end-line="65" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/uexKekelian/res/layout-sw600dp/unit_test_fragment.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/uexKekelian/src/com/kekelian/fragment/UnitTestFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="29" column="29" selection-start-line="29" selection-start-column="13" selection-end-line="29" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/uexKekelian/res/drawable-hdpi/kkl_img05_lock.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/uexKekelian/res/drawable-hdpi/kkl_title01.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/uexKekelian/res/layout/unit_test_fragment.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1662">
-          <caret line="67" column="48" selection-start-line="67" selection-start-column="48" selection-end-line="67" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/uexKekelian/res/layout/pop_experience.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="31" column="51" selection-start-line="31" selection-start-column="51" selection-end-line="31" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/uexKekelian/res/layout/pop_exame_status.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="27">
           <caret line="1" column="1" selection-start-line="1" selection-start-column="1" selection-end-line="1" selection-end-column="15" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/uexKekelian/res/layout-sw600dp/hpush_activity.xml">
       <provider editor-type-id="android-designer2">
         <state />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/uexKekelian/res/layout-sw600dp/hpush_activity.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="324">
           <caret line="12" column="47" selection-start-line="12" selection-start-column="47" selection-end-line="12" selection-end-column="47" />
         </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/uexKekelian/res/drawable/view_shape_button.xml">
@@ -2739,44 +2730,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/uexKekelian/res/layout/pop_level_status.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="364">
-          <caret line="41" column="50" selection-start-line="41" selection-start-column="50" selection-end-line="41" selection-end-column="50" />
-          <folding>
-            <element signature="e#1127#1146#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/engine-4.0.0-systemRelease.aar/03dbfbc3e2a2b8761f7748fdd9e66010/jars/libs/android-support-v4.jar!/android/support/v4/view/ViewPager.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="232">
-          <caret line="473" column="23" selection-start-line="473" selection-start-column="23" selection-end-line="473" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/uexKekelian/res/layout/course_item_fragment.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="31" column="50" selection-start-line="31" selection-start-column="50" selection-end-line="31" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/uexKekelian/res/layout-sw600dp/course_item_fragment.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="474">
           <caret line="34" column="57" lean-forward="true" selection-start-line="34" selection-start-column="57" selection-end-line="34" selection-end-column="57" />
         </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/uexKekelian/src/com/kekelian/dialog/LevelDialog.java">
@@ -2787,55 +2748,13 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/uexKekelian/res/layout-sw600dp/pop_level_status.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="528">
           <caret line="41" column="46" selection-start-line="41" selection-start-column="46" selection-end-line="41" selection-end-column="46" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/uexKekelian/res/layout/hpush_activity.xml">
       <provider editor-type-id="android-designer2">
         <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="326">
-          <caret line="42" column="36" selection-start-line="42" selection-start-column="36" selection-end-line="42" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/uexKekelian/src/com/kekelian/bean/LessonContentBean.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1593">
-          <caret line="81" column="13" selection-start-line="81" selection-start-column="13" selection-end-line="81" selection-end-column="13" />
-          <folding>
-            <element signature="e#2799#2800#0" expanded="true" />
-            <element signature="e#2843#2844#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/uexKekelian/src/com/kekelian/fragment/CourseItemFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="8505">
-          <caret line="344" column="69" selection-start-line="344" selection-start-column="65" selection-end-line="344" selection-end-column="69" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/uexKekelian/src/com/kekelian/ScoreReport.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1485">
-          <caret line="73" column="74" selection-start-line="73" selection-start-column="74" selection-end-line="73" selection-end-column="74" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/uexKekelian/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1404">
-          <caret line="69" selection-start-line="69" selection-end-line="69" />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/build.gradle">
@@ -2883,10 +2802,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="287">
           <caret line="344" column="30" selection-start-line="344" selection-start-column="30" selection-end-line="344" selection-end-column="30" />
-          <folding>
-            <element signature="e#9963#9964#0" expanded="true" />
-            <element signature="e#10014#10015#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2902,34 +2817,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/uexKekelian/res/layout/activity_score_report.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="618">
-          <caret line="89" column="50" selection-start-line="89" selection-start-column="50" selection-end-line="89" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/uexKekelian/res/layout-sw600dp/activity_score_report.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="569">
           <caret line="104" column="41" selection-start-line="104" selection-start-column="41" selection-end-line="104" selection-end-column="41" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/uexKekelian/src/com/kekelian/HealthPush.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4368">
-          <caret line="410" selection-start-line="410" selection-end-line="410" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
+      <provider editor-type-id="android-designer2">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/uexKekelian/res/drawable/view_shape_indicated.xml">
@@ -2951,23 +2846,261 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/uexKekelian/res/layout/exercixe_content.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="179">
-          <caret line="43" selection-start-line="43" selection-end-line="50" selection-end-column="75" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/uexKekelian/res/layout-sw600dp/exercixe_content.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="675">
           <caret line="37" column="29" selection-start-line="37" selection-start-column="29" selection-end-line="37" selection-end-column="29" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/uexKekelian/src/com/kekelian/transformer/CardTransformer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="15" column="11" selection-start-line="15" selection-start-column="11" selection-end-line="15" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/uexKekelian/src/com/kekelian/net/Api.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="14" column="52" selection-start-line="14" selection-start-column="25" selection-end-line="14" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/uexKekelian/res/drawable-hdpi/kkl_img01.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/uexKekelian/res/drawable-hdpi/kkl_icon_return.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/uexKekelian/res/layout/preload_content.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="5" column="21" selection-start-line="5" selection-start-column="21" selection-end-line="5" selection-end-column="21" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/uexKekelian/res/layout/hpush_activity.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="254">
+          <caret line="45" column="38" selection-start-line="45" selection-start-column="38" selection-end-line="45" selection-end-column="38" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/uexKekelian/src/com/kekelian/net/CallBack.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="14" column="22" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/engine-4.0.0-systemRelease.aar/03dbfbc3e2a2b8761f7748fdd9e66010/jars/libs/android-support-v4.jar!/android/support/v4/view/ViewPager.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="203">
+          <caret line="470" selection-start-line="470" selection-end-line="470" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/engine-4.0.0-systemRelease.aar/03dbfbc3e2a2b8761f7748fdd9e66010/jars/libs/android-support-v4.jar!/android/support/v4/app/FragmentPagerAdapter.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="386">
+          <caret line="75" selection-start-line="75" selection-end-line="75" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/uexKekelian/src/com/kekelian/bean/LessonContentBean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+          <folding>
+            <element signature="e#2799#2800#0" expanded="true" />
+            <element signature="e#2843#2844#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/uexKekelian/res/layout/course_item_fragment.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="15" column="44" selection-start-line="15" selection-start-column="44" selection-end-line="15" selection-end-column="44" />
+          <folding>
+            <element signature="e#873#1851#0" />
+          </folding>
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/AppData/Local/Android/Sdk/platforms/android-26/android.jar!/android/os/Handler.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="48">
+          <caret line="150" selection-start-line="150" selection-end-line="150" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/uexKekelian/res/layout/exercixe_content.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="223">
+          <caret line="26" column="69" selection-start-line="26" selection-start-column="37" selection-end-line="26" selection-end-column="69" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/uexKekelian/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="67" selection-start-line="67" selection-end-line="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/uexKekelian/res/layout/pop_level_status.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="364">
+          <caret line="41" column="50" selection-start-line="41" selection-start-column="50" selection-end-line="41" selection-end-column="50" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/uexKekelian/uexKekelian/res/layout/pop_level_status.xml">
+      <provider editor-type-id="text-editor">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/uexKekelian/src/com/kekelian/callBack/OnResumeCallBackListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="6" column="10" selection-start-line="6" selection-start-column="10" selection-end-line="6" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/engine-4.0.0-systemRelease.aar/03dbfbc3e2a2b8761f7748fdd9e66010/jars/libs/android-support-v4.jar!/android/support/v4/app/Fragment.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="27">
+          <caret line="377" column="16" selection-start-line="377" selection-start-column="16" selection-end-line="377" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/uexKekelian/uexKekelian/res/layout/activity_no_topic.xml">
+      <provider editor-type-id="text-editor">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/engine-4.0.0-systemRelease.aar/03dbfbc3e2a2b8761f7748fdd9e66010/jars/libs/gson-2.2.4.jar!/com/google/gson/Gson.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="287">
+          <caret line="386" selection-start-line="386" selection-end-line="386" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/uexKekelian/src/com/kekelian/net/HttpClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="729">
+          <caret line="129" column="82" selection-start-line="129" selection-start-column="82" selection-end-line="129" selection-end-column="86" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/uexKekelian/uexKekelian/res/layout/pop_experience.xml">
+      <provider editor-type-id="text-editor">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/uexKekelian/uexKekelian/plugin.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="142">
+          <caret line="6" column="35" selection-start-line="6" selection-start-column="24" selection-end-line="6" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/uexKekelian/src/com/kekelian/HealthPush.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="297">
+          <caret line="380" selection-start-line="380" selection-end-line="380" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/uexKekelian/src/com/kekelian/bean/KKLLessionListBean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="68" column="13" selection-start-line="68" selection-start-column="13" selection-end-line="68" selection-end-column="13" />
+          <folding>
+            <element signature="e#4022#4023#0" expanded="true" />
+            <element signature="e#4076#4077#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/uexKekelian/src/com/kekelian/fragment/CourseItemFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="301">
+          <caret line="122" column="28" lean-forward="true" selection-start-line="122" selection-start-column="28" selection-end-line="122" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/uexKekelian/res/layout/activity_score_report.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="107">
+          <caret line="73" column="40" selection-start-line="73" selection-start-column="33" selection-end-line="73" selection-end-column="40" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/uexKekelian/src/com/kekelian/ScoreReport.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="298">
+          <caret line="158" column="71" selection-start-line="158" selection-start-column="71" selection-end-line="158" selection-end-column="71" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/uexKekelian/src/com/kekelian/EUExKekelian.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="163">
+          <caret line="33" column="99" selection-start-line="33" selection-start-column="79" selection-end-line="33" selection-end-column="99" />
+          <folding>
+            <element signature="e#3495#3496#0" expanded="true" />
+            <element signature="e#3546#3547#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/uexKekelian/assets/widget/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="302">
+          <caret line="32" column="34" lean-forward="true" selection-start-line="32" selection-start-column="34" selection-end-line="32" selection-end-column="34" />
         </state>
       </provider>
     </entry>

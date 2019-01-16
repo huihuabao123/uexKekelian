@@ -81,7 +81,7 @@ public class HealthPush extends FragmentActivity implements OnFragmentCallBack, 
     /**
      * 当前选中的类别
      */
-    private int columnSelectIndex = 1;
+    private int columnSelectIndex = 0;
     /**
      * 屏幕宽度
      */
@@ -163,9 +163,9 @@ public class HealthPush extends FragmentActivity implements OnFragmentCallBack, 
                             }
                         }
 
-                        if(progress == -1) {
+/*                        if(progress == -1) {
                             columnSelectIndex = list.size();
-                        }
+                        }*/
                     }
 
                     Log.i(TAG, "tab的数量：" + list.size());
