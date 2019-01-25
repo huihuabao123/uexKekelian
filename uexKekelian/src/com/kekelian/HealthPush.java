@@ -98,6 +98,9 @@ public class HealthPush extends FragmentActivity implements OnFragmentCallBack, 
      * Fragment列表
      */
     private ArrayList<Fragment> fragments;
+
+    public static HealthPush instance;
+
     /**
      * 指示器动画联动
      */
@@ -118,6 +121,7 @@ public class HealthPush extends FragmentActivity implements OnFragmentCallBack, 
         }
         Log.i(TAG, "HealthPush---->onCreate()");
         setContentView(EUExUtil.getResLayoutID("hpush_activity"));
+        instance = this;
         initView();
         getKekelianList();
     }
@@ -578,6 +582,7 @@ public class HealthPush extends FragmentActivity implements OnFragmentCallBack, 
     protected void onDestroy() {
         super.onDestroy();
         Log.i(TAG, "HealthPush---->onDestroy()");
+        instance = null;
     }
 }
 

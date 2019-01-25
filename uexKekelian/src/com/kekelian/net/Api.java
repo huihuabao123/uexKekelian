@@ -1,7 +1,7 @@
 package com.kekelian.net;
 
 public class Api {
-    public static  final String Host="http://192.168.1.220:8080";//正式环境
+    public static  final String Host="http://192.168.1.200:8080";//正式环境
 //    public static  final String Host="http://192.168.1.169:8080";//正式环境
 
     /**

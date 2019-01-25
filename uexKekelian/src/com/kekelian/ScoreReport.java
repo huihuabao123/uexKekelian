@@ -45,6 +45,9 @@ public class ScoreReport extends Activity {
         levelRecordId=getIntent().getStringExtra(EUExKekelian.INFO);
         initView();
         getkekelianSuccessContent();
+        if(HealthPush.instance != null) {
+            HealthPush.instance.onResumeCallBack();
+        }
     }
 
     private void getkekelianSuccessContent() {
