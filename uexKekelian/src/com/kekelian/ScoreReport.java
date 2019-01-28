@@ -20,6 +20,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.zywx.wbpalmstar.engine.universalex.EUExUtil;
 
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
+
 public class ScoreReport extends Activity {
 
 
@@ -160,7 +164,14 @@ public class ScoreReport extends Activity {
            jsonObject.put("levelTypeName", levelTypeName);
            jsonObject.put("exerciseRecordId",exerciseRecordId);
            mUexBaseObj.callBackPluginJs(EUExKekelian.CALLBACK_ON_FRAGMENT_DO_EXERCISE,jsonObject.toString());
-           mUexBaseObj.closeScoreReport(null);
+           Executors.newSingleThreadScheduledExecutor().schedule(
+                   new Runnable() {
+                       @Override
+                       public void run() {
+                           mUexBaseObj.closeScoreReport(null);
+                       }
+                   }, 500, TimeUnit.MILLISECONDS
+           );
        } catch (JSONException e) {
            Log.i(TAG, String.valueOf(e.getMessage()));
        }
