@@ -39,7 +39,7 @@
         <!--&lt;!&ndash;<item name="colorAccent">@color/colorAccent</item>&ndash;&gt;-->
     <!--</style>-->
 
-    <style name="AppBaseTheme" parent="@android:style/Theme.NoTitleBar.Fullscreen">
+    <style name="AppBaseTheme1" parent="@android:style/Theme.NoTitleBar.Fullscreen">
         <!--
             Theme customizations available in newer API levels can go in
             res/values-vXX/styles.xml, while customizations related to
@@ -49,7 +49,7 @@
     </style>
 
     <!-- Application theme. -->
-    <style name="AppTheme" parent="AppBaseTheme">
+    <style name="AppTheme1" parent="AppBaseTheme1">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
         <!--

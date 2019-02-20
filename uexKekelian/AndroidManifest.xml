@@ -33,7 +33,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application android:label="UexKekelian"
-                 android:theme="@style/AppTheme">
+                 android:theme="@style/AppTheme1">
         <activity
             android:name="org.zywx.wbpalmstar.engine.LoadingActivity"
             android:configChanges="keyboardHidden|orientation"

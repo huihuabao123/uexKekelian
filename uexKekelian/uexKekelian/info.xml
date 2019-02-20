@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <uexplugins>
     <plugin
-        uexName="uexKekelian" version="4.0.0" build="0">
+        uexName="uexKekelian" version="4.0.4" build="0">
         <info>0:课课练插件</info>
     </plugin>
 
