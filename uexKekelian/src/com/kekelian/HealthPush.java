@@ -166,10 +166,10 @@ public class HealthPush extends FragmentActivity implements OnFragmentCallBack, 
                                 break;
                             }
                         }
+                    }
 
-/*                        if(progress == -1) {
-                            columnSelectIndex = list.size();
-                        }*/
+                    if(progress == -1) {
+                        columnSelectIndex = list.size() - 1;
                     }
 
                     Log.i(TAG, "tab的数量：" + list.size());
