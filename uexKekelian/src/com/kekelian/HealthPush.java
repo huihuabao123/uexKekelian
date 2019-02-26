@@ -150,23 +150,23 @@ public class HealthPush extends FragmentActivity implements OnFragmentCallBack, 
                     int progress = -1;
                     //计算第一个大显身手未完成的下标
                     for (int j = 0; j < list.size(); j++) {
-                        if (list.get(j).getFinishProgress() == 1) {
+                        if (list.get(j).getFinishProgress() == 0 || list.get(j).getFinishProgress() == 1) {
                             columnSelectIndex = j;
                             progress = 1;
                             break;
                         }
                     }
 
-                    if(progress == -1) {
-                        //计算第一个小试牛刀未完成的下标
-                        for (int i = 0; i < list.size(); i++) {
-                            if (list.get(i).getFinishProgress() == 0) {
-                                columnSelectIndex = i;
-                                progress = 0;
-                                break;
-                            }
-                        }
-                    }
+//                    if(progress == -1) {
+//                        //计算第一个小试牛刀未完成的下标
+//                        for (int i = 0; i < list.size(); i++) {
+//                            if (list.get(i).getFinishProgress() == 0) {
+//                                columnSelectIndex = i;
+//                                progress = 0;
+//                                break;
+//                            }
+//                        }
+//                    }
 
                     if(progress == -1) {
                         columnSelectIndex = list.size() - 1;
@@ -184,7 +184,6 @@ public class HealthPush extends FragmentActivity implements OnFragmentCallBack, 
 
         });
     }
-
 
     /**
      * 初始化layout控件

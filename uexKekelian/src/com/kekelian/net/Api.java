@@ -2,7 +2,7 @@ package com.kekelian.net;
 
 public class Api {
     //public static  final String Host="http://192.168.1.200:8080";//测试环境
-    public static  final String Host="https://admin.huihuabao.com";//正式环境
+    public static  final String Host="https://www.huihuabao.com";//正式环境
 
     /**
      * 展示课课练的状态
