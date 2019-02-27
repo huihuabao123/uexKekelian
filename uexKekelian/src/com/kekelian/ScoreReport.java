@@ -98,14 +98,14 @@ public class ScoreReport extends Activity {
             llButtons.setVisibility(View.VISIBLE);
             btAgain.setVisibility(View.GONE);
             ivStatus.setImageResource(EUExUtil.getResDrawableID("frog_02"));
-            tvInfo.setText("消灭错题，可以拿满星哦~");
+            tvInfo.setText("消灭错题，可以拿3星哦~");
         }else {
             //两颗星
             ivImg.setImageResource(EUExUtil.getResDrawableID("kkl_bg04"));
             llButtons.setVisibility(View.VISIBLE);
             btAgain.setVisibility(View.GONE);
             ivStatus.setImageResource(EUExUtil.getResDrawableID("frog_02"));
-            tvInfo.setText("消灭错题，可以拿满星哦~");
+            tvInfo.setText("消灭错题，可以拿3星哦~");
         }
 
         rlScoreReport.setVisibility(View.VISIBLE);

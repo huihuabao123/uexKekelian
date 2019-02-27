@@ -102,7 +102,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="15dp"
             android:textSize="@dimen/text_16_sp"
-            android:text="消灭错题,可以拿满星哦~"/>
+            android:text="消灭错题,可以拿3星哦~"/>
     </LinearLayout>
 
 
